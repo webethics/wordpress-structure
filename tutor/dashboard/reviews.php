@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * My Own reviews
  *
@@ -19,72 +19,72 @@ $reviews = tutor_utils()->get_reviews_by_instructor(get_current_user_id(), $offs
 ?>
 
     <div class="tutor-dashboard-content-inner">
-		<?
+		<?php
 		if (current_user_can(tutor()->instructor_role)){
 			?>
             <div class="tutor-dashboard-inline-links">
                 <ul>
                    
-                    <li class="active"><a><? _e('Received', 'tutor'); ?></a></li>
+                    <li class="active"><a><?php _e('Received', 'tutor'); ?></a></li>
                 </ul>
             </div>
-		<? } ?>
+		<?php } ?>
 
         <div class="tutor-dashboard-reviews-wrap">
 
-			<?
+			<?php
 			if ($reviews->count){
 				?>
                 <div class="tutor-dashboard-reviews">
                     <p class="tutor-dashboard-pagination-results-stats">
-						<?
+						<?php
 						echo sprintf(__('Showing results %d to %d out of %d', 'tutor'), $offset +1, min($reviews->count, $offset +1+tutor_utils()->count($reviews->results)), $reviews->count) ;
 						?>
                     </p>
 
-					<?
+					<?php
 					foreach ($reviews->results as $review){
 						$profile_url = tutor_utils()->profile_url($review->user_id);
 						?>
-                        <div class="tutor-dashboard-single-review tutor-review-<? echo $review->comment_ID; ?>">
+                        <div class="tutor-dashboard-single-review tutor-review-<?php echo $review->comment_ID; ?>">
                             <div class="tutor-dashboard-review-header">
 
                                 <div class="tutor-dashboard-review-heading">
                                     <div class="tutor-dashboard-review-title">
-										<? _e('Course: ', 'tutor'); ?>
-                                        <a href="<? echo get_the_permalink($review->comment_post_ID); ?>"><? echo get_the_title($review->comment_post_ID); ?></a>
+										<?php _e('Course: ', 'tutor'); ?>
+                                        <a href="<?php echo get_the_permalink($review->comment_post_ID); ?>"><?php echo get_the_title($review->comment_post_ID); ?></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="individual-dashboard-review-body">
                                 <div class="individual-star-rating-wrap">
-									<? tutor_utils()->star_rating_generator($review->rating); ?>
-                                    <p class="review-meta"><?  echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime($review->comment_date)));  ?></p>
+									<?php tutor_utils()->star_rating_generator($review->rating); ?>
+                                    <p class="review-meta"><?php  echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime($review->comment_date)));  ?></p>
                                 </div>
 
-								<? echo wpautop(stripslashes($review->comment_content)); ?>
+								<?php echo wpautop(stripslashes($review->comment_content)); ?>
                             </div>
                         </div>
-						<?
+						<?php
 					}
 					?>
                 </div>
-			<? }else{
+			<?php }else{
 				?>
                 <div class="tutor-dashboard-content-inner">
-                    <p><? _e("Sorry, but you are looking for something that isn't here." , 'tutor'); ?></p>
+                    <p><?php _e("Sorry, but you are looking for something that isn't here." , 'tutor'); ?></p>
                 </div>
-				<?
+				<?php
 			} ?>
 
         </div>
     </div>
 
-<?
+<?php
 if ($reviews->count){
 	?>
     <div class="tutor-pagination">
-		<?
+		<?php
 		echo paginate_links( array(
 			'format' => '?current_page=%#%',
 			'current' => $current_page,
@@ -92,5 +92,5 @@ if ($reviews->count){
 		) );
 		?>
     </div>
-	<?
+	<?php
 }

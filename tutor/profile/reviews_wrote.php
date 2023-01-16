@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -63,22 +63,22 @@ $reviews = tutor_utils()->get_reviews_by_user($user_id);
 
 <div class=" tutor-course-reviews-wrap">
     <div class="course-target-reviews-title">
-	<? if ( in_array( 'tutor_instructor', $user_roles, true ) ) { ?>
-        <h4><? echo sprintf(__('Reviews', 'tutor')); ?></h4>
-	<? }else{ ?>
-		<h4><? echo sprintf(__('Reviews wrote by %s ', 'tutor'), $get_user->display_name); ?></h4>
-	<? } ?> 
+	<?php if ( in_array( 'tutor_instructor', $user_roles, true ) ) { ?>
+        <h4><?php echo sprintf(__('Reviews', 'tutor')); ?></h4>
+	<?php }else{ ?>
+		<h4><?php echo sprintf(__('Reviews wrote by %s ', 'tutor'), $get_user->display_name); ?></h4>
+	<?php } ?> 
     </div>
 	
     <div class="tutor-reviews-list">
-		<?
+		<?php
 		if ( in_array( 'tutor_instructor', $user_roles, true ) ) { 
 			if ( ! is_array($array_comments) || ! count($array_comments)){ ?>
 				<div>
-					<h2><? _e("No Reviews Added" , 'tutor'); ?></h2>
-					<p><? _e("There is no reviews added for this instrcutor" , 'tutor'); ?></p>
+					<h2><?php _e("No Reviews Added" , 'tutor'); ?></h2>
+					<p><?php _e("There is no reviews added for this instrcutor" , 'tutor'); ?></p>
 				</div>
-				<?
+				<?php
 				return;
 			}
 			foreach ($array_comments as $review){
@@ -99,17 +99,17 @@ $reviews = tutor_utils()->get_reviews_by_user($user_id);
 				
 				$profile_url = tutor_utils()->profile_url($review->user_id);
 				?>
-				<div class="tutor-review-individual-item tutor-review-<? echo $review->comment_ID; ?>">
+				<div class="tutor-review-individual-item tutor-review-<?php echo $review->comment_ID; ?>">
 					<div class="review-left">
 						<div class="review-avatar">
-								<? echo tutor_utils()->get_tutor_avatar($review->user_id); ?>
+								<?php echo tutor_utils()->get_tutor_avatar($review->user_id); ?>
 						</div>
 
 						<div class="review-time-name">
 
-							<p> <? echo $full_name; ?></p>
+							<p> <?php echo $full_name; ?></p>
 							<p class="review-meta">
-								<? echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime($review->comment_date))) ?>
+								<?php echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime($review->comment_date))) ?>
 							</p>
 						</div>
 					</div>
@@ -117,50 +117,50 @@ $reviews = tutor_utils()->get_reviews_by_user($user_id);
 					<div class="review-content review-right">
 
 						<div class="individual-review-course-name">
-							<? _e('On', 'tutor'); ?>
-							<a href="<? echo get_the_permalink($review->comment_post_ID); ?>"><? echo get_the_title
+							<?php _e('On', 'tutor'); ?>
+							<a href="<?php echo get_the_permalink($review->comment_post_ID); ?>"><?php echo get_the_title
 							($review->comment_post_ID);
 							?></a>
 						</div>
 
 						<div class="individual-review-rating-wrap">
 						
-							<? 
+							<?php 
 							
 							$rating = get_comment_meta($review->comment_ID,"tutor_rating",true);
 							tutor_utils()->star_rating_generator($rating); ?>
 						</div>
-						<? echo wpautop($review->comment_content); ?>
+						<?php echo wpautop($review->comment_content); ?>
 					</div>
 				</div>
-				<?
+				<?php
 			}
 		}
 		else{
 			if ( ! is_array($reviews) || ! count($reviews)){ ?>
 				<div>
-					<h2><? _e("No Reviews Added" , 'tutor'); ?></h2>
-					<p><? _e("There is no reviews added for this instrcutor" , 'tutor'); ?></p>
+					<h2><?php _e("No Reviews Added" , 'tutor'); ?></h2>
+					<p><?php _e("There is no reviews added for this instrcutor" , 'tutor'); ?></p>
 				</div>
-				<?
+				<?php
 				return;
 			}
 			foreach ($reviews as $review){
 				$profile_url = tutor_utils()->profile_url($review->user_id);
 				?>
-				<div class="tutor-review-individual-item tutor-review-<? echo $review->comment_ID; ?>">
+				<div class="tutor-review-individual-item tutor-review-<?php echo $review->comment_ID; ?>">
 					<div class="review-left">
 						<div class="review-avatar">
-							<a href="<? echo $profile_url; ?>">
-								<? echo tutor_utils()->get_tutor_avatar($review->user_id); ?>
+							<a href="<?php echo $profile_url; ?>">
+								<?php echo tutor_utils()->get_tutor_avatar($review->user_id); ?>
 							</a>
 						</div>
 
 						<div class="review-time-name">
 
-							<p> <a href="<? echo $profile_url; ?>">  <? echo $review->display_name; ?> </a> </p>
+							<p> <a href="<?php echo $profile_url; ?>">  <?php echo $review->display_name; ?> </a> </p>
 							<p class="review-meta">
-								<? echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime($review->comment_date))) ?>
+								<?php echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime($review->comment_date))) ?>
 							</p>
 						</div>
 					</div>
@@ -168,19 +168,19 @@ $reviews = tutor_utils()->get_reviews_by_user($user_id);
 					<div class="review-content review-right">
 
 						<div class="individual-review-course-name">
-							<? _e('On', 'tutor'); ?>
-							<a href="<? echo get_the_permalink($review->comment_post_ID); ?>"><? echo get_the_title
+							<?php _e('On', 'tutor'); ?>
+							<a href="<?php echo get_the_permalink($review->comment_post_ID); ?>"><?php echo get_the_title
 							($review->comment_post_ID);
 							?></a>
 						</div>
 
 						<div class="individual-review-rating-wrap">
-							<? tutor_utils()->star_rating_generator($review->rating); ?>
+							<?php tutor_utils()->star_rating_generator($review->rating); ?>
 						</div>
-						<? echo wpautop($review->comment_content); ?>
+						<?php echo wpautop($review->comment_content); ?>
 					</div>
 				</div>
-				<?
+				<?php
 			}
 		}
 		?>

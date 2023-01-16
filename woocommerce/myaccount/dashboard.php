@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * My Account Dashboard
  *
@@ -50,10 +50,10 @@ $earning_sum = get_user_earning_sum($userid);
 	
 	
 ?>
-<h3 class="add_logout">Dashboard<!--a class="tutor-btn bordered-btn" href="<? echo esc_url( wc_logout_url() ); ?>">Log Out</a-->
+<h3 class="add_logout">Dashboard<!--a class="tutor-btn bordered-btn" href="<?php echo esc_url( wc_logout_url() ); ?>">Log Out</a-->
 </h3>
 <!--p>
-	<?
+	<?php
 	//printf(
 	//	/* translators: 1: user display name 2: logout url */
 		//__( 'Hello %1$s (not %1$s? <a href="%2$s">Log out</a>)', 'woocommerce' ),
@@ -64,7 +64,7 @@ $earning_sum = get_user_earning_sum($userid);
 </p-->
 
 <p>
-	<?
+	<?php
 	printf(
 		__( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a>, and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' ),
 		esc_url( wc_get_endpoint_url( 'orders' ) ),
@@ -80,14 +80,14 @@ $earning_sum = get_user_earning_sum($userid);
 			            <div class="tutor-dashboard-info-card">
                 <p>
                    <a href="/manage-products/" style="color:#fff;"> <span>Total items for sale</span>
-                    <span class="tutor-dashboard-info-val"><? echo $count_products; ?></span></a>
+                    <span class="tutor-dashboard-info-val"><?php echo $count_products; ?></span></a>
                 </p>
             </div>
         
             <div class="tutor-dashboard-info-card">
                 <p>
                     <a href="/user-account/earnings/" style="color:#fff;"> <span>Total Earnings</span>
-                    <span class="tutor-dashboard-info-val"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span><? echo tutor_utils()->tutor_price($earning_sum->user_amount); ?></span></span></a>
+                    <span class="tutor-dashboard-info-val"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span><?php echo tutor_utils()->tutor_price($earning_sum->user_amount); ?></span></span></a>
                 </p>
             </div>
 		    </div>
@@ -95,7 +95,7 @@ $earning_sum = get_user_earning_sum($userid);
 	    
 	
 </div>
-<?
+<?php
 	/**
 	 * My Account dashboard.
 	 *

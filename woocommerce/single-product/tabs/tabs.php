@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Single Product tabs
  *
@@ -32,26 +32,26 @@ if ( ! empty( $product_tabs ) ) : ?>
  <div class="col-wrap-full">
 	<div class="woocommerce-tabs wc-tabs-wrapper">
 		<ul class="tabs wc-tabs" role="tablist">
-			<? foreach ( $product_tabs as $key => $product_tab ) : ?>
-				<li class="<? echo esc_attr( $key ); ?>_tab" id="tab-title-<? echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<? echo esc_attr( $key ); ?>">
-					<a href="#tab-<? echo esc_attr( $key ); ?>">
-						<? echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?>
+			<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
+				<li class="<?php echo esc_attr( $key ); ?>_tab" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
+					<a href="#tab-<?php echo esc_attr( $key ); ?>">
+						<?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?>
 					</a>
 				</li>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 		</ul>
-		<? foreach ( $product_tabs as $key => $product_tab ) : ?>
-			<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--<? echo esc_attr( $key ); ?> panel entry-content wc-tab" id="tab-<? echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<? echo esc_attr( $key ); ?>">
-				<?
+		<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
+			<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--<?php echo esc_attr( $key ); ?> panel entry-content wc-tab" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
+				<?php
 				if ( isset( $product_tab['callback'] ) ) {
 					call_user_func( $product_tab['callback'], $key, $product_tab );
 				}
 				?>
 			</div>
-		<? endforeach; ?>
+		<?php endforeach; ?>
 
-		<? do_action( 'woocommerce_product_after_tabs' ); ?>
+		<?php do_action( 'woocommerce_product_after_tabs' ); ?>
 	</div>
 	</div>
 
-<? endif; ?>
+<?php endif; ?>

@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
+jQuery(document).ready(function(){ 
 			jQuery(document).on("click","#clickcontent",function(){
 				jQuery('html, body').animate({
 				scrollTop: jQuery("#contentmain").offset().top

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Display single product reviews (comments)
  *
@@ -28,7 +28,7 @@ if ( ! comments_open() ) {
 <div id="reviews" class="woocommerce-Reviews">
 	<div id="comments">
 		<h4 class="heading-title">
-			<?
+			<?php
 			$count = $product->get_review_count();
 			if ( $count && wc_review_ratings_enabled() ) {
 				/* translators: 1: reviews count 2: product name */
@@ -42,12 +42,12 @@ if ( ! comments_open() ) {
 			?>
 		</h4>
 
-		<? if ( have_comments() ) : ?>
+		<?php if ( have_comments() ) : ?>
 			<ol class="commentlist">
-				<? wp_list_comments( apply_filters( 'woocommerce_product_review_list_args', array( 'callback' => 'woocommerce_comments' ) ) ); ?>
+				<?php wp_list_comments( apply_filters( 'woocommerce_product_review_list_args', array( 'callback' => 'woocommerce_comments' ) ) ); ?>
 			</ol>
 
-			<?
+			<?php
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 				echo '<nav class="woocommerce-pagination">';
 				paginate_comments_links(
@@ -63,15 +63,15 @@ if ( ! comments_open() ) {
 				echo '</nav>';
 			endif;
 			?>
-		<? else : ?>
-			<p class="woocommerce-noreviews"><? esc_html_e( 'There are no reviews yet.', 'woocommerce' ); ?></p>
-		<? endif; ?>
+		<?php else : ?>
+			<p class="woocommerce-noreviews"><?php esc_html_e( 'There are no reviews yet.', 'woocommerce' ); ?></p>
+		<?php endif; ?>
 	</div>
 
-	<? if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
+	<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 		<div id="review_form_wrapper">
 			<div id="review_form">
-				<?
+				<?php
 				$commenter    = wp_get_current_commenter();
 				$comment_form = array(
 					/* translators: %s is product title */
@@ -140,9 +140,9 @@ if ( ! comments_open() ) {
 				?>
 			</div>
 		</div>
-	<? else : ?>
-		<p class="woocommerce-verification-required"><? esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
-	<? endif; ?>
+	<?php else : ?>
+		<p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
+	<?php endif; ?>
 
 	<div class="clear"></div>
 </div>

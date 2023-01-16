@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -10,12 +10,12 @@ if($_GET['quiz'] != ""){
         <button id="btn-export" onclick="exportHTML();">Export to word
             doc</button>
     </div>
-<? } ?>
+<?php } ?>
 <div class="mainquiz">
-<h2><? _e('Quiz History', 'tutor'); ?></h2>
+<h2><?php _e('Quiz History', 'tutor'); ?></h2>
 <h5><a href="/my-account/my-courses/"><-Back</a></h5>
 <style>.mainquiz li:last-child{display:none;}</style>
-<?
+<?php
 global $wpdb;
 $id = $_GET['course_id'];
 if($id != ""){
@@ -46,7 +46,7 @@ else{
 $quid = $_GET['quiz'];
 if($quid != ""){?>
 <div id="source-html">	
-<?		
+<?php		
 $questions = $wpdb->get_results("SELECT * FROM $wpdb->tutor_quiz_questions WHERE quiz_id = $quid");
 foreach ($questions as $question) {
 						$question_i++;
@@ -60,9 +60,9 @@ foreach ($questions as $question) {
 
 						$next_question = isset($questions[$question_i]) ? $questions[$question_i] : false;
 						?>
-                        <div id="quiz-attempt-single-question-<? echo $question->question_id; ?>" class="quiz-attempt-single-question quiz-attempt-single-question-<? echo $question_i; ?>" style="display: <? echo $style_display; ?> ;" <? echo $next_question ? "data-next-question-id='#quiz-attempt-single-question-{$next_question->question_id}'" : '' ; ?> >
+                        <div id="quiz-attempt-single-question-<?php echo $question->question_id; ?>" class="quiz-attempt-single-question quiz-attempt-single-question-<?php echo $question_i; ?>" style="display: <?php echo $style_display; ?> ;" <?php echo $next_question ? "data-next-question-id='#quiz-attempt-single-question-{$next_question->question_id}'" : '' ; ?> >
 
-							<? echo "<input type='hidden' name='attempt[{$is_started_quiz->attempt_id}][quiz_question_ids][]' value='{$question->question_id}' />";
+							<?php echo "<input type='hidden' name='attempt[{$is_started_quiz->attempt_id}][quiz_question_ids][]' value='{$question->question_id}' />";
 
 
 							$question_type = $question->question_type;
@@ -96,66 +96,66 @@ foreach ($questions as $question) {
                             }
 							?>
 
-                            <div class="tutor-quiz-answers-wrap question-type-<? echo $question_type; ?> <? echo $answer_required? 'quiz-answer-required':''; ?> ">
-								<?
+                            <div class="tutor-quiz-answers-wrap question-type-<?php echo $question_type; ?> <?php echo $answer_required? 'quiz-answer-required':''; ?> ">
+								<?php
 								if ( is_array($answers) && count($answers) ) {
 									foreach ($answers as $answer){
 									    $answer_title = stripslashes($answer->answer_title);
 
 										if ( $question_type === 'true_false' || $question_type === 'single_choice' ) {
 											?>
-                                            <label class="answer-view-<? echo $answer->answer_view_format; ?>">
+                                            <label class="answer-view-<?php echo $answer->answer_view_format; ?>">
                                                 <div class="quiz-answer-input-body">
-													<?
+													<?php
 													if ($answer->answer_view_format === 'image' || $answer->answer_view_format === 'text_image'){
 														?>
                                                         <div class="quiz-answer-image-wrap">
-                                                            <img src="<? echo wp_get_attachment_image_url($answer->image_id, 'full') ?>" />
+                                                            <img src="<?php echo wp_get_attachment_image_url($answer->image_id, 'full') ?>" />
                                                         </div>
-														<?
+														<?php
 													}
 													?>
                                                     <div class="quiz-answer-input-bottom">
                                                         <div class="quiz-answer-input-field">
-                                                            <input name="attempt[<? echo $is_started_quiz->attempt_id; ?>][quiz_question][<? echo $question->question_id; ?>]" type="radio" value="<? echo $answer->answer_id; ?>">
+                                                            <input name="attempt[<?php echo $is_started_quiz->attempt_id; ?>][quiz_question][<?php echo $question->question_id; ?>]" type="radio" value="<?php echo $answer->answer_id; ?>">
                                                             <span>&nbsp;</span>
-                                                            <?
+                                                            <?php
                                                                 if ($answer->answer_view_format !== 'image'){ echo $answer_title;}
                                                             ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </label>
-											<?
+											<?php
 										}elseif ($question_type === 'multiple_choice'){
 											?>
-                                            <label class="answer-view-<? echo $answer->answer_view_format; ?>">
+                                            <label class="answer-view-<?php echo $answer->answer_view_format; ?>">
 
 
                                                 <div class="quiz-answer-input-body">
-													<? if ($answer->answer_view_format === 'image' || $answer->answer_view_format === 'text_image'){ ?>
+													<?php if ($answer->answer_view_format === 'image' || $answer->answer_view_format === 'text_image'){ ?>
                                                         <div class="quiz-answer-image-wrap">
-                                                            <img src="<? echo wp_get_attachment_image_url($answer->image_id, 'full') ?>" />
+                                                            <img src="<?php echo wp_get_attachment_image_url($answer->image_id, 'full') ?>" />
                                                         </div>
-                                                    <? } ?>
+                                                    <?php } ?>
 
                                                     <div class="quiz-answer-input-bottom">
                                                         <div class="quiz-answer-input-field">
-                                                            <input name="attempt[<? echo $is_started_quiz->attempt_id; ?>][quiz_question][<? echo $question->question_id; ?>][]" type="checkbox" value="<? echo $answer->answer_id; ?>">
+                                                            <input name="attempt[<?php echo $is_started_quiz->attempt_id; ?>][quiz_question][<?php echo $question->question_id; ?>][]" type="checkbox" value="<?php echo $answer->answer_id; ?>">
                                                             <span>&nbsp;</span>
-                                                            <? if ($answer->answer_view_format !== 'image'){
+                                                            <?php if ($answer->answer_view_format !== 'image'){
                                                                 echo $answer_title;
                                                             } ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </label>
-											<?
+											<?php
 										}
                                         elseif ($question_type === 'fill_in_the_blank'){
 											?>
                                             <p class="fill-in-the-blank-field">
-												<?
+												<?php
 												$count_dash_fields = substr_count($answer_title, '{dash}');
 												if ($count_dash_fields){
 
@@ -169,29 +169,29 @@ foreach ($questions as $question) {
 												}
 												?>
                                             </p>
-											<?
+											<?php
 										}
                                         elseif ($question_type === 'ordering'){
 											?>
                                             <div class="question-type-ordering-item">
                                                 <div class="answer-title">
-													<?
+													<?php
 													if ($answer->answer_view_format !== 'image'){
 														echo "<p class='tutor-quiz-answer-title'>{$answer_title}</p>";
 													}
 													if ($answer->answer_view_format === 'image' || $answer->answer_view_format === 'text_image'){
 														?>
                                                         <div class="quiz-answer-image-wrap">
-                                                            <img src="<? echo wp_get_attachment_image_url($answer->image_id, 'full') ?>" />
+                                                            <img src="<?php echo wp_get_attachment_image_url($answer->image_id, 'full') ?>" />
                                                         </div>
-														<?
+														<?php
 													}
 													?>
                                                 </div>
                                                 <span class="answer-sorting-bar"><i class="tutor-icon-menu-2"></i> </span>
-                                                <input type="hidden" name="attempt[<? echo $is_started_quiz->attempt_id; ?>][quiz_question][<? echo $question->question_id; ?>][answers][]" value="<? echo $answer->answer_id; ?>" >
+                                                <input type="hidden" name="attempt[<?php echo $is_started_quiz->attempt_id; ?>][quiz_question][<?php echo $question->question_id; ?>][answers][]" value="<?php echo $answer->answer_id; ?>" >
                                             </div>
-											<?
+											<?php
 										}
 									}
 
@@ -200,14 +200,14 @@ foreach ($questions as $question) {
 									 */
 									if ($question_type === 'matching' || $question_type === 'image_matching'){
 										?>
-                                        <div class="quiz-answers-type-matching-wrap <? echo 'answer-type-'.$question_type ?> ">
+                                        <div class="quiz-answers-type-matching-wrap <?php echo 'answer-type-'.$question_type ?> ">
                                             <div class="quiz-draggable-rand-answers">
-												<?
+												<?php
 												$rand_answers = tutor_utils()->get_answers_by_quiz_question($question->question_id, true);
 												foreach ($rand_answers as $rand_answer){
 													?>
                                                     <div class="quiz-draggable-answer-item">
-														<?
+														<?php
 														if ($question_type === 'matching'){
 															echo "<span class='draggable-answer-title'>{$rand_answer->answer_two_gap_match}</span>";
 														}else{
@@ -215,20 +215,20 @@ foreach ($questions as $question) {
 														}
 														?>
                                                         <span class="draggable-answer-icon"> <i class="tutor-icon-menu-2"></i> </span>
-                                                        <input type="hidden" name="attempt[<? echo $is_started_quiz->attempt_id; ?>][quiz_question][<? echo $question->question_id; ?>][answers][]" value="<? echo $rand_answer->answer_id; ?>" >
+                                                        <input type="hidden" name="attempt[<?php echo $is_started_quiz->attempt_id; ?>][quiz_question][<?php echo $question->question_id; ?>][answers][]" value="<?php echo $rand_answer->answer_id; ?>" >
                                                     </div>
-													<?
+													<?php
 												}
 												?>
                                             </div>
 
                                             <div class="quiz-answer-matching-items-wrap">
-												<?
+												<?php
 												foreach ($answers as $answer){
 													?>
                                                     <div class="quiz-answer-item-matching">
                                                         <div class="quiz-answer-matching-title">
-															<?
+															<?php
 															if ($question_type === 'matching') {
 
 																if ($answer->answer_view_format !== 'image'){
@@ -237,9 +237,9 @@ foreach ($questions as $question) {
 																if ($answer->answer_view_format === 'image' || $answer->answer_view_format === 'text_image'){
 																	?>
                                                                     <div class="quiz-answer-image-wrap">
-                                                                        <img src="<? echo wp_get_attachment_image_url($answer->image_id, 'full') ?>" />
+                                                                        <img src="<?php echo wp_get_attachment_image_url($answer->image_id, 'full') ?>" />
                                                                     </div>
-																	<?
+																	<?php
 																}
 															}elseif (intval($answer->image_id)){
 																echo '<img src="'.wp_get_attachment_image_url($answer->image_id, 'full').'" />';
@@ -248,13 +248,13 @@ foreach ($questions as $question) {
                                                         </div>
                                                         <div class="quiz-answer-matching-droppable"></div>
                                                     </div>
-													<?
+													<?php
 												}
 												?>
 
                                             </div>
                                         </div>
-										<?
+										<?php
 									}
 								}
 
@@ -263,9 +263,9 @@ foreach ($questions as $question) {
 								 */
 								if ($question_type === 'open_ended' || $question_type === 'short_answer'){
 									?>
-                                    <textarea class="question_type_<? echo $question_type; ?>" name="attempt[<? echo
-									$is_started_quiz->attempt_id; ?>][quiz_question][<? echo $question->question_id; ?>]"></textarea>
-									<?
+                                    <textarea class="question_type_<?php echo $question_type; ?>" name="attempt[<?php echo
+									$is_started_quiz->attempt_id; ?>][quiz_question][<?php echo $question->question_id; ?>]"></textarea>
+									<?php
 									if ($question_type === 'short_answer') {
 										$get_option_meta = tutor_utils()->get_quiz_option($quiz_id);
 										if(isset($get_option_meta['short_answer_characters_limit'])){
@@ -290,29 +290,29 @@ foreach ($questions as $question) {
 								if ($question_type === 'image_answering'){
 									?>
                                     <div class="quiz-image-answering-wrap">
-										<?
+										<?php
 										foreach ($answers as $answer){
 											?>
                                             <div class="quiz-image-answering-answer">
-												<?
+												<?php
 												if (intval($answer->image_id)){
 													?>
                                                     <div class="quiz-image-answering-image-wrap">
-														<? echo '<img src="'.wp_get_attachment_image_url($answer->image_id, 'full').'" />'; ?>
+														<?php echo '<img src="'.wp_get_attachment_image_url($answer->image_id, 'full').'" />'; ?>
                                                     </div>
 
                                                     <div class="quiz-image-answering-input-field-wrap">
-                                                        <input type="text"  name="attempt[<? echo $is_started_quiz->attempt_id; ?>][quiz_question][<? echo $question->question_id; ?>][answer_id][<? echo $answer->answer_id; ?>]" >
+                                                        <input type="text"  name="attempt[<?php echo $is_started_quiz->attempt_id; ?>][quiz_question][<?php echo $question->question_id; ?>][answer_id][<?php echo $answer->answer_id; ?>]" >
                                                     </div>
-													<?
+													<?php
 												}
 												?>
                                             </div>
-											<?
+											<?php
 										}
 										?>
                                     </div>
-									<?
+									<?php
 								}
 								?>
 
@@ -320,37 +320,37 @@ foreach ($questions as $question) {
 
                             </div>
 
-							<?
+							<?php
 							if ($question_layout_view !== 'question_below_each_other'){
 								if ($next_question){
 									?>
                                     <div class="quiz-answer-footer-bar">
                                         <div class="quiz-footer-button">
                                             <button type="button" value="quiz_answer_submit" class="tutor-button
-                                        tutor-success tutor-quiz-answer-next-btn"><? _e( 'Answer &amp; Next Question', 'tutor' ); ?></button>
+                                        tutor-success tutor-quiz-answer-next-btn"><?php _e( 'Answer &amp; Next Question', 'tutor' ); ?></button>
                                         </div>
                                     </div>
-									<?
+									<?php
 								}else{
 									?>
                                     <div class="quiz-answer-footer-bar">
                                         <div class="quiz-footer-button">
-                                            <button type="submit" name="quiz_answer_submit_btn" value="quiz_answer_submit" class="tutor-button tutor-success"><?
+                                            <button type="submit" name="quiz_answer_submit_btn" value="quiz_answer_submit" class="tutor-button tutor-success"><?php
 												_e( 'Submit Quiz', 'tutor' ); ?></button>
                                         </div>
                                     </div>
-									<?
+									<?php
 								}
 							}
 							?>
                         </div>
 
-						<?
+						<?php
 					}
 					
 ?>
 </div>
-<?
+<?php
 }
 ?>
 </div>

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Single Product Image
  *
@@ -43,7 +43,7 @@ $post = get_post( $course_id, OBJECT );
 setup_postdata( $post );
 ?>
 <div class="pd-img-wrap"><div class="tutor-single-lesson-segment tutor-lesson-video-wrap"><div class="tutor-video-embeded-wrap">
-	<?
+	<?php
 		if($pid != ""){
 			echo '<img src="'.get_the_post_thumbnail_url($pid).'">';
 		}
@@ -56,16 +56,16 @@ setup_postdata( $post );
 		}
 	?>
 	</div></div></div>
-<?
+<?php
 
 wp_reset_postdata();
 }
 else{
 
 ?>
-<div class="<? echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<? echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
+<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
 	<figure class="woocommerce-product-gallery__wrapper">
-		<?
+		<?php
 		if ( $product->get_image_id() ) {
 			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
 		} else {
@@ -80,4 +80,4 @@ else{
 		?>
 	</figure>
 </div>
-<? } ?>
+<?php } ?>

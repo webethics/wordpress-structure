@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -8,7 +8,7 @@
 
 <div class="tutor-loop-course-footer1 prd-right">
 	<div class="prd-right-inner">
-		<?  
+		<?php  
 			$price_html = '<div class="price-wrap"> Price: '.__('Free', 'tutor').$enroll_btn. '</div>';
 			if (tutor_utils()->is_course_purchasable()) {
 				$enroll_btn = tutor_course_loop_add_to_cart(false);

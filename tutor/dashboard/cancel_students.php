@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -7,12 +7,12 @@
 
 ?>
 
-<h3><? _e('Cancel Class Request', 'tutor'); ?></h3>
+<h3><?php _e('Cancel Class Request', 'tutor'); ?></h3>
 
 
 <div class="tutor-dashboard-content-inner">
 
-<?
+<?php
 //echo $current_user_id = get_usermeta(get_current_user_id(),"learner_cancel_request_id",true);
 global $wpdb;
 
@@ -35,7 +35,7 @@ $results = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}usermeta WHERE meta
 			</tr>
 			</thead>
 			<tbody>
-			<? 
+			<?php 
 			
 			foreach($results as $result){
 			$stu_id = $result->meta_value;
@@ -78,33 +78,33 @@ $results = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}usermeta WHERE meta
 			?>
 
 				<tr>
-					<td><? echo $user_info->first_name." ".$user_info->last_name; ?></td>
-					<td><? echo $user_info->user_email; ?></td>
-					<td><? echo get_the_title($cancel_meta); ?></td>
-					<td><? echo $desc_status; ?></td>
-					<td class='<? if($currenttime <= $checkttime){echo "successgreen";}else{echo "required";}?>'><? if($checkttime != ""){if($currenttime <= $checkttime){ echo "Yes";}else{echo "No";}} ?></td>
+					<td><?php echo $user_info->first_name." ".$user_info->last_name; ?></td>
+					<td><?php echo $user_info->user_email; ?></td>
+					<td><?php echo get_the_title($cancel_meta); ?></td>
+					<td><?php echo $desc_status; ?></td>
+					<td class='<?php if($currenttime <= $checkttime){echo "successgreen";}else{echo "required";}?>'><?php if($checkttime != ""){if($currenttime <= $checkttime){ echo "Yes";}else{echo "No";}} ?></td>
 					<td style="width:190px;">
 						<form class="approveform" method="post">
-							<input type="hidden" name="user_student" value="<? echo $stu_id; ?>">
-							<input type="hidden" name="user_class" value="<? echo $cancel_meta; ?>">
-							<input type="hidden" name="user_email" value="<? echo $user_info->user_email; ?>">
+							<input type="hidden" name="user_student" value="<?php echo $stu_id; ?>">
+							<input type="hidden" name="user_class" value="<?php echo $cancel_meta; ?>">
+							<input type="hidden" name="user_email" value="<?php echo $user_info->user_email; ?>">
 							<input type="hidden" class="user_type" name="user_type" value="">
-							<span class="statusapprove" style='color:#25a9e0'><? if($approve_status == $cancel_meta){echo "Approved ". $approve_status_type;} ?></span> 
+							<span class="statusapprove" style='color:#25a9e0'><?php if($approve_status == $cancel_meta){echo "Approved ". $approve_status_type;} ?></span> 
 							
-							<? if($approve_status != $cancel_meta){?>
-							<a data-id="withrefund" class="successgreen <? if($approve_status == ''){echo "approve";}?>" href="javascript:void(0);">Remove with refund </a><a data-id="withoutrefund" class="required <? if($approve_status == ''){echo "approve";}?>" href="javascript:void(0);">Remove without refund</a>
-							<? } ?>
+							<?php if($approve_status != $cancel_meta){?>
+							<a data-id="withrefund" class="successgreen <?php if($approve_status == ''){echo "approve";}?>" href="javascript:void(0);">Remove with refund </a><a data-id="withoutrefund" class="required <?php if($approve_status == ''){echo "approve";}?>" href="javascript:void(0);">Remove without refund</a>
+							<?php } ?>
 						</form>
 					</td>
 				</tr>
-			<? } ?>
+			<?php } ?>
 			</tbody>
 		</table>
 	</div>
 	
 </div>
-<script src="<? echo get_stylesheet_directory_uri(); ?>/js/datatables.min.js"></script>
-<link rel="stylesheet" href="<? echo get_stylesheet_directory_uri(); ?>/css/datatables.min.css">
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/datatables.min.js"></script>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/datatables.min.css">
 <script>
 jQuery('#mytable').DataTable();
 jQuery(document).ready(function(){

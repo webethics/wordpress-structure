@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -73,7 +73,7 @@ if(isset($_POST) && !empty($_POST['tutor_course_id'])){
 
 <div class="tutor-course-enrolled-review-wrap" id>
     <a href="javascript:;" class="write-course-review-link-btn">
-		<?
+		<?php
 		if($isLoggedIn && (!empty($rating->rating) || !empty($rating->review))){
 			_e('Edit review', 'tutor');
 		}else{
@@ -82,26 +82,26 @@ if(isset($_POST) && !empty($_POST['tutor_course_id'])){
 		?>
     </a>
     <div class="tutor-write-review-form" style="display: none;">
-		<?
+		<?php
 		if($isLoggedIn) {
 			?>
             <form method="post">
-                <input type="hidden" name="tutor_course_id" value="<? echo get_the_ID(); ?>">
+                <input type="hidden" name="tutor_course_id" value="<?php echo get_the_ID(); ?>">
                 <div class="tutor-write-review-box">
                     <div class="tutor-form-group">
-						<?
+						<?php
 						tutor_utils()->star_rating_generator(tutor_utils()->get_rating_value($rating->rating));
 						?>
                     </div>
                     <div class="tutor-form-group">
-                        <textarea name="review" placeholder="<? _e('write a review', 'tutor'); ?>"><? echo stripslashes($rating->review); ?></textarea>
+                        <textarea name="review" placeholder="<?php _e('write a review', 'tutor'); ?>"><?php echo stripslashes($rating->review); ?></textarea>
                     </div>
                     <div class="tutor-form-group">
-                        <button type="submit" class="tutor_submit_review_btn tutor-button tutor-success"><? _e('Submit Review', 'tutor'); ?></button>
+                        <button type="submit" class="tutor_submit_review_btn tutor-button tutor-success"><?php _e('Submit Review', 'tutor'); ?></button>
                     </div>
                 </div>
             </form>
-			<?
+			<?php
 		}else{
 			ob_start();
 			tutor_load_template( 'single.course.login' );

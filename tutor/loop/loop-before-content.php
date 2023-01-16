@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Course Loop End
  *

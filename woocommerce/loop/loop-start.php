@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Product Loop Start
  *
@@ -19,9 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<!--ul class="products columns-<? //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"-->
+<!--ul class="products columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"-->
    <section  class="prd-wrap section-wrap">
             <div class="container-wrap">
                <div class="row-wrap">
-				  <div class="col-wrap-full"><p class="search_result_wrap"><? echo  woocommerce_result_count(); ?></p></div>	
+				  <div class="col-wrap-full"><p class="search_result_wrap"><?php echo  woocommerce_result_count(); ?></p></div>	
                   <div class="col-wrap-full">

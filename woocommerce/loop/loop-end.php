@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Product Loop End
  *

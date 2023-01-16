@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Reports
  *
@@ -31,25 +31,25 @@ if ( ! empty($_GET['date_range_from']) && ! empty($_GET['date_range_to'])){
 
 ?>
 
-    <h3><? _e('Earning Report', 'tutor'); ?></h3>
+    <h3><?php _e('Earning Report', 'tutor'); ?></h3>
     <div class="tutor-dashboard-inline-links">
         <ul>
-            <li><a href="<? echo site_url().'/user-account/earnings'; ?>">
-                    <? _e('Earnings', 'tutor'); ?>
+            <li><a href="<?php echo site_url().'/user-account/earnings'; ?>">
+                    <?php _e('Earnings', 'tutor'); ?>
                 </a>
             </li>
-            <li class="active"><a href="<? echo site_url().'/user-account/earning-reports'; ?>">
-                    <? _e('Reports', 'tutor'); ?>
+            <li class="active"><a href="<?php echo site_url().'/user-account/earning-reports'; ?>">
+                    <?php _e('Reports', 'tutor'); ?>
                 </a>
             </li>
             <!--li>
-                <a href="<? echo tutor_utils()->get_tutor_dashboard_page_permalink('earning/statements'); ?>">
-                    <? _e('Statements'); ?> </a>
+                <a href="<?php echo tutor_utils()->get_tutor_dashboard_page_permalink('earning/statements'); ?>">
+                    <?php _e('Statements'); ?> </a>
             </li-->
         </ul>
     </div>
 <div class="tutor-date-range-filter-wrap">
-	<?
+	<?php
 	$time_periods = array(
 		'last_year' => __('Last Year', 'tutor'),
 		'this_year' => __('This Year', 'tutor'),
@@ -60,7 +60,7 @@ if ( ! empty($_GET['date_range_from']) && ! empty($_GET['date_range_to'])){
 	);
 	?>
 	<div class="report-top-sub-menu">
-		<?
+		<?php
 		foreach ($time_periods as $period => $period_name){
 			$activeClass = ( $sub_page === $period ) ? 'active' : '' ;
 
@@ -73,7 +73,7 @@ if ( ! empty($_GET['date_range_from']) && ! empty($_GET['date_range_to'])){
 	</div>
 	<div class="tutor-date-range-wrap">
 		<form action="" class="report-date-range-form" method="get">
-			<?
+			<?php
 			$query_arg = $_GET;
 			if ( ! empty($query_arg) && is_array($query_arg)){
 				if (isset($query_arg['time_period'])){
@@ -96,12 +96,12 @@ if ( ! empty($_GET['date_range_from']) && ! empty($_GET['date_range_to'])){
 			?>
 
 			<div class="date-range-input">
-				<input type="text" name="date_range_from" class="tutor_report_datepicker" value="<? echo $date_range_from; ?>" autocomplete="off" placeholder="<? echo date("Y-m-d", strtotime("last sunday midnight")); ?>" />
+				<input type="text" name="date_range_from" class="tutor_report_datepicker" value="<?php echo $date_range_from; ?>" autocomplete="off" placeholder="<?php echo date("Y-m-d", strtotime("last sunday midnight")); ?>" />
 				<i class="tutor-icon-calendar"></i>
 			</div>
 
 			<div class="date-range-input">
-				<input type="text" name="date_range_to" class="tutor_report_datepicker" value="<? echo $date_range_to; ?>" autocomplete="off" placeholder="<? echo date("Y-m-d"); ?>" />
+				<input type="text" name="date_range_to" class="tutor_report_datepicker" value="<?php echo $date_range_to; ?>" autocomplete="off" placeholder="<?php echo date("Y-m-d"); ?>" />
 				<i class="tutor-icon-calendar"></i>
 			</div>
 
@@ -111,7 +111,7 @@ if ( ! empty($_GET['date_range_from']) && ! empty($_GET['date_range_to'])){
 		</form>
 	</div>
 </div>
-<?
+<?php
 
 
 
@@ -476,68 +476,68 @@ foreach ($chartData as $key => $salesCount){
 }
 ?>
    <div class="tutor-dashboard-info-cards">
-        <div class="tutor-dashboard-info-card" title="<? _e('All time', 'tutor'); ?>">
+        <div class="tutor-dashboard-info-card" title="<?php _e('All time', 'tutor'); ?>">
             <p>
-                <span> <? _e('My Earning', 'tutor'); ?> </span>
-                <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->user_amount); ?></span>
+                <span> <?php _e('My Earning', 'tutor'); ?> </span>
+                <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->user_amount); ?></span>
             </p>
         </div>
-        <div class="tutor-dashboard-info-card" title="<? _e('Based on course price', 'tutor'); ?>">
+        <div class="tutor-dashboard-info-card" title="<?php _e('Based on course price', 'tutor'); ?>">
             <p>
-                <span> <? _e('All time sales', 'tutor'); ?> </span>
-                <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->product_price_total); ?></span>
+                <span> <?php _e('All time sales', 'tutor'); ?> </span>
+                <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->product_price_total); ?></span>
             </p>
         </div>
         <div class="tutor-dashboard-info-card">
             <p>
-                <span> <? _e('Deducted Commissions', 'tutor'); ?> </span>
-                <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->admin_amount); ?></span>
+                <span> <?php _e('Deducted Commissions', 'tutor'); ?> </span>
+                <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->admin_amount); ?></span>
             </p>
         </div>
 
 
-        <? if ($earning_sum->deduct_fees_amount > 0){ ?>
-            <div class="tutor-dashboard-info-card" title="<? _e('Deducted Fees', 'tutor'); ?>">
+        <?php if ($earning_sum->deduct_fees_amount > 0){ ?>
+            <div class="tutor-dashboard-info-card" title="<?php _e('Deducted Fees', 'tutor'); ?>">
                 <p>
-                    <span> <? _e('Deducted Fees', 'tutor'); ?> </span>
-                    <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->deduct_fees_amount); ?></span>
+                    <span> <?php _e('Deducted Fees', 'tutor'); ?> </span>
+                    <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->deduct_fees_amount); ?></span>
                 </p>
             </div>
-        <? } ?>
+        <?php } ?>
     </div>
 
 <div class="tutor-dashboard-item-group">
-<? if($sub_page == "this_month"){ ?>
-    <h4><? echo sprintf(__("Earning Data for the month of %s", 'tutor'), date("F, Y", strtotime($start_date)));?></h4>
-<? } 
+<?php if($sub_page == "this_month"){ ?>
+    <h4><?php echo sprintf(__("Earning Data for the month of %s", 'tutor'), date("F, Y", strtotime($start_date)));?></h4>
+<?php } 
 if($sub_page == "last_year"){ ?>
-	<h4><? echo sprintf(__("Earning Data for the year of %s", 'tutor'), $year);?></h4>
-<? } 
+	<h4><?php echo sprintf(__("Earning Data for the year of %s", 'tutor'), $year);?></h4>
+<?php } 
 if($sub_page == "this_year"){ ?>
-	<h4><? echo sprintf(__("Earning Data for the year of %s", 'tutor'), $year);?></h4>
-<? } 
+	<h4><?php echo sprintf(__("Earning Data for the year of %s", 'tutor'), $year);?></h4>
+<?php } 
 if($sub_page == "last_month"){ ?>
-    <h4><? echo sprintf(__("Earning Data for the month of %s", 'tutor'), date("F, Y", strtotime($start_date)));?></h4>
-<? }
+    <h4><?php echo sprintf(__("Earning Data for the month of %s", 'tutor'), date("F, Y", strtotime($start_date)));?></h4>
+<?php }
 if($sub_page == "last_week"){  ?>
-  <h4><? echo sprintf(__("Showing Result from %s to %s", 'tutor'), $begin->format('d F, Y'), $end->format('d F, Y')); ?></h4>
-<? } 
+  <h4><?php echo sprintf(__("Showing Result from %s to %s", 'tutor'), $begin->format('d F, Y'), $end->format('d F, Y')); ?></h4>
+<?php } 
 if(!empty($date_range_from) || !empty($date_range_to)){ ?>
 
- <h4><? echo sprintf(__("Showing Result from %s to %s", 'tutor'), $begin->format('d F, Y'), $end->format('d F, Y')); ?></h4>
-<? } ?>
+ <h4><?php echo sprintf(__("Showing Result from %s to %s", 'tutor'), $begin->format('d F, Y'), $end->format('d F, Y')); ?></h4>
+<?php } ?>
 <canvas id="tutorChart" style="width: 100%; height: 400px;"></canvas>
 <script>
     var ctx = document.getElementById("tutorChart").getContext('2d');
     var tutorChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: <? echo json_encode(array_keys($chartData)); ?>,
+            labels: <?php echo json_encode(array_keys($chartData)); ?>,
             datasets: [{
                 label: 'Earning',
                 backgroundColor: '#3057D5',
                 borderColor: '#3057D5',
-                data: <? echo json_encode(array_values($chartData)); ?>,
+                data: <?php echo json_encode(array_values($chartData)); ?>,
                 borderWidth: 2,
                 fill: false,
                 lineTension: 0,

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Single Product title
  *

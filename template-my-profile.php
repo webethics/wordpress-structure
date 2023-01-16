@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * My profile
  *
@@ -29,55 +29,55 @@ $email = $user->user_email;
 $phone = get_user_meta($uid,'phone_number',true);
 ?>
 
-<h3><? _e('My Profile', 'tutor'); ?></h3>
+<h3><?php _e('My Profile', 'tutor'); ?></h3>
 <div class="tutor-dashboard-content-inner">
     <div class="tutor-dashboard-profile">
         <div class="tutor-dashboard-profile-item">
             <div class="heading">
-                <span><? _e('Registration Date', 'tutor'); ?></span>
+                <span><?php _e('Registration Date', 'tutor'); ?></span>
             </div>
             <div class="content">
-                <p><? echo esc_html($rdate) ?>&nbsp;</p>
+                <p><?php echo esc_html($rdate) ?>&nbsp;</p>
             </div>
         </div>
         <div class="tutor-dashboard-profile-item">
             <div class="heading">
-                <span><? _e('First Name', 'tutor'); ?></span>
+                <span><?php _e('First Name', 'tutor'); ?></span>
             </div>
             <div class="content">
-                <p><? echo $fname ? $fname : esc_html('________'); ?>&nbsp;</p>
+                <p><?php echo $fname ? $fname : esc_html('________'); ?>&nbsp;</p>
             </div>
         </div>
         <div class="tutor-dashboard-profile-item">
             <div class="heading">
-                <span><? _e('Last Name', 'tutor'); ?></span>
+                <span><?php _e('Last Name', 'tutor'); ?></span>
             </div>
             <div class="content">
-                <p><? echo $lname ? $lname : __('________'); ?>&nbsp;</p>
+                <p><?php echo $lname ? $lname : __('________'); ?>&nbsp;</p>
             </div>
         </div>
         <div class="tutor-dashboard-profile-item">
             <div class="heading">
-                <span><? _e('Username', 'tutor'); ?></span>
+                <span><?php _e('Username', 'tutor'); ?></span>
             </div>
             <div class="content">
-                <p><? echo $uname; ?>&nbsp;</p>
+                <p><?php echo $uname; ?>&nbsp;</p>
             </div>
         </div>
         <div class="tutor-dashboard-profile-item">
             <div class="heading">
-                <span><? _e('Email', 'tutor'); ?></span>
+                <span><?php _e('Email', 'tutor'); ?></span>
             </div>
             <div class="content">
-                <p><? echo $email; ?>&nbsp;</p>
+                <p><?php echo $email; ?>&nbsp;</p>
             </div>
         </div>
         <div class="tutor-dashboard-profile-item">
             <div class="heading">
-                <span><? _e('Phone Number', 'tutor'); ?></span>
+                <span><?php _e('Phone Number', 'tutor'); ?></span>
             </div>
             <div class="content">
-                <p><? echo $phone ? $phone : "________"; ?>&nbsp;</p>
+                <p><?php echo $phone ? $phone : "________"; ?>&nbsp;</p>
             </div>
         </div>
 

@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * Display single course add to cart
@@ -38,27 +38,27 @@ do_action('tutor_course/single/add-to-cart/before');
 $product_id = tutor_utils()->get_course_product_id();
 ?>
 
-<div class="tutor-single-add-to-cart-box <? echo $required_loggedin_class; ?> ">
-	<?
+<div class="tutor-single-add-to-cart-box <?php echo $required_loggedin_class; ?> ">
+	<?php
 	if ($is_purchasable && $tutor_course_sell_by){ ?>
 		<div class="btn-wrap">
-			<a href="?add-to-cart=<? echo $product_id; ?>" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart buy-btn" data-product_id="<? echo $product_id; ?>" data-product_sku="" aria-label="Add Test to your cart" rel="nofollow"><i class="tutor-icon-shopping-cart"></i> Add to cart</a>
+			<a href="?add-to-cart=<?php echo $product_id; ?>" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart buy-btn" data-product_id="<?php echo $product_id; ?>" data-product_sku="" aria-label="Add Test to your cart" rel="nofollow"><i class="tutor-icon-shopping-cart"></i> Add to cart</a>
 		</div>
-	<? }else{
+	<?php }else{
 		?>
-		<form class="<? echo implode( ' ', $tutor_form_class ); ?>" method="post">
-			<? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
-			<input type="hidden" name="tutor_course_id" value="<? echo get_the_ID(); ?>">
+		<form class="<?php echo implode( ' ', $tutor_form_class ); ?>" method="post">
+			<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+			<input type="hidden" name="tutor_course_id" value="<?php echo get_the_ID(); ?>">
 			<input type="hidden" name="tutor_course_action" value="_tutor_course_enroll_now">
 
 			<div class=" tutor-course-enroll-wrap buy-btn">
 				<button type="submit" class="tutor-btn-enroll tutor-btn tutor-course-purchase-btn buy-btn">
-					<? _e('Enroll Now', 'tutor'); ?>
+					<?php _e('Enroll Now', 'tutor'); ?>
 				</button>
 			</div>
 		</form>
 
-	<? } ?>
+	<?php } ?>
 </div>
 
-<? do_action('tutor_course/single/add-to-cart/after'); ?>
+<?php do_action('tutor_course/single/add-to-cart/after'); ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Result Count
  *
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="col-wrap-full"><p class="search_result_wrap">
-	<?
+	<?php
 	if ( 1 === $total ) {
 		_e( 'Showing the single result', 'woocommerce' );
 	} elseif ( $total <= $per_page || -1 === $per_page ) {

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -7,12 +7,12 @@
 global $post; ?>
 
 
-<h3><? _e('Favorites', 'tutor'); ?></h3>
+<h3><?php _e('Favorites', 'tutor'); ?></h3>
 
 <div class="tutor-dashboard-content-inner">
     
 
-	<?
+	<?php
 	$wishlists = tutor_utils()->get_wishlist();
 	$i = 1;
 	if (is_array($wishlists) && count($wishlists)):
@@ -26,7 +26,7 @@ global $post; ?>
 					<th>Class Status</th>
 					<th>Action</th>
                 </tr>
-	<?
+	<?php
         foreach ($wishlists as $post):
 	        setup_postdata($post);
 			
@@ -41,16 +41,16 @@ global $post; ?>
 		
 	
                 <tr>
-					<td><? echo $i; ?></td>
+					<td><?php echo $i; ?></td>
                     <td>
                         <div class="course">
-                            <a href="<? echo get_the_permalink(); ?>" ><? echo get_the_title(); ?></a>
+                            <a href="<?php echo get_the_permalink(); ?>" ><?php echo get_the_title(); ?></a>
                         </div>
                     </td>
 					<td>
-                        <? if($coming_soon == "coming"){ echo "Coming Soon"; }else{ if(get_post_status ( get_the_ID() ) == "publish"){echo "Published"; }}?>
+                        <?php if($coming_soon == "coming"){ echo "Coming Soon"; }else{ if(get_post_status ( get_the_ID() ) == "publish"){echo "Published"; }}?>
                     </td>
-					<td><div style="position:relative;" class="single-coursebtn btn-wrap tutor-course-loop-header-meta"><?
+					<td><div style="position:relative;" class="single-coursebtn btn-wrap tutor-course-loop-header-meta"><?php
 					$course_id = get_the_ID();
 						$is_wishlisted = tutor_utils()->is_wishlisted($course_id );
 						$has_wish_list = '';
@@ -74,7 +74,7 @@ global $post; ?>
                 </tr>
                 
 			
-		<?
+		<?php
 	
 	        //do_action('tutor_course/archive/before_loop_course');
 
@@ -92,7 +92,7 @@ global $post; ?>
 		</tbody>
 		</table>
     </div>
-		<?
+		<?php
 		wp_reset_postdata();
 
 	else:

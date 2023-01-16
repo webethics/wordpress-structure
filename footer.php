@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * The template for displaying the footer.
  *
@@ -15,7 +15,7 @@ if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_
 	get_template_part( 'template-parts/footer' );
 }
 ?>
-<? 
+<?php 
 if ( is_user_logged_in() ) {
 		$user = wp_get_current_user();
 		$user_name = $user->user_firstname;
@@ -29,9 +29,9 @@ if ( is_user_logged_in() ) {
 
 </style>
 <script>
-	jQuery(".myaccount > a").text("<? echo $user_name; ?>").prepend("&nbsp;");
+	jQuery(".myaccount > a").text("<?php echo $user_name; ?>").prepend("&nbsp;");
 </script>
-<?
+<?php
 
 	if ( in_array( 'tutor_instructor', (array) $user->roles ) && in_array( 'customer', (array) $user->roles )) {
 		
@@ -39,7 +39,7 @@ if ( is_user_logged_in() ) {
 	<style>
 		.elementor-nav-menu .changelink{display:block;}
 	</style>
-<?		
+<?php		
 	}		
 }
 
@@ -237,7 +237,7 @@ jQuery(document).ready( function($){
 				
 });
 </script>
-<? 
+<?php 
 $course_id = tutor_utils()->get_assigned_courses_ids_by_instructors();
 $quiz_attempts_count = tutor_utils()->get_total_quiz_attempts_by_course_ids($course_id); 
 $total_items = tutils()->get_total_qa_question();
@@ -268,11 +268,11 @@ $results_assignment = $wpdb->get_results("SELECT * FROM $wpdb->comments WHERE co
 $results_assignment = count($results_assignment);
 ?>
 <script>
-jQuery(".tutor-dashboard-menu-quiz-attempts a").append("(<? echo $quiz_attempts_count; ?>)");
-jQuery(".tutor-dashboard-menu-question-answer a").append("(<? echo $total_items; ?>)");
-jQuery(".tutor-dashboard-menu-cancel_students a").append("(<? echo $j; ?>)");
-jQuery(".tutor-dashboard-menu-my-questions a").append("(<? echo $count_answer; ?>)");
-jQuery(".tutor-dashboard-menu-submit-assignment a").append("(<? echo $results_assignment; ?>)");
+jQuery(".tutor-dashboard-menu-quiz-attempts a").append("(<?php echo $quiz_attempts_count; ?>)");
+jQuery(".tutor-dashboard-menu-question-answer a").append("(<?php echo $total_items; ?>)");
+jQuery(".tutor-dashboard-menu-cancel_students a").append("(<?php echo $j; ?>)");
+jQuery(".tutor-dashboard-menu-my-questions a").append("(<?php echo $count_answer; ?>)");
+jQuery(".tutor-dashboard-menu-submit-assignment a").append("(<?php echo $results_assignment; ?>)");
 jQuery(document).ready(function(){
 	jQuery('#refer_name_field,#additional_class_name_field').hide();
 	jQuery('#refer_name_field .optional,#additional_class_name_field .optional').hide();
@@ -305,7 +305,7 @@ jQuery('#ns-regular-price').keypress(function(event) {
 	vertical-align: top;
 }
 </style>
-<? wp_footer(); ?>
+<?php wp_footer(); ?>
 
 </body>
 </html>

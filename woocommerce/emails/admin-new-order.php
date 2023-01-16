@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Admin new order email
  *
@@ -22,9 +22,9 @@ defined( 'ABSPATH' ) || exit;
  */
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
-<? /* translators: %s: Customer billing full name */ ?>
-<p><? printf( esc_html__( 'You’ve received the following order from %s:', 'woocommerce' ), $order->get_formatted_billing_full_name() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-<?
+<?php /* translators: %s: Customer billing full name */ ?>
+<p><?php printf( esc_html__( 'You’ve received the following order from %s:', 'woocommerce' ), $order->get_formatted_billing_full_name() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+<?php
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -6,18 +6,18 @@
 
 ?>
 
-<h3><? _e('Enrolled Courses', 'tutor'); ?></h3>
+<h3><?php _e('Enrolled Courses', 'tutor'); ?></h3>
 
 <div class="tutor-dashboard-content-inner">
     <div class="tutor-dashboard-inline-links">
         <ul>
-            <li class="active"><a href="<? echo tutor_utils()->get_tutor_dashboard_page_permalink('enrolled-courses'); ?>"> <? _e('All Courses', 'tutor'); ?></a> </li>
-            <li><a href="<? echo tutor_utils()->get_tutor_dashboard_page_permalink('enrolled-courses/active-courses'); ?>"> <? _e('Active Courses', 'tutor'); ?> </a> </li>
-            <li><a href="<? echo tutor_utils()->get_tutor_dashboard_page_permalink('enrolled-courses/completed-courses'); ?>">
-					<? _e('Completed Courses', 'tutor'); ?> </a> </li>
+            <li class="active"><a href="<?php echo tutor_utils()->get_tutor_dashboard_page_permalink('enrolled-courses'); ?>"> <?php _e('All Courses', 'tutor'); ?></a> </li>
+            <li><a href="<?php echo tutor_utils()->get_tutor_dashboard_page_permalink('enrolled-courses/active-courses'); ?>"> <?php _e('Active Courses', 'tutor'); ?> </a> </li>
+            <li><a href="<?php echo tutor_utils()->get_tutor_dashboard_page_permalink('enrolled-courses/completed-courses'); ?>">
+					<?php _e('Completed Courses', 'tutor'); ?> </a> </li>
         </ul>
     </div>
-	<?
+	<?php
 	$alert_message = "";
 	$my_courses = tutor_utils()->get_enrolled_courses_by_user();
 
@@ -31,7 +31,7 @@
 				$alert_message .= "<p><strong  class='required'>Alert Message for ".get_the_title().": </strong>".get_post_meta(get_the_ID(),"alertmessage",true)."</p>";
 			}
 			?>
-			<?
+			<?php
 			$tutor_course_img = get_tutor_course_thumbnail_src();
 			$liveclass = get_post_meta(get_the_ID(),'_insert_meeting_zoom_meeting_id',true);
 				$i = 1;
@@ -68,39 +68,39 @@
 					
 				} 
 			?>
-            <div class="tutor-mycourse-wrap tutor-mycourse-<? the_ID(); ?>">
-                <div class="tutor-mycourse-thumbnail" style="background-image: url(<? echo esc_url($tutor_course_img); ?>)"></div>
+            <div class="tutor-mycourse-wrap tutor-mycourse-<?php the_ID(); ?>">
+                <div class="tutor-mycourse-thumbnail" style="background-image: url(<?php echo esc_url($tutor_course_img); ?>)"></div>
                 <div class="tutor-mycourse-content">
                     <div class="tutor-mycourse-rating">
-		                <? tutor_utils()->star_rating_generator($avg_rating); ?>
-                        <a href="<? echo get_the_permalink().'#single-course-ratings'; ?>"><? _e('Leave a rating', 'tutor') ?></a>
-						<? do_action('tutor_enrolled_box_after') ?>
+		                <?php tutor_utils()->star_rating_generator($avg_rating); ?>
+                        <a href="<?php echo get_the_permalink().'#single-course-ratings'; ?>"><?php _e('Leave a rating', 'tutor') ?></a>
+						<?php do_action('tutor_enrolled_box_after') ?>
                     </div>
-                    <h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a> </h3>
-					<p><? echo $class; ?></p>
+                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> </h3>
+					<p><?php echo $class; ?></p>
                     <div class="tutor-meta tutor-course-metadata">
-		                <?
+		                <?php
                             $total_lessons = tutor_utils()->get_lesson_count_by_course();
                             $completed_lessons = tutor_utils()->get_completed_lesson_count_by_course();
 		                ?>
                         <ul>
                             <li>
-				                <?
+				                <?php
 				                _e('Total Lessons:', 'tutor');
 				                echo "<span>$total_lessons</span>";
 				                ?>
                             </li>
                             <li>
-				                <?
+				                <?php
 				                _e('Completed Lessons:', 'tutor');
 				                echo "<span>$completed_lessons / $total_lessons</span>";
 				                ?>
                             </li>
 							<li>
-				                <a href="/my-account/my-assignments/?assignments=<? echo $author_id; ?>&prod_id=<? echo get_the_ID(); ?>">Submit Assignments</a>
+				                <a href="/my-account/my-assignments/?assignments=<?php echo $author_id; ?>&prod_id=<?php echo get_the_ID(); ?>">Submit Assignments</a>
                             </li>
 							<li class="deletepopup">
-							<? 
+							<?php 
 							$check = get_user_meta(get_current_user_id(),"learner_cancel_request_".get_the_ID(),true); 
 							$check1 = get_user_meta(get_current_user_id(),"refund_approved_".get_the_ID(),true);
 							 $refund = get_post_meta(get_the_ID(),"refund",true);
@@ -123,7 +123,7 @@
 									<h3 class="elementor-heading-title elementor-size-default">Class Cancellation</h3>
 									<h5>If you would like to cancel and be removed from a specific class, please read and fill out the required areas.</h5>
 									
-									<p class='required'><? echo $refundtext; ?></h6>
+									<p class='required'><?php echo $refundtext; ?></h6>
 									<form class='cancelform' id='deleteform' method='post'>
 									
 										<div class='tutor-form-group'>
@@ -136,23 +136,23 @@
 											<textarea  rows="5" name='description'></textarea>
 											
 										</div>
-										<input type='hidden' name='cid' value='<? echo get_the_ID(); ?>'>
+										<input type='hidden' name='cid' value='<?php echo get_the_ID(); ?>'>
 										<button type='submit' class='tutor-danger tutorcancel'>Yes, request for cancel Class</button><span class="loader" style="display:none;color:red;">Please wait your request is in progress!</span>
 										
 										<h6 class='successmsg' style='display:none;color:green;'>Thank you for your request.  Upon submitting of this form, please allow 24-48 hours for the educator to remove you from this class. If there are any questions or concerns, your educator will be in touch.</h6>  
 									</form>
 								</div>
 							</div>
-								<a class="<? if($check == ''){echo 'cancel';}?>" href="javascript:void(0);"><? if($check != ""&& $check1 == ""){echo 'Cancel Request Sent';}elseif($check != "" && $check1 != ''){echo "Cancelled";}else{echo 'Cancel class';}?></a>
+								<a class="<?php if($check == ''){echo 'cancel';}?>" href="javascript:void(0);"><?php if($check != ""&& $check1 == ""){echo 'Cancel Request Sent';}elseif($check != "" && $check1 != ''){echo "Cancelled";}else{echo 'Cancel class';}?></a>
                             </li>
                         </ul> 
                     </div>
-	                <? tutor_course_completing_progress_bar(); ?>
+	                <?php tutor_course_completing_progress_bar(); ?>
                 </div>
 
             </div>
 
-			<?
+			<?php
 		endwhile;
 
 		wp_reset_postdata();

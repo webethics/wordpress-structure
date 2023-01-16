@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Loop Price
  *
@@ -24,10 +24,10 @@ global $product;
 <div class="prd-right">
 		<div class="prd-right-inner">	
 			
-<? if ( $price_html = $product->get_price_html() ) : ?>
-	<div class="price-wrap"><? echo $price_html; ?></div>
-<? endif; ?>
-<? if ( ! wc_review_ratings_enabled() ) {
+<?php if ( $price_html = $product->get_price_html() ) : ?>
+	<div class="price-wrap"><?php echo $price_html; ?></div>
+<?php endif; ?>
+<?php if ( ! wc_review_ratings_enabled() ) {
 	return;
 } 
 $comments_count = wp_count_comments( $product->get_id() );

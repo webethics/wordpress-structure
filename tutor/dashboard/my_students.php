@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -7,12 +7,12 @@
 
 ?>
 
-<h3><? _e('My Students', 'tutor'); ?></h3>
+<h3><?php _e('My Students', 'tutor'); ?></h3>
 
 
 <div class="tutor-dashboard-content-inner">
 
-	<?
+	<?php
 	$my_courses = tutor_utils()->get_courses_by_instructor(null, array('publish', 'draft', 'pending'));
 	 ?>
 		
@@ -30,7 +30,7 @@
 			</thead>
 			<tbody>
 			
-				<? 
+				<?php 
 				echo "<h5>Total Students</h5>"; 
 					if (is_array($my_courses) && count($my_courses)):
 						global $post, $woocommerce, $wpdb;
@@ -58,12 +58,12 @@
 							}
 							?>
 							<tr>
-										<td><? echo $data->display_name; ?></td>
-										<td><? echo $data->user_email; ?></td>
-										<td><? echo $years; ?></td>
-										<td><a href="<? echo $url; ?>"><? echo $course_title; ?></a></td>
+										<td><?php echo $data->display_name; ?></td>
+										<td><?php echo $data->user_email; ?></td>
+										<td><?php echo $years; ?></td>
+										<td><a href="<?php echo $url; ?>"><?php echo $course_title; ?></a></td>
 									</tr>
-							<?
+							<?php
 						}
 						
 						
@@ -75,18 +75,18 @@
 			
 				else : ?>
 				<div>
-					<h2><? _e("0 Students Enrolled" , 'tutor'); ?></h2>
+					<h2><?php _e("0 Students Enrolled" , 'tutor'); ?></h2>
 					
 				</div>
-			<? endif; ?>
+			<?php endif; ?>
 
 			</tbody>
 		</table>
 	</div>
 	
 </div>
-<script src="<? echo get_stylesheet_directory_uri(); ?>/js/datatables.min.js"></script>
-<link rel="stylesheet" href="<? echo get_stylesheet_directory_uri(); ?>/css/datatables.min.css">
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/datatables.min.js"></script>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/datatables.min.css">
 <script>
 jQuery('#mytable').DataTable();
 </script>

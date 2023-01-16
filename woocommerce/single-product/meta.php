@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Single Product Meta
  *
@@ -27,21 +27,21 @@ if( has_term(20, 'product_cat' ) ) {
 	echo $content = $content_post->post_content;
 	//$excerpt = wp_trim_words( $content, 25, '<a id="clickcontent" href="javascript:void(0)">..Read More</a>'); ?>
 	
-<?
+<?php
 }
 else{
 ?>
 <div class="product_meta">
 
-	<? do_action( 'woocommerce_product_meta_start' ); ?>
+	<?php do_action( 'woocommerce_product_meta_start' ); ?>
 
-	<? if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
 
-		<span class="sku_wrapper"><? esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><? echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+		<span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
 
-	<? endif; ?>
+	<?php endif; ?>
 
-<p><? 
+<p><?php 
 $strlen =  strlen($product->get_description());
 if($strlen > 40){
 echo substr(strip_tags($product->get_description()),0,100).'<a id="clickcontent" href="#">..Read More</a>';
@@ -50,9 +50,9 @@ echo substr(strip_tags($product->get_description()),0,40).'<a id="clickcontent" 
 	
 }
  ?></p>
-	<? echo wc_get_product_category_list( $product->get_id(), ', ', '<p class="category-wrap">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</p>' ); ?>
+	<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<p class="category-wrap">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</p>' ); ?>
 
-	<? 
+	<?php 
 	$catsarr = array();
 		$term_obj_list = get_the_terms(  $product->get_id(), 'subject' );
 		$terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
@@ -73,9 +73,9 @@ echo substr(strip_tags($product->get_description()),0,40).'<a id="clickcontent" 
 	if(!empty($catsarr))
 		echo '<p class="grade-wrap">Grade: <span>'.implode(", ",$catsarr).'</span></p>';   
 	//echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-	<? if($condition)
+	<?php if($condition)
 		echo '<p class="grade-wrap">Condition: <span style="color:#000;">'.$condition.'</span></p>';   
 	do_action( 'woocommerce_product_meta_end' ); ?>
 
 </div>
-<? } ?>
+<?php } ?>

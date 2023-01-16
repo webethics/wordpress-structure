@@ -1,4 +1,4 @@
-<?php
+<?
 
 /**
  * Display global login
@@ -17,16 +17,16 @@ if ( ! defined( 'ABSPATH' ) )
 ?>
 
 <div class="tutor-login-form-wrap">
-<?php if(isset($_GET['xlrm'])){ ?>
+<? if(isset($_GET['xlrm'])){ ?>
 <div class="tutor-alert tutor-alert-warning"><strong>Please check your email and verify account! (You may want to check spam folder) </strong></div>
-<?php } ?>
-<?php if(isset($_GET['woo_confirmation_verify'])){ ?>
+<? } ?>
+<? if(isset($_GET['woo_confirmation_verify'])){ ?>
 <div class="tutor-alert tutor-alert-success"><strong>Account verified Successfully! Please Login to proceed!</strong></div>
-<?php } ?>
+<? } ?>
 
-	<?php //wp_login_form(); ?>
+	<? //wp_login_form(); ?>
 
-    <?php
+    <?
     $current_url = tutils()->get_current_url();
     $register_page = '/sign-up';
     $register_page_seller = '/user-account';

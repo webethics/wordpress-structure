@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Loop Add to Cart
  *

@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Course loop title
  *
@@ -11,12 +11,12 @@
  */
 ?>
 <div class="elementor-widget-container">
-			<h4 class="elementor-heading-title elementor-size-default"><?php the_title(); ?></h4>		
+			<h4 class="elementor-heading-title elementor-size-default"><? the_title(); ?></h4>		
 </div>
 
-<p class="descrition-wrap"><?php 
+<p class="descrition-wrap"><? 
 					$excerpt = wp_trim_words( get_the_content(), 25); ?>
-					<?php echo $excerpt; ?></p>
+					<? echo $excerpt; ?></p>
 
 
 

@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Template for displaying single course
  *
@@ -15,7 +15,7 @@ get_header();
 
 ?>
 
-<?php do_action('tutor_course/single/enrolled/before/wrap');
+<? do_action('tutor_course/single/enrolled/before/wrap');
 	global $post, $wpdb;
 
 	$course_tag = wp_get_post_terms( get_the_ID(), 'course-tag' , array( 'fields' => 'all' ) );
@@ -203,15 +203,15 @@ if($refund != ""){
 }
 ?>
 
-<?php if(get_post_meta(get_the_ID(),'relationclass',true) != "child"){ ?>
-<div <?php tutor_post_class('tutor-full-width-course-top tutor-course-top-info tutor-page-wrap'); ?>>
+<? if(get_post_meta(get_the_ID(),'relationclass',true) != "child"){ ?>
+<div <? tutor_post_class('tutor-full-width-course-top tutor-course-top-info tutor-page-wrap'); ?>>
     <div class="wrapper-main">
 		
         <section  class="section-wrap pd-details-wrap">
             <div class="container-wrap">
                <div class="row-wrap">
                   <div class="pd-img-wrap">
-					<?php
+					<?
 						if(tutor_utils()->has_video_in_single()){
 							tutor_course_video();
 						} else{
@@ -220,15 +220,15 @@ if($refund != ""){
 					?>
                   </div>
 				  <div class="pd-details-wrap">
-					<h4 class="pd-heading-title"><?php the_title(); ?></h4>
-					<strong><?php echo $bibical; ?></strong>
-					<p><?php the_excerpt(); ?></p>
-					<?php if(trim($type) != "On Demand Classes"){ ?><p><?php echo $class ; ?></p><?php } ?>
-					<p>Grade: <?php echo $grade; ?></p>  
-					<p class="grade-wrap">Instructor Name: <?php echo $full_name; ?>	</p>
-				   <p class="category-wrap">Category: <?php echo $category; ?> | Type: <?php echo $type; ?>&nbsp;</p>
-				  <?php if(trim($type) != "On Demand Classes"){ ?>  <p class="category-wrap">Total Enrolled: <?php echo (int) tutor_utils()->count_enrolled_users_by_course(); ?></p><?php } ?>
-				   <!--p><?php tutor_course_mark_complete_html(); ?></p-->
+					<h4 class="pd-heading-title"><? the_title(); ?></h4>
+					<strong><? echo $bibical; ?></strong>
+					<p><? the_excerpt(); ?></p>
+					<? if(trim($type) != "On Demand Classes"){ ?><p><? echo $class ; ?></p><? } ?>
+					<p>Grade: <? echo $grade; ?></p>  
+					<p class="grade-wrap">Instructor Name: <? echo $full_name; ?>	</p>
+				   <p class="category-wrap">Category: <? echo $category; ?> | Type: <? echo $type; ?>&nbsp;</p>
+				  <? if(trim($type) != "On Demand Classes"){ ?>  <p class="category-wrap">Total Enrolled: <? echo (int) tutor_utils()->count_enrolled_users_by_course(); ?></p><? } ?>
+				   <!--p><? tutor_course_mark_complete_html(); ?></p-->
 				   
                   </div>
                </div>			 	   			   
@@ -237,51 +237,51 @@ if($refund != ""){
 		 <section  class="section-wrap pd-spec-wrap">
             <div class="container-wrap">
                <div class="row-wrap">
-			    <?php if(trim($type) == "On Demand Classes"){ ?>
+			    <? if(trim($type) == "On Demand Classes"){ ?>
 				
 				<div class="col-wrap-full enrolledvideo">
 					<h4 class="heading-title">Class Video</h4>
-					<?php if(get_post_meta(get_the_ID(),'relationclass',true) == "parent"){ ?>
+					<? if(get_post_meta(get_the_ID(),'relationclass',true) == "parent"){ ?>
 					<div class="colwrapthird">
 					<h4 class="heading-title">Lesson Videos</h4>
 					<ul>
-						<?php $relatedid = get_post_meta(get_the_ID(),'relative_class_id',true);
+						<? $relatedid = get_post_meta(get_the_ID(),'relative_class_id',true);
 							
 							if(!empty($relatedid)){
 								foreach($relatedid as $finalid){
 									$courseid =  $wpdb->get_var("SELECT post_id FROM $wpdb->postmeta WHERE (meta_key = '_tutor_course_product_id' AND meta_value = '". $finalid ."')"); ?>
-									<li><a href="<?php echo get_the_permalink($courseid); ?>"><?php echo get_the_title($courseid); ?></a></li>
-							<?php	}
+									<li><a href="<? echo get_the_permalink($courseid); ?>"><? echo get_the_title($courseid); ?></a></li>
+							<?	}
 							} ?>
 					</ul>
 					</div>
-					<?php } if(get_post_meta(get_the_ID(),'relationclass',true) == "child"){ ?>
+					<? } if(get_post_meta(get_the_ID(),'relationclass',true) == "child"){ ?>
 					<div class="colwraphalf">
 					<!--h4 class="heading-title">Class Details Video</h4-->
-						<?php $video = explode('/',get_post_meta(get_the_ID(),"_on_demand_video",true)); 
+						<? $video = explode('/',get_post_meta(get_the_ID(),"_on_demand_video",true)); 
 						$vide = array_reverse($video);
 						$vide = "https://myhomeschoolfamily.com/uploads/".$vide[1]."/".$vide[0];
 						if($video != ""){
 						?>
 						<video width="100%" height="400" controls>
-							<source src="<?php echo $vide; ?>" type="video/mp4">
+							<source src="<? echo $vide; ?>" type="video/mp4">
 						</video>
-						<?php } else{ echo "No video session uploaded";} ?>
+						<? } else{ echo "No video session uploaded";} ?>
 					</div>
-					<?php } ?>
+					<? } ?>
 				</div>
-			   <?php } else{ ?>
+			   <? } else{ ?>
 			   <div class="col-wrap-full">
 					<h4 class="heading-title">Live Classes</h4>
-					<?php if($class_details == ""){
+					<? if($class_details == ""){
 						
 					}
 					else{ echo $class1; } ?>
 				</div>
-			   <?php } ?>
+			   <? } ?>
 				<div class="col-wrap-full">
 					<h4 class="heading-title">Lessons</h4>
-					  <?php tutor_course_topics(); ?>
+					  <? tutor_course_topics(); ?>
 				</div>
                </div>			 	   			   
             </div>
@@ -290,82 +290,82 @@ if($refund != ""){
 		 <section  class="section-wrap pd-spec-wrap">
             <div class="container-wrap">
 				<div class="row-wrap">
-				<?php if(trim($type) != "On Demand Classes"){ ?>
+				<? if(trim($type) != "On Demand Classes"){ ?>
 					<div class="col-wrap">
 						<h4 class="heading-title">Enrolled Class Status</h4>
 						<div class="tutor-course-enrolled-info">
 							<p>
 								<i class="tutor-icon-purchase"></i>
-								<?php
+								<?
 									$enrolled = tutor_utils()->is_enrolled();
 
 									echo sprintf(__('You have been enrolled on %s.', 'tutor'),  "<span>". date_i18n(get_option('date_format'), strtotime($enrolled->post_date)
 										)."</span>"  );
 									?>
 							</p>   
-							<?php $count_completed_lesson = tutor_course_completing_progress_bar(); ?>
+							<? $count_completed_lesson = tutor_course_completing_progress_bar(); ?>
 							
 						</div>
 					</div>
 					<div class="col-wrap">
 						<h4 class="heading-title">Announcements</h4>
 						<div class="tutor-course-enrolled-info">
-							 <?php tutor_course_announcements(); ?>
+							 <? tutor_course_announcements(); ?>
 							
 						</div>
 					</div>
                   <div class="col-wrap">
 					  <h4 class="heading-title">Resources for Class</h4>
-					  <?php if (is_array($attachments) && count($attachments)){ ?>
+					  <? if (is_array($attachments) && count($attachments)){ ?>
 						<div class="tutor-page-segment tutor-attachments-wrap">
 							
-							<?php
+							<?
 							foreach ($attachments as $attachment){
 								?>
-								<a href="<?php echo $attachment->url; ?>" class="tutor-lesson-attachment clearfix">
+								<a href="<? echo $attachment->url; ?>" class="tutor-lesson-attachment clearfix">
 									<div class="tutor-attachment-icon">
-										<i class="tutor-icon-<?php echo $attachment->icon; ?>"></i>
+										<i class="tutor-icon-<? echo $attachment->icon; ?>"></i>
 									</div>
 									<div class="tutor-attachment-info">
-										<span><?php echo $attachment->name; ?></span>
-										<span><?php echo $attachment->size; ?></span>
+										<span><? echo $attachment->name; ?></span>
+										<span><? echo $attachment->size; ?></span>
 									</div>
 								</a>
-								<?php
+								<?
 							}
 							?>
 						</div>
-					<?php } ?>
+					<? } ?>
                   </div>
-                  <?php } ?>
+                  <? } ?>
                   <div class="col-wrap">
 					  <div class="course-desc-wrap">
 						<h4 class="heading-title">Course description</h4>
-						<?php tutor_course_content(); ?>
-						<?php tutor_course_benefits_html(); ?>
+						<? tutor_course_content(); ?>
+						<? tutor_course_benefits_html(); ?>
 						
 					  </div>				  
                   </div>
-				  <?php if(trim($type) != "On Demand Classes"){ ?>
+				  <? if(trim($type) != "On Demand Classes"){ ?>
 				  <div class="col-wrap">
 					  <h4 class="heading-title">Material</h4>
-					  <?php tutor_course_material_includes_html(); ?>
+					  <? tutor_course_material_includes_html(); ?>
                   </div>
 				  <div class="col-wrap changefont">
 				  <h4 class="heading-title">Course information</h4>
 				  <ul class="listing">
-					<li><strong>Course Length:</strong> <?php echo $tutor_course_duration; ?></li>
-					<li><strong>Teacher Assisted:</strong><br><?php echo $full_name; ?></li>
+					<li><strong>Course Length:</strong> <? echo $tutor_course_duration; ?></li>
+					<li><strong>Teacher Assisted:</strong><br><? echo $full_name; ?></li>
 				  </ul>
                   </div>
-				  <?php if($refund != ""){ ?>
+				  <? if($refund != ""){ ?>
 				  <div class="col-wrap-full">
 					<h4 class="heading-title">Refund Policy</h4>
 					<div class="text">
-					<?php echo $refundtext;  ?>
+					<? echo $refundtext;  ?>
 					</div>
 				  </div>
-				  <?php } } ?>
+				  <? } } ?>
 
 				<div class="col-wrap-full">
 					<h4 class="heading-title">Have any Questions? Please ask here!</h4>
@@ -373,22 +373,22 @@ if($refund != ""){
 					
 					<div class="tutor-question-top">
 						<div class="tutor-ask-question-btn-wrap">
-							<a href="javascript:;" class="tutor-ask-question-btn tutor-btn"> <?php _e('Ask a new question', 'tutor'); ?> </a>
+							<a href="javascript:;" class="tutor-ask-question-btn tutor-btn"> <? _e('Ask a new question', 'tutor'); ?> </a>
 						</div>
 					</div>
 
 					<div class="tutor-add-question-wrap" style="display: none;">
 						<form method="post" id="tutor-ask-question-form">
-							<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+							<? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
 							<input type="hidden" value="add_question" name="tutor_action"/>
-							<input type="hidden" value="<?php echo get_the_ID(); ?>" name="tutor_course_id"/>
+							<input type="hidden" value="<? echo get_the_ID(); ?>" name="tutor_course_id"/>
 
 							<div class="tutor-form-group">
-								<input type="text" name="question_title" value="" placeholder="<?php _e('Question Title', 'tutor'); ?>">
+								<input type="text" name="question_title" value="" placeholder="<? _e('Question Title', 'tutor'); ?>">
 							</div>
 
 							<div class="tutor-form-group">
-								<?php
+								<?
 								$editor_settings = array(
 									'teeny' => true,
 									'media_buttons' => false,
@@ -400,14 +400,14 @@ if($refund != ""){
 							</div>
 
 							<div class="tutor-form-group">
-								<a style="border: var(--tutor-primary-color);background: var(--tutor-primary-color);padding: 13px;" href=" javascript:;" class="tutor_question_cancel tutor-button tutor-danger"><?php _e('Cancel', 'tutor'); ?></a>
-								<button style="border: var(--tutor-primary-color);background: var(--tutor-primary-color);padding: 13px;" type="submit" class="tutor-button tutor-success tutor_ask_question_btn" name="tutor_question_search_btn"><?php _e('Post Question', 'tutor'); ?> </button>
+								<a style="border: var(--tutor-primary-color);background: var(--tutor-primary-color);padding: 13px;" href=" javascript:;" class="tutor_question_cancel tutor-button tutor-danger"><? _e('Cancel', 'tutor'); ?></a>
+								<button style="border: var(--tutor-primary-color);background: var(--tutor-primary-color);padding: 13px;" type="submit" class="tutor-button tutor-success tutor_ask_question_btn" name="tutor_question_search_btn"><? _e('Post Question', 'tutor'); ?> </button>
 							</div>
 						</form>
 					</div>
 
 						<div class="tutor_question_answer_wrap">
-							<?php
+							<?
 							$questions = tutor_utils()->get_top_question();
 
 							if (is_array($questions) && count($questions)){
@@ -419,75 +419,75 @@ if($refund != ""){
 										<div class="tutor-question-wrap">
 											<div class="question-top-meta">
 												<div class="tutor-question-avater">
-													<a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($question->user_id); ?></a>
+													<a href="<? echo $profile_url; ?>"> <? echo tutor_utils()->get_tutor_avatar($question->user_id); ?></a>
 												</div>
 												<p class="review-meta">
-													<a href="<?php echo $profile_url; ?>"><?php echo $question->display_name; ?></a>
-													<span class="tutor-text-mute"><?php echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime
+													<a href="<? echo $profile_url; ?>"><? echo $question->display_name; ?></a>
+													<span class="tutor-text-mute"><? echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime
 														($question->comment_date))) ; ?></span>
 												</p>
 											</div>
 
 											<div class="tutor_question_area">
-												<p><strong><?php echo $question->question_title; ?> </strong></p>
-												<?php echo wpautop(stripslashes($question->comment_content)); ?>
+												<p><strong><? echo $question->question_title; ?> </strong></p>
+												<? echo wpautop(stripslashes($question->comment_content)); ?>
 											</div>
 										</div>
 									</div>
 
 
-									<?php
+									<?
 										if (is_array($answers) && count($answers)){ ?>
 											<div class="tutor_admin_answers_list_wrap">
-												<?php
+												<?
 													foreach ($answers as $answer){
 														$answer_profile = tutor_utils()->profile_url($answer->user_id);
 														?>
-														<div class="tutor_individual_answer <?php echo ($question->user_id == $answer->user_id) ? 'tutor-bg-white' : 'tutor-bg-light'
+														<div class="tutor_individual_answer <? echo ($question->user_id == $answer->user_id) ? 'tutor-bg-white' : 'tutor-bg-light'
 														?> ">
 															<div class="tutor-question-wrap">
 																<div class="question-top-meta">
 																	<div class="tutor-question-avater">
-																		<a href="<?php echo $answer_profile; ?>"> <?php echo tutor_utils()->get_tutor_avatar($answer->user_id); ?></a>
+																		<a href="<? echo $answer_profile; ?>"> <? echo tutor_utils()->get_tutor_avatar($answer->user_id); ?></a>
 																	</div>
 																	<p class="review-meta">
-																		<a href="<?php echo $answer_profile; ?>"><?php echo $answer->display_name; ?></a>
+																		<a href="<? echo $answer_profile; ?>"><? echo $answer->display_name; ?></a>
 																		<span class="tutor-text-mute">
-																			<?php echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime($answer->comment_date)) ) ; ?>
+																			<? echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime($answer->comment_date)) ) ; ?>
 																		</span>
 																	</p>
 																</div>
 
 																<div class="tutor_question_area">
-																	<?php echo wpautop(stripslashes($answer->comment_content)); ?>
+																	<? echo wpautop(stripslashes($answer->comment_content)); ?>
 																</div>
 															</div>
 														</div>
-														<?php
+														<?
 													}
 												?>
 											</div>
-										<?php
+										<?
 										} ?>
 										<div class="tutor_add_answer_row">
-											<div class="tutor_add_answer_wrap " data-question-id="<?php echo $question->comment_ID; ?>">
+											<div class="tutor_add_answer_wrap " data-question-id="<? echo $question->comment_ID; ?>">
 												<div class="tutor_wp_editor_show_btn_wrap">
-													<a style="border: var(--tutor-primary-color);background: var(--tutor-primary-color);padding: 13px;" href="javascript:;" class="tutor_wp_editor_show_btn tutor-button tutor-success"><?php _e('Add an answer', 'tutor'); ?></a>
+													<a style="border: var(--tutor-primary-color);background: var(--tutor-primary-color);padding: 13px;" href="javascript:;" class="tutor_wp_editor_show_btn tutor-button tutor-success"><? _e('Add an answer', 'tutor'); ?></a>
 												</div>
 												<div class="tutor_wp_editor_wrap" style="display: none;">
 													<form method="post" class="tutor-add-answer-form">
-														<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+														<? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
 														<input type="hidden" value="tutor_add_answer" name="tutor_action"/>
-														<input type="hidden" value="<?php echo $question->comment_ID; ?>" name="question_id"/>
+														<input type="hidden" value="<? echo $question->comment_ID; ?>" name="question_id"/>
 
 														<div class="tutor-form-group">
-															<textarea id="tutor_answer_<?php echo $question->comment_ID; ?>" name="answer" class="tutor_add_answer_textarea" placeholder="<?php _e('Write your answer here...', 'tutor'); ?>"></textarea>
+															<textarea id="tutor_answer_<? echo $question->comment_ID; ?>" name="answer" class="tutor_add_answer_textarea" placeholder="<? _e('Write your answer here...', 'tutor'); ?>"></textarea>
 														</div>
 
 														<div class="tutor-form-group">
-															<a style="border: var(--tutor-primary-color);background: var(--tutor-primary-color);padding: 13px;" href="javascript:;" class="tutor_cancel_wp_editor tutor-button tutor-danger"><?php _e('Cancel', 'tutor'); ?></a>
+															<a style="border: var(--tutor-primary-color);background: var(--tutor-primary-color);padding: 13px;" href="javascript:;" class="tutor_cancel_wp_editor tutor-button tutor-danger"><? _e('Cancel', 'tutor'); ?></a>
 															<button style="border: var(--tutor-primary-color);background: var(--tutor-primary-color);padding: 13px;" type="submit" class="tutor-button tutor_add_answer_btn tutor-success" name="tutor_answer_search_btn">
-																<?php _e('Add Answer', 'tutor'); ?>
+																<? _e('Add Answer', 'tutor'); ?>
 															</button>
 														</div>
 													</form>
@@ -495,7 +495,7 @@ if($refund != ""){
 											</div>
 										</div>
 
-									<?php
+									<?
 								}
 							}
 							?>
@@ -504,9 +504,9 @@ if($refund != ""){
 					</div>
                   </div>
 				  <div class="col-wrap-full">
-				  <?php tutor_course_instructors_html(); ?>
-				  <?php tutor_course_target_reviews_html(); ?>
-				  <?php tutor_course_target_review_form_html(); ?>
+				  <? tutor_course_instructors_html(); ?>
+				  <? tutor_course_target_reviews_html(); ?>
+				  <? tutor_course_target_review_form_html(); ?>
                   </div>
 				  
                </div>			 	   			   
@@ -516,25 +516,25 @@ if($refund != ""){
          
     </div>
 </div>
-<?php } else{ ?>
-	<div <?php tutor_post_class('tutor-full-width-course-top tutor-course-top-info tutor-page-wrap'); ?>>
+<? } else{ ?>
+	<div <? tutor_post_class('tutor-full-width-course-top tutor-course-top-info tutor-page-wrap'); ?>>
 		<div class="wrapper-main">
 			<section  class="section-wrap pd-details-wrap">
 				<div class="container-wrap">
 					<div class="row-wrap">
 						<div class="pd-details-wrap">
-							<h4 class="pd-heading-title"><?php the_title(); ?></h4>
+							<h4 class="pd-heading-title"><? the_title(); ?></h4>
 							<div class="colwraphalf">
 					
-								<?php $video = explode('/',get_post_meta(get_the_ID(),"_on_demand_video",true)); 
+								<? $video = explode('/',get_post_meta(get_the_ID(),"_on_demand_video",true)); 
 								$vide = array_reverse($video);
 								$vide = "https://myhomeschoolfamily.com/uploads/".$vide[1]."/".$vide[0];
 								if($video != ""){
 								?>
 								<video width="100%" height="400" controls>
-									<source src="<?php echo $vide; ?>" type="video/mp4">
+									<source src="<? echo $vide; ?>" type="video/mp4">
 								</video>
-								<?php } else{ echo "No video session uploaded";} ?>
+								<? } else{ echo "No video session uploaded";} ?>
 							</div>
 						</div>
 					</div>
@@ -543,8 +543,8 @@ if($refund != ""){
 			</section>
 		</div>
 	</div>
-<?php } ?>
-<?php do_action('tutor_course/single/enrolled/after/wrap'); ?>
+<? } ?>
+<? do_action('tutor_course/single/enrolled/after/wrap'); ?>
 
-<?php
+<?
 get_footer();

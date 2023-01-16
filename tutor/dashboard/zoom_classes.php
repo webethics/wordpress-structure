@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -24,7 +24,7 @@ if($last_name == ""){
 
 ?>
 <h2>My Live Zoom Classes</h2>
-<?php do_action('tutor/das	hboard_course_builder_after'); 
+<? do_action('tutor/das	hboard_course_builder_after'); 
 
 		if(isset($_POST['createzoomuser'])){
 			$user = array(
@@ -60,7 +60,7 @@ if($last_name == ""){
 		?>
 	<div class="list-meeting" id="list-meeting" >
 		<div class="tutor-dashboard-info-table-wrap">
-		<?php if($host_id == ""){
+		<? if($host_id == ""){
 				echo '<form action="" method="POST">
 					<input type="hidden" value="createzoomuser" name="createzoomuser">
 					<input type="submit" value="Activate Account">
@@ -86,7 +86,7 @@ if($last_name == ""){
                 </tr>
                 </thead>
                 <tbody>
-				<?php foreach($list as $detaillist){ 
+				<? foreach($list as $detaillist){ 
 				
 					$meeting_details = get_post_meta($detaillist->ID, '_meeting_fields', true);
 					$start_date = get_post_meta( $detaillist->ID, '_meeting_date', true );
@@ -95,17 +95,17 @@ if($last_name == ""){
 					if($class_date >= $blogtime){
 				?>
 				    <tr>
-                        <td><?php echo $detaillist->post_title; ?></td>
-                        <td><?php echo get_post_meta( $detaillist->ID, '_meeting_date', true ); ?></td>
-                        <td><?php echo $meeting_details['duration']; ?></td>
-                        <td><a target="_blank" href="<?php echo get_post_meta( $detaillist->ID, '_meeting_zoom_start_url', true ); ?>">Start Class</a></td>
+                        <td><? echo $detaillist->post_title; ?></td>
+                        <td><? echo get_post_meta( $detaillist->ID, '_meeting_date', true ); ?></td>
+                        <td><? echo $meeting_details['duration']; ?></td>
+                        <td><a target="_blank" href="<? echo get_post_meta( $detaillist->ID, '_meeting_zoom_start_url', true ); ?>">Start Class</a></td>
                     </tr>
-		<?php } } ?>	                   
+		<? } } ?>	                   
 				</tbody>
             </table>
-		<?php } ?>
+		<? } ?>
         </div>
 </div>
-<?php
+<?
 do_action('tutor_load_template_after', 'dashboard.create-course', null);
 get_tutor_footer(true); ?>

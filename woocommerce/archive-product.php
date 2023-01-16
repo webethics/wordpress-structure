@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
  *
@@ -30,11 +30,11 @@ do_action( 'woocommerce_before_main_content' );
 echo  do_shortcode('[elementor-template id="10610"]');
 ?>
 <!--header class="woocommerce-products-header">
-	<?php // if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php //woocommerce_page_title(); ?></h1>
-	<?php //endif; ?>
+	<? // if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+		<h1 class="woocommerce-products-header__title page-title"><? //woocommerce_page_title(); ?></h1>
+	<? //endif; ?>
 
-	<?php
+	<?
 	/**
 	 * Hook: woocommerce_archive_description.
 	 *
@@ -44,7 +44,7 @@ echo  do_shortcode('[elementor-template id="10610"]');
 	//do_action( 'woocommerce_archive_description' );
 	?>
 </header-->
-<?php
+<?
 if ( woocommerce_product_loop() ) {
 
 	/**

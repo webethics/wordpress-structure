@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Withdraw Earnings
  *
@@ -25,7 +25,7 @@ global $wpdb;
 
 <div class="tutor-dashboard-content-inner">
     <div class="tutor-dashboard-inline-links">
-        <?php
+        <?
         $settings_url = tutor_utils()->get_tutor_dashboard_page_permalink('settings');
         $withdraw = tutor_utils()->get_tutor_dashboard_page_permalink('settings/withdraw-settings');
         $reset_password = tutor_utils()->get_tutor_dashboard_page_permalink('settings/reset-password');
@@ -33,20 +33,20 @@ global $wpdb;
         <ul>
            
             <li>
-                <a href="<?php echo site_url();  ?>/user-account/withdraw-earnings"> <?php _e('Withdraw Earnings', 'tutor'); ?></a>
+                <a href="<? echo site_url();  ?>/user-account/withdraw-earnings"> <? _e('Withdraw Earnings', 'tutor'); ?></a>
             </li>
                 <li  class="active">
-                    <a href="<?php echo site_url();  ?>/user-account/withdraw-methods"> <?php _e('Withdraw Method', 'tutor'); ?></a>
+                    <a href="<? echo site_url();  ?>/user-account/withdraw-methods"> <? _e('Withdraw Method', 'tutor'); ?></a>
                 </li>
             
         </ul>
     </div>
 
-    <h3><?php _e('Select a withdraw method', 'tutor') ?></h3>
-	<?php echo "<p>(If you do not have a paypal account, create one <a target='_blank' href='https://www.paypal.com/signin'>here</a>)</p>"; ?>
+    <h3><? _e('Select a withdraw method', 'tutor') ?></h3>
+	<? echo "<p>(If you do not have a paypal account, create one <a target='_blank' href='https://www.paypal.com/signin'>here</a>)</p>"; ?>
     <form id="tutor-withdraw-account-set-form" action="" method="post">
 
-        <?php
+        <?
         $tutor_withdrawal_methods = tutor_withdrawal_methods();
         if (tutor_utils()->count($tutor_withdrawal_methods)){
             $saved_account = tutor_utils()->get_user_withdraw_method();
@@ -56,21 +56,21 @@ global $wpdb;
             $min_withdraw_amount = get_option( 'woocommerce_user_withdrawl_amount', 1 );
             ?>
             <div class="withdraw-method-select-wrap">
-                <?php
+                <?
                 foreach ($tutor_withdrawal_methods as $method_id => $method){
                     ?>
-                    <div class="withdraw-method-select withdraw-method-<?php echo $method_id; ?>" data-withdraw-method="<?php echo $method_id; ?>">
-                        <input type="radio" id="withdraw_method_select_<?php echo $method_id; ?>" class="withdraw-method-select-input"
-                               name="tutor_selected_withdraw_method" value="<?php echo $method_id; ?>" style="display: none;" <?php checked
+                    <div class="withdraw-method-select withdraw-method-<? echo $method_id; ?>" data-withdraw-method="<? echo $method_id; ?>">
+                        <input type="radio" id="withdraw_method_select_<? echo $method_id; ?>" class="withdraw-method-select-input"
+                               name="tutor_selected_withdraw_method" value="<? echo $method_id; ?>" style="display: none;" <? checked
                         ($method_id, $old_method_key) ?> >
 
-                        <label for="withdraw_method_select_<?php echo $method_id; ?>">
-                            <p><?php echo tutor_utils()->avalue_dot('method_name', $method);  ?></p>
-                            <span><?php _e('Min withdraw', 'tutor'); ?> <?php echo tutor_utils()->tutor_price($min_withdraw_amount);
+                        <label for="withdraw_method_select_<? echo $method_id; ?>">
+                            <p><? echo tutor_utils()->avalue_dot('method_name', $method);  ?></p>
+                            <span><? _e('Min withdraw', 'tutor'); ?> <? echo tutor_utils()->tutor_price($min_withdraw_amount);
                                 ?></span>
                         </label>
                     </div>
-                    <?php
+                    <?
                 }
                 ?>
             </div>
@@ -78,28 +78,28 @@ global $wpdb;
 
             <div class="withdraw-method-forms-wrap">
 
-                <?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+                <? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
                 <input type="hidden" value="tutor_save_withdraw_account" name="action"/>
 
-                <?php do_action('tutor_withdraw_set_account_form_before'); ?>
+                <? do_action('tutor_withdraw_set_account_form_before'); ?>
 
-                <?php
+                <?
                 foreach ($tutor_withdrawal_methods as $method_id => $method){
                     $form_fields = tutor_utils()->avalue_dot('form_fields', $method);
                     ?>
 
-                    <div id="withdraw-method-form-<?php echo $method_id; ?>" class="withdraw-method-form withdraw-method-form-<?php echo $method_id;
+                    <div id="withdraw-method-form-<? echo $method_id; ?>" class="withdraw-method-form withdraw-method-form-<? echo $method_id;
                     ?>" style="display: none;">
 
 
-                        <?php do_action("tutor_withdraw_set_account_{$method_id}_before"); ?>
+                        <? do_action("tutor_withdraw_set_account_{$method_id}_before"); ?>
 
-                        <?php
+                        <?
                         if (tutor_utils()->count($form_fields)){
                             foreach ($form_fields as $field_name => $field){
                                 ?>
-                                <div class="withdraw-method-field-wrap withdraw-method-field-<?php echo $field_name. ' '.$field['type']; ?> ">
-                                    <?php
+                                <div class="withdraw-method-field-wrap withdraw-method-field-<? echo $field_name. ' '.$field['type']; ?> ">
+                                    <?
                                     if (! empty($field['label'])){
                                         echo "<label for='field_{$method_id}_$field_name'>{$field['label']}</label>";
                                     }
@@ -123,28 +123,28 @@ global $wpdb;
                                     }
                                     ?>
                                 </div>
-                                <?php
+                                <?
                             }
                         }
                         ?>
 
-                        <?php do_action("tutor_withdraw_set_account_{$method_id}_after"); ?>
+                        <? do_action("tutor_withdraw_set_account_{$method_id}_after"); ?>
 
                         <div class="withdraw-account-save-btn-wrap">
-                            <button type="submit" class="tutor_set_withdraw_account_btn tutor-btn" name="withdraw_btn_submit"><?php _e('Save Withdraw Account', 'tutor'); ?></button>
+                            <button type="submit" class="tutor_set_withdraw_account_btn tutor-btn" name="withdraw_btn_submit"><? _e('Save Withdraw Account', 'tutor'); ?></button>
                         </div>
 
                     </div>
 
-                    <?php
+                    <?
                 }
                 ?>
 
-                <?php do_action('tutor_withdraw_set_account_form_after'); ?>
+                <? do_action('tutor_withdraw_set_account_form_after'); ?>
 
             </div>
 
-            <?php
+            <?
         }
         ?>
     </form>

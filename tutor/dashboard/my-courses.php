@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -6,19 +6,19 @@
 
 ?>
 
-<h3><?php _e('My Classes', 'tutor'); ?></h3>
+<h3><? _e('My Classes', 'tutor'); ?></h3>
 <div class="tutor-dashboard-inline-links">
 		<ul>
-			<li  class=" <?php if($_GET['class']==''){echo "active";}?>">
+			<li  class=" <? if($_GET['class']==''){echo "active";}?>">
                 <a href="/my-account/my-courses/?class=">Live Classes</a>
 			</li>
-			<li class="<?php if($_GET['class']=='on-demand-classes' && $_GET['classes'] == ""){echo "active";}?>">
+			<li class="<? if($_GET['class']=='on-demand-classes' && $_GET['classes'] == ""){echo "active";}?>">
                 <a href="/my-account/my-courses/?class=on-demand-classes"> OnDemand Classes</a>
 			</li>
-			<li class="<?php if($_GET['classes']=='child'){echo "active";}?>">
+			<li class="<? if($_GET['classes']=='child'){echo "active";}?>">
                 <a href="/my-account/my-courses/?class=on-demand-classes&classes=child">Video Library Classes</a>
 			</li>
-			<li class="<?php if($_GET['class']=='complete-class'){echo "active";}?>">
+			<li class="<? if($_GET['class']=='complete-class'){echo "active";}?>">
                 <a href="/my-account/my-courses/?class=complete-class">Completed Classes</a>
 			</li>
 			
@@ -27,7 +27,7 @@
 
 <div class="tutor-dashboard-content-inner">
 
-	<?php
+	<?
 	$my_courses = tutor_utils()->get_courses_by_instructor(null, array('publish', 'draft', 'pending'));
 
 	if (is_array($my_courses) && count($my_courses)):
@@ -85,18 +85,18 @@
 			}
 			?>
         
-            <div id="tutor-dashboard-course-<?php the_ID(); ?>" class="tutor-mycourse-wrap tutor-mycourse-<?php the_ID(); ?>">
-                <div class="tutor-mycourse-thumbnail" style="background-image: url(<?php echo esc_url($tutor_course_img); ?>)"></div>
+            <div id="tutor-dashboard-course-<? the_ID(); ?>" class="tutor-mycourse-wrap tutor-mycourse-<? the_ID(); ?>">
+                <div class="tutor-mycourse-thumbnail" style="background-image: url(<? echo esc_url($tutor_course_img); ?>)"></div>
                 <div class="tutor-mycourse-content">
                     <div class="tutor-mycourse-rating">
-						<?php
+						<?
 						tutor_utils()->star_rating_generator($avg_rating);
 						?>
                     </div>
-                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-					<p><?php echo $class; ?></p>
+                    <h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
+					<p><? echo $class; ?></p>
                     <div class="tutor-meta tutor-course-metadata">
-						<?php
+						<?
                             $total_lessons = tutor_utils()->get_lesson_count_by_course();
                             $completed_lessons = tutor_utils()->get_completed_lesson_count_by_course();
 
@@ -105,7 +105,7 @@
 						?>
                         <ul>
                             <li>
-								<?php
+								<?
 								_e('Status:', 'tutor');
 								$status = ucwords($post->post_status);
 								if($status == "Publish"){
@@ -115,13 +115,13 @@
 								?>
                             </li>
                             <li>
-								<?php
+								<?
 								_e('Duration:', 'tutor');
 								echo "<span>$course_duration</span>";
 								?>
                             </li>
                             <li>
-								<?php
+								<?
 								_e('Students:', 'tutor');
 								echo "<span>$course_students</span>";
 								?>
@@ -131,51 +131,51 @@
 
                     <div class="mycourse-footer">
                         <div class="tutor-mycourses-stats">
-	                        <?php echo tutor_utils()->tutor_price(tutor_utils()->get_course_price()); ?>
-                            <a href="<?php echo tutor_utils()->course_edit_link($post->ID); ?>" class="tutor-mycourse-edit">
+	                        <? echo tutor_utils()->tutor_price(tutor_utils()->get_course_price()); ?>
+                            <a href="<? echo tutor_utils()->course_edit_link($post->ID); ?>" class="tutor-mycourse-edit">
                                 <i class="tutor-icon-pencil"></i>
-                                <?php _e('Edit', 'tutor'); ?>
+                                <? _e('Edit', 'tutor'); ?>
                             </a>
-							<?php if($course_students == 0){ ?>
+							<? if($course_students == 0){ ?>
 								
 							
-                            <a href="#tutor-course-delete" class="tutor-dashboard-element-delete-btn" data-id="<?php echo $post->ID; ?>">
-                                <i class="tutor-icon-garbage"></i> <?php _e('Delete', 'tutor') ?>
+                            <a href="#tutor-course-delete" class="tutor-dashboard-element-delete-btn" data-id="<? echo $post->ID; ?>">
+                                <i class="tutor-icon-garbage"></i> <? _e('Delete', 'tutor') ?>
                             </a>
-							<?php } ?>
-							<a href="/my-account/quizes/?course_id=<?php echo $post->ID; ?>" >
-                                <i class="tutor-icon-pencil"></i> <?php _e('View Quizzes', 'tutor') ?>
+							<? } ?>
+							<a href="/my-account/quizes/?course_id=<? echo $post->ID; ?>" >
+                                <i class="tutor-icon-pencil"></i> <? _e('View Quizzes', 'tutor') ?>
                             </a>
-							<?php if($coming == "coming"){ }else{ if($start_url != ""){ ?><a target="_blank" href="<?php echo $start_url; ?>" class="tutor_button" >
-                                <i class="tutor-icon-user"></i> <?php _e('Start Class', 'tutor') ?>
+							<? if($coming == "coming"){ }else{ if($start_url != ""){ ?><a target="_blank" href="<? echo $start_url; ?>" class="tutor_button" >
+                                <i class="tutor-icon-user"></i> <? _e('Start Class', 'tutor') ?>
                             </a>
-							<?php } } 
+							<? } } 
 							
 							$getEnrolledInfo = $wpdb->get_results( "select ID, post_author, post_date,post_date_gmt,post_title from {$wpdb->posts} WHERE post_type = 'tutor_enrolled' AND post_parent = {$post->ID} AND post_status = 'completed'; " );  
 			
 							$count = count($getEnrolledInfo);
 							if($count > 0){
 								?>
-								<a href="#tutor-course-alert" class="tooltip tutor-dashboard-element-alert-btn" data-id="<?php echo $post->ID; ?>" data-content="<?php echo get_post_meta($courseid,'alertmessage',true); ?>">
-                                <i class="tutor-icon-speaker"></i> <?php _e('Alert', 'tutor') ?>
+								<a href="#tutor-course-alert" class="tooltip tutor-dashboard-element-alert-btn" data-id="<? echo $post->ID; ?>" data-content="<? echo get_post_meta($courseid,'alertmessage',true); ?>">
+                                <i class="tutor-icon-speaker"></i> <? _e('Alert', 'tutor') ?>
 								<span class="tooltiptext">Send notification to students related to class!</span>
                             </a>
-								<?php
+								<?
 							$is_completed_course = tutor_utils()->is_completed_course();
 							if ( ! $is_completed_course) {	?>
 								<div class="tutor-course-compelte-form-wrap" style="width:200px;float:right;">
 
 									<form method="post">
-										<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+										<? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
 
-										<input type="hidden" value="<?php echo get_the_ID(); ?>" name="course_id"/>
+										<input type="hidden" value="<? echo get_the_ID(); ?>" name="course_id"/>
 										<input type="hidden" value="tutor_complete_course" name="tutor_action"/>
 										<div class="box-border-btn">
-										<i class="tutor-icon-mark"></i><button onclick="return confirm('Are you sure you want to complete it?')" type="submit" style="background:none;    color: #25a9e0;margin: 0px;padding: 0px 0px 0px 9px;vertical-align:top;" class="course-complete-button" name="complete_course_btn" value="complete_course"><?php _e( 'Complete Course', 'tutor' ); ?></button>
+										<i class="tutor-icon-mark"></i><button onclick="return confirm('Are you sure you want to complete it?')" type="submit" style="background:none;    color: #25a9e0;margin: 0px;padding: 0px 0px 0px 9px;vertical-align:top;" class="course-complete-button" name="complete_course_btn" value="complete_course"><? _e( 'Complete Course', 'tutor' ); ?></button>
 										</div>
 									</form>
 								</div>
-								<?php }else{ 
+								<? }else{ 
 								echo '<div class="tutor-course-compelte-form-wrap" style="width:200px;float:right;"><div class="box-border-btn" style="width:130px;"><button type="button" style="background:none;color: #555;margin:0px;padding:0px 0px 0px 9px;vertical-align:top;">Completed</button></div></div>';
 								 }  
 							} ?>
@@ -185,7 +185,7 @@
                 </div>
 
             </div>
-			<?php } 
+			<? } 
 			elseif($_GET['class'] == "on-demand-classes" && $type_list[0]->slug == "on-demand-classes" && $is_completed_course == "" && get_post_meta(get_the_ID(),'relationclass',true) == "parent" && $_GET['classes'] != "child"){
 				
 			$avg_rating = tutor_utils()->get_course_rating()->rating_avg;
@@ -193,18 +193,18 @@
 			
 			?>
 			
-            <div id="tutor-dashboard-course-<?php the_ID(); ?>" class="tutor-mycourse-wrap tutor-mycourse-<?php the_ID(); ?>">
-                <div class="tutor-mycourse-thumbnail" style="background-image: url(<?php echo esc_url($tutor_course_img); ?>)"></div>
+            <div id="tutor-dashboard-course-<? the_ID(); ?>" class="tutor-mycourse-wrap tutor-mycourse-<? the_ID(); ?>">
+                <div class="tutor-mycourse-thumbnail" style="background-image: url(<? echo esc_url($tutor_course_img); ?>)"></div>
                 <div class="tutor-mycourse-content">
                     <div class="tutor-mycourse-rating">
-						<?php
+						<?
 						tutor_utils()->star_rating_generator($avg_rating);
 						?>
                     </div>
-                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
 					
                     <div class="tutor-meta tutor-course-metadata">
-						<?php
+						<?
                             $total_lessons = tutor_utils()->get_lesson_count_by_course();
                             $completed_lessons = tutor_utils()->get_completed_lesson_count_by_course();
 
@@ -213,7 +213,7 @@
 						?>
                         <ul>
                             <li>
-								<?php
+								<?
 								_e('Status:', 'tutor');
 								$status = ucwords($post->post_status);
 								if($status == "Publish"){
@@ -223,13 +223,13 @@
 								?>
                             </li>
                             <li>
-								<?php
+								<?
 								_e('Duration:', 'tutor');
 								echo "<span>$course_duration</span>";
 								?>
                             </li>
                             <li>
-								<?php
+								<?
 								_e('Students:', 'tutor');
 								echo "<span>$course_students</span>";
 								?>
@@ -238,51 +238,51 @@
                     </div>
 <div class="mycourse-footer">
                         <div class="tutor-mycourses-stats">
-	                        <?php echo tutor_utils()->tutor_price(tutor_utils()->get_course_price()); ?>
-                            <a href="<?php echo tutor_utils()->course_edit_link($post->ID); ?>" class="tutor-mycourse-edit">
+	                        <? echo tutor_utils()->tutor_price(tutor_utils()->get_course_price()); ?>
+                            <a href="<? echo tutor_utils()->course_edit_link($post->ID); ?>" class="tutor-mycourse-edit">
                                 <i class="tutor-icon-pencil"></i>
-                                <?php _e('Edit', 'tutor'); ?>
+                                <? _e('Edit', 'tutor'); ?>
                             </a>
-							<?php if($course_students == 0){ ?>
+							<? if($course_students == 0){ ?>
 								
 							
-                            <a href="#tutor-course-delete" class="tutor-dashboard-element-delete-btn" data-id="<?php echo $post->ID; ?>">
-                                <i class="tutor-icon-garbage"></i> <?php _e('Delete', 'tutor') ?>
+                            <a href="#tutor-course-delete" class="tutor-dashboard-element-delete-btn" data-id="<? echo $post->ID; ?>">
+                                <i class="tutor-icon-garbage"></i> <? _e('Delete', 'tutor') ?>
                             </a>
-							<?php } ?>
-							<a href="/my-account/quizes/?course_id=<?php echo $post->ID; ?>" >
-                                <i class="tutor-icon-pencil"></i> <?php _e('View Quizzes', 'tutor') ?>
+							<? } ?>
+							<a href="/my-account/quizes/?course_id=<? echo $post->ID; ?>" >
+                                <i class="tutor-icon-pencil"></i> <? _e('View Quizzes', 'tutor') ?>
                             </a>
-							<?php if($coming == "coming"){ }else{ if($start_url != ""){ ?><a target="_blank" href="<?php echo $start_url; ?>" class="tutor_button" >
-                                <i class="tutor-icon-user"></i> <?php _e('Start Class', 'tutor') ?>
+							<? if($coming == "coming"){ }else{ if($start_url != ""){ ?><a target="_blank" href="<? echo $start_url; ?>" class="tutor_button" >
+                                <i class="tutor-icon-user"></i> <? _e('Start Class', 'tutor') ?>
                             </a>
-							<?php } } 
+							<? } } 
 							
 							$getEnrolledInfo = $wpdb->get_results( "select ID, post_author, post_date,post_date_gmt,post_title from {$wpdb->posts} WHERE post_type = 'tutor_enrolled' AND post_parent = {$post->ID} AND post_status = 'completed'; " );  
 			
 							$count = count($getEnrolledInfo);
 							if($count > 0){
 								?>
-								<a href="#tutor-course-alert" class="tooltip tutor-dashboard-element-alert-btn" data-id="<?php echo $post->ID; ?>" data-content="<?php echo get_post_meta($courseid,'alertmessage',true); ?>">
-                                <i class="tutor-icon-speaker"></i> <?php _e('Alert', 'tutor') ?>
+								<a href="#tutor-course-alert" class="tooltip tutor-dashboard-element-alert-btn" data-id="<? echo $post->ID; ?>" data-content="<? echo get_post_meta($courseid,'alertmessage',true); ?>">
+                                <i class="tutor-icon-speaker"></i> <? _e('Alert', 'tutor') ?>
 								<span class="tooltiptext">Send notification to students related to class!</span>
                             </a>
-								<?php
+								<?
 							$is_completed_course = tutor_utils()->is_completed_course();
 							if ( ! $is_completed_course) {	?>
 								<div class="tutor-course-compelte-form-wrap" style="width:200px;float:right;">
 
 									<form method="post">
-										<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+										<? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
 
-										<input type="hidden" value="<?php echo get_the_ID(); ?>" name="course_id"/>
+										<input type="hidden" value="<? echo get_the_ID(); ?>" name="course_id"/>
 										<input type="hidden" value="tutor_complete_course" name="tutor_action"/>
 										<div class="box-border-btn">
-										<i class="tutor-icon-mark"></i><button onclick="return confirm('Are you sure you want to complete it?')" type="submit" style="background:none;    color: #25a9e0;margin: 0px;padding: 0px 0px 0px 9px;vertical-align:top;" class="course-complete-button" name="complete_course_btn" value="complete_course"><?php _e( 'Complete Course', 'tutor' ); ?></button>
+										<i class="tutor-icon-mark"></i><button onclick="return confirm('Are you sure you want to complete it?')" type="submit" style="background:none;    color: #25a9e0;margin: 0px;padding: 0px 0px 0px 9px;vertical-align:top;" class="course-complete-button" name="complete_course_btn" value="complete_course"><? _e( 'Complete Course', 'tutor' ); ?></button>
 										</div>
 									</form>
 								</div>
-								<?php }else{ 
+								<? }else{ 
 								echo '<div class="tutor-course-compelte-form-wrap" style="width:200px;float:right;"><div class="box-border-btn" style="width:130px;"><button type="button" style="background:none;color: #555;margin:0px;padding:0px 0px 0px 9px;vertical-align:top;">Completed</button></div></div>';
 								 }  
 							} ?>
@@ -292,7 +292,7 @@
                 </div>
 
             </div>
-		<?php
+		<?
 			}
 			elseif($_GET['class'] == "on-demand-classes" && $_GET['classes'] == "child" && $type_list[0]->slug == "on-demand-classes" && $is_completed_course == "" && get_post_meta(get_the_ID(),'relationclass',true) == "child"){
 				
@@ -302,18 +302,18 @@
 			
 			?>
 			
-            <div id="tutor-dashboard-course-<?php the_ID(); ?>" class="tutor-mycourse-wrap tutor-mycourse-<?php the_ID(); ?>">
-                <div class="tutor-mycourse-thumbnail" style="background-image: url(<?php echo esc_url($tutor_course_img); ?>)"></div>
+            <div id="tutor-dashboard-course-<? the_ID(); ?>" class="tutor-mycourse-wrap tutor-mycourse-<? the_ID(); ?>">
+                <div class="tutor-mycourse-thumbnail" style="background-image: url(<? echo esc_url($tutor_course_img); ?>)"></div>
                 <div class="tutor-mycourse-content">
                     <div class="tutor-mycourse-rating">
-						<?php
+						<?
 						tutor_utils()->star_rating_generator($avg_rating);
 						?>
                     </div>
-                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
 					
                     <div class="tutor-meta tutor-course-metadata">
-						<?php
+						<?
                             $total_lessons = tutor_utils()->get_lesson_count_by_course();
                             $completed_lessons = tutor_utils()->get_completed_lesson_count_by_course();
 
@@ -322,7 +322,7 @@
 						?>
                         <ul>
                             <li>
-								<?php
+								<?
 								_e('Status:', 'tutor');
 								$status = ucwords($post->post_status);
 								if($status == "Publish"){
@@ -332,13 +332,13 @@
 								?>
                             </li>
                             <li>
-								<?php
+								<?
 								_e('Duration:', 'tutor');
 								echo "<span>$course_duration</span>";
 								?>
                             </li>
                             <li>
-								<?php
+								<?
 								_e('Students:', 'tutor');
 								echo "<span>$course_students</span>";
 								?>
@@ -348,51 +348,51 @@
 
                    <div class="mycourse-footer">
                         <div class="tutor-mycourses-stats">
-	                        <?php echo tutor_utils()->tutor_price(tutor_utils()->get_course_price()); ?>
-                            <a href="<?php echo tutor_utils()->course_edit_link($post->ID); ?>" class="tutor-mycourse-edit">
+	                        <? echo tutor_utils()->tutor_price(tutor_utils()->get_course_price()); ?>
+                            <a href="<? echo tutor_utils()->course_edit_link($post->ID); ?>" class="tutor-mycourse-edit">
                                 <i class="tutor-icon-pencil"></i>
-                                <?php _e('Edit', 'tutor'); ?>
+                                <? _e('Edit', 'tutor'); ?>
                             </a>
-							<?php if($course_students == 0){ ?>
+							<? if($course_students == 0){ ?>
 								
 							
-                            <a href="#tutor-course-delete" class="tutor-dashboard-element-delete-btn" data-id="<?php echo $post->ID; ?>">
-                                <i class="tutor-icon-garbage"></i> <?php _e('Delete', 'tutor') ?>
+                            <a href="#tutor-course-delete" class="tutor-dashboard-element-delete-btn" data-id="<? echo $post->ID; ?>">
+                                <i class="tutor-icon-garbage"></i> <? _e('Delete', 'tutor') ?>
                             </a>
-							<?php } ?>
-							<a href="/my-account/quizes/?course_id=<?php echo $post->ID; ?>" >
-                                <i class="tutor-icon-pencil"></i> <?php _e('View Quizzes', 'tutor') ?>
+							<? } ?>
+							<a href="/my-account/quizes/?course_id=<? echo $post->ID; ?>" >
+                                <i class="tutor-icon-pencil"></i> <? _e('View Quizzes', 'tutor') ?>
                             </a>
-							<?php if($coming == "coming"){ }else{ if($start_url != ""){ ?><a target="_blank" href="<?php echo $start_url; ?>" class="tutor_button" >
-                                <i class="tutor-icon-user"></i> <?php _e('Start Class', 'tutor') ?>
+							<? if($coming == "coming"){ }else{ if($start_url != ""){ ?><a target="_blank" href="<? echo $start_url; ?>" class="tutor_button" >
+                                <i class="tutor-icon-user"></i> <? _e('Start Class', 'tutor') ?>
                             </a>
-							<?php } } 
+							<? } } 
 							
 							$getEnrolledInfo = $wpdb->get_results( "select ID, post_author, post_date,post_date_gmt,post_title from {$wpdb->posts} WHERE post_type = 'tutor_enrolled' AND post_parent = {$post->ID} AND post_status = 'completed'; " );  
 			
 							$count = count($getEnrolledInfo);
 							if($count > 0){
 								?>
-								<a href="#tutor-course-alert" class="tooltip tutor-dashboard-element-alert-btn" data-id="<?php echo $post->ID; ?>" data-content="<?php echo get_post_meta($courseid,'alertmessage',true); ?>">
-                                <i class="tutor-icon-speaker"></i> <?php _e('Alert', 'tutor') ?>
+								<a href="#tutor-course-alert" class="tooltip tutor-dashboard-element-alert-btn" data-id="<? echo $post->ID; ?>" data-content="<? echo get_post_meta($courseid,'alertmessage',true); ?>">
+                                <i class="tutor-icon-speaker"></i> <? _e('Alert', 'tutor') ?>
 								<span class="tooltiptext">Send notification to students related to class!</span>
                             </a>
-								<?php
+								<?
 							$is_completed_course = tutor_utils()->is_completed_course();
 							if ( ! $is_completed_course) {	?>
 								<div class="tutor-course-compelte-form-wrap" style="width:200px;float:right;">
 
 									<form method="post">
-										<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+										<? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
 
-										<input type="hidden" value="<?php echo get_the_ID(); ?>" name="course_id"/>
+										<input type="hidden" value="<? echo get_the_ID(); ?>" name="course_id"/>
 										<input type="hidden" value="tutor_complete_course" name="tutor_action"/>
 										<div class="box-border-btn">
-										<i class="tutor-icon-mark"></i><button onclick="return confirm('Are you sure you want to complete it?')" type="submit" style="background:none;    color: #25a9e0;margin: 0px;padding: 0px 0px 0px 9px;vertical-align:top;" class="course-complete-button" name="complete_course_btn" value="complete_course"><?php _e( 'Complete Course', 'tutor' ); ?></button>
+										<i class="tutor-icon-mark"></i><button onclick="return confirm('Are you sure you want to complete it?')" type="submit" style="background:none;    color: #25a9e0;margin: 0px;padding: 0px 0px 0px 9px;vertical-align:top;" class="course-complete-button" name="complete_course_btn" value="complete_course"><? _e( 'Complete Course', 'tutor' ); ?></button>
 										</div>
 									</form>
 								</div>
-								<?php }else{ 
+								<? }else{ 
 								echo '<div class="tutor-course-compelte-form-wrap" style="width:200px;float:right;"><div class="box-border-btn" style="width:130px;"><button type="button" style="background:none;color: #555;margin:0px;padding:0px 0px 0px 9px;vertical-align:top;">Completed</button></div></div>';
 								 }  
 							} ?>
@@ -402,7 +402,7 @@
                 </div>
 
             </div>
-		<?php
+		<?
 			}
 			elseif($_GET['class'] == "complete-class" && $is_completed_course != ""){
 			$avg_rating = tutor_utils()->get_course_rating()->rating_avg;
@@ -443,18 +443,18 @@
 				} 
 			?>
         
-            <div id="tutor-dashboard-course-<?php the_ID(); ?>" class="tutor-mycourse-wrap tutor-mycourse-<?php the_ID(); ?>">
-                <div class="tutor-mycourse-thumbnail" style="background-image: url(<?php echo esc_url($tutor_course_img); ?>)"></div>
+            <div id="tutor-dashboard-course-<? the_ID(); ?>" class="tutor-mycourse-wrap tutor-mycourse-<? the_ID(); ?>">
+                <div class="tutor-mycourse-thumbnail" style="background-image: url(<? echo esc_url($tutor_course_img); ?>)"></div>
                 <div class="tutor-mycourse-content">
                     <div class="tutor-mycourse-rating">
-						<?php
+						<?
 						tutor_utils()->star_rating_generator($avg_rating);
 						?>
                     </div>
-                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-					<p><?php echo $class; ?></p>
+                    <h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
+					<p><? echo $class; ?></p>
                     <div class="tutor-meta tutor-course-metadata">
-						<?php
+						<?
                             $total_lessons = tutor_utils()->get_lesson_count_by_course();
                             $completed_lessons = tutor_utils()->get_completed_lesson_count_by_course();
 
@@ -463,7 +463,7 @@
 						?>
                         <ul>
                             <li>
-								<?php
+								<?
 								_e('Status:', 'tutor');
 								$status = ucwords($post->post_status);
 								if($status == "Publish"){
@@ -473,13 +473,13 @@
 								?>
                             </li>
                             <li>
-								<?php
+								<?
 								_e('Duration:', 'tutor');
 								echo "<span>$course_duration</span>";
 								?>
                             </li>
                             <li>
-								<?php
+								<?
 								_e('Students:', 'tutor');
 								echo "<span>$course_students</span>";
 								?>
@@ -489,51 +489,51 @@
 
                     <div class="mycourse-footer">
                         <div class="tutor-mycourses-stats">
-	                        <?php echo tutor_utils()->tutor_price(tutor_utils()->get_course_price()); ?>
-                            <a href="<?php echo tutor_utils()->course_edit_link($post->ID); ?>" class="tutor-mycourse-edit">
+	                        <? echo tutor_utils()->tutor_price(tutor_utils()->get_course_price()); ?>
+                            <a href="<? echo tutor_utils()->course_edit_link($post->ID); ?>" class="tutor-mycourse-edit">
                                 <i class="tutor-icon-pencil"></i>
-                                <?php _e('Edit', 'tutor'); ?>
+                                <? _e('Edit', 'tutor'); ?>
                             </a>
-							<?php if($course_students == 0){ ?>
+							<? if($course_students == 0){ ?>
 								
 							
-                            <a href="#tutor-course-delete" class="tutor-dashboard-element-delete-btn" data-id="<?php echo $post->ID; ?>">
-                                <i class="tutor-icon-garbage"></i> <?php _e('Delete', 'tutor') ?>
+                            <a href="#tutor-course-delete" class="tutor-dashboard-element-delete-btn" data-id="<? echo $post->ID; ?>">
+                                <i class="tutor-icon-garbage"></i> <? _e('Delete', 'tutor') ?>
                             </a>
-							<?php } ?>
-							<a href="/my-account/quizes/?course_id=<?php echo $post->ID; ?>" >
-                                <i class="tutor-icon-pencil"></i> <?php _e('View Quizzes', 'tutor') ?>
+							<? } ?>
+							<a href="/my-account/quizes/?course_id=<? echo $post->ID; ?>" >
+                                <i class="tutor-icon-pencil"></i> <? _e('View Quizzes', 'tutor') ?>
                             </a>
-							<?php if($coming == "coming"){ }else{ if($start_url != ""){ ?><a target="_blank" href="<?php echo $start_url; ?>" class="tutor_button" >
-                                <i class="tutor-icon-user"></i> <?php _e('Start Class', 'tutor') ?>
+							<? if($coming == "coming"){ }else{ if($start_url != ""){ ?><a target="_blank" href="<? echo $start_url; ?>" class="tutor_button" >
+                                <i class="tutor-icon-user"></i> <? _e('Start Class', 'tutor') ?>
                             </a>
-							<?php } } 
+							<? } } 
 							
 							$getEnrolledInfo = $wpdb->get_results( "select ID, post_author, post_date,post_date_gmt,post_title from {$wpdb->posts} WHERE post_type = 'tutor_enrolled' AND post_parent = {$post->ID} AND post_status = 'completed'; " );  
 			
 							$count = count($getEnrolledInfo);
 							if($count > 0){
 								?>
-								<a href="#tutor-course-alert" class="tooltip tutor-dashboard-element-alert-btn" data-id="<?php echo $post->ID; ?>" data-content="<?php echo get_post_meta($courseid,'alertmessage',true); ?>">
-                                <i class="tutor-icon-speaker"></i> <?php _e('Alert', 'tutor') ?>
+								<a href="#tutor-course-alert" class="tooltip tutor-dashboard-element-alert-btn" data-id="<? echo $post->ID; ?>" data-content="<? echo get_post_meta($courseid,'alertmessage',true); ?>">
+                                <i class="tutor-icon-speaker"></i> <? _e('Alert', 'tutor') ?>
 								<span class="tooltiptext">Send notification to students related to class!</span>
                             </a>
-								<?php
+								<?
 							$is_completed_course = tutor_utils()->is_completed_course();
 							if ( ! $is_completed_course) {	?>
 								<div class="tutor-course-compelte-form-wrap" style="width:200px;float:right;">
 
 									<form method="post">
-										<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+										<? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
 
-										<input type="hidden" value="<?php echo get_the_ID(); ?>" name="course_id"/>
+										<input type="hidden" value="<? echo get_the_ID(); ?>" name="course_id"/>
 										<input type="hidden" value="tutor_complete_course" name="tutor_action"/>
 										<div class="box-border-btn">
-										<i class="tutor-icon-mark"></i><button onclick="return confirm('Are you sure you want to complete it?')" type="submit" style="background:none;    color: #25a9e0;margin: 0px;padding: 0px 0px 0px 9px;vertical-align:top;" class="course-complete-button" name="complete_course_btn" value="complete_course"><?php _e( 'Complete Course', 'tutor' ); ?></button>
+										<i class="tutor-icon-mark"></i><button onclick="return confirm('Are you sure you want to complete it?')" type="submit" style="background:none;    color: #25a9e0;margin: 0px;padding: 0px 0px 0px 9px;vertical-align:top;" class="course-complete-button" name="complete_course_btn" value="complete_course"><? _e( 'Complete Course', 'tutor' ); ?></button>
 										</div>
 									</form>
 								</div>
-								<?php }else{ 
+								<? }else{ 
 								echo '<div class="tutor-course-compelte-form-wrap" style="width:200px;float:right;"><div class="box-border-btn" style="width:130px;"><button type="button" style="background:none;color: #555;margin:0px;padding:0px 0px 0px 9px;vertical-align:top;">Completed</button></div></div>';
 								 }  
 							} ?>
@@ -543,16 +543,16 @@
                 </div>
 
             </div>
-		<?php
+		<?
 			} ?>
-		<?php
+		<?
 		endforeach;
 	else : ?>
         <div>
-            <h2><?php _e("No Records Found!" , 'tutor'); ?></h2>
+            <h2><? _e("No Records Found!" , 'tutor'); ?></h2>
             
         </div>
-	<?php endif; ?>
+	<? endif; ?>
 
 	<div class="tutor-frontend-modal" data-popup-rel="#tutor-course-delete" style="display: none">
         <div class="tutor-frontend-modal-overlay"></div>
@@ -560,15 +560,15 @@
             <button class="tm-close tutor-icon-line-cross"></button>
 
             <div class="tutor-modal-body tutor-course-delete-popup">
-                <img src="<?php echo tutor()->url . 'assets/images/delete-icon.png' ?>" alt="">
-                <h3><?php _e('Delete This Course?', 'tutor'); ?></h3>
-                <p><?php _e("You are going to delete this course, it can't be undone", 'tutor'); ?></p>
+                <img src="<? echo tutor()->url . 'assets/images/delete-icon.png' ?>" alt="">
+                <h3><? _e('Delete This Course?', 'tutor'); ?></h3>
+                <p><? _e("You are going to delete this course, it can't be undone", 'tutor'); ?></p>
                 <div class="tutor-modal-button-group">
                     <form action="" id="tutor-dashboard-delete-element-form">
                         <input type="hidden" name="action" value="tutor_delete_dashboard_course">
                         <input type="hidden" name="course_id" id="tutor-dashboard-delete-element-id" value="">
-                        <button type="button" class="tutor-modal-btn-cancel"><?php _e('Cancel', 'tutor') ?></button>
-                        <button type="submit" class="tutor-danger tutor-modal-element-delete-btn"><?php _e('Yes, Delete Course', 'tutor') ?></button>
+                        <button type="button" class="tutor-modal-btn-cancel"><? _e('Cancel', 'tutor') ?></button>
+                        <button type="submit" class="tutor-danger tutor-modal-element-delete-btn"><? _e('Yes, Delete Course', 'tutor') ?></button>
                     </form>
                 </div>
             </div>
@@ -581,14 +581,14 @@
             <button class="tm-close tutor-icon-line-cross"></button>
 			 <div class="tutor-modal-body tutor-course-alert-popup tutor-course-delete-popup">
                 
-                <h3><?php _e('Alert Students', 'tutor'); ?></h3>
+                <h3><? _e('Alert Students', 'tutor'); ?></h3>
                 <div class="tutor-modal-button-group">
                     <form action="" id="tutor-dashboard-alert-element-form">
 						<textarea id="alertcontent" style="margin-bottom:30px;" name="message"></textarea>
                         <input type="hidden" name="id" id="tutor-course-alert-id" value="">
-                        <button type="button" class="tutor-modal-btn-cancel"><?php _e('Cancel', 'tutor') ?></button>
-                        <button type="button" class="successgreen tutor-danger tutor-alertmessage tutor-modal-element-delete-btn"><?php _e('Submit', 'tutor') ?></button> 
-                        <button type="button" class="required tutor-danger tutor-alertmessage tutor-modal-element-delete-btn"><?php _e('Remove Alert', 'tutor') ?></button> 
+                        <button type="button" class="tutor-modal-btn-cancel"><? _e('Cancel', 'tutor') ?></button>
+                        <button type="button" class="successgreen tutor-danger tutor-alertmessage tutor-modal-element-delete-btn"><? _e('Submit', 'tutor') ?></button> 
+                        <button type="button" class="required tutor-danger tutor-alertmessage tutor-modal-element-delete-btn"><? _e('Remove Alert', 'tutor') ?></button> 
                     </form>
                 </div>
             </div>

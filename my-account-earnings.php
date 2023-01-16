@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Earnings
  *
@@ -60,25 +60,25 @@ foreach ($chartData as $key => $salesCount){
 }
 ?>
 
-<h3><?php _e('Earnings', 'tutor') ?></h3>
+<h3><? _e('Earnings', 'tutor') ?></h3>
 
 <div class="tutor-dashboard-content-inner">
 
 	<div class="tutor-dashboard-inline-links">
 		<ul>
 			<li class="active">
-                <a href="<?php echo site_url().'/user-account/earnings'; ?>">
-                    <?php _e('Earnings', 'tutor'); ?>
+                <a href="<? echo site_url().'/user-account/earnings'; ?>">
+                    <? _e('Earnings', 'tutor'); ?>
                 </a>
 			</li>
 			<li>
-                <a href="<?php echo site_url().'/user-account/earning-reports'; ?>">
-                    <?php _e('Reports', 'tutor'); ?>
+                <a href="<? echo site_url().'/user-account/earning-reports'; ?>">
+                    <? _e('Reports', 'tutor'); ?>
                 </a>
 			</li>
 			<!--li>
-                <a href="<?php echo tutor_utils()->get_tutor_dashboard_page_permalink('earnings/statements'); ?>">
-                    <?php _e('Statements', 'tutor'); ?>
+                <a href="<? echo tutor_utils()->get_tutor_dashboard_page_permalink('earnings/statements'); ?>">
+                    <? _e('Statements', 'tutor'); ?>
                 </a>
             </li-->
 		</ul>
@@ -87,53 +87,53 @@ foreach ($chartData as $key => $salesCount){
     <div class="tutor-dashboard-info-cards">
         <div class="tutor-dashboard-info-card">
             <p>
-                <span> <?php _e('My Balance', 'tutor'); ?> </span>
-                <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->balance); ?></span>
+                <span> <? _e('My Balance', 'tutor'); ?> </span>
+                <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->balance); ?></span>
             </p>
         </div>
-        <div class="tutor-dashboard-info-card" title="<?php _e('All Time', 'tutor'); ?>">
+        <div class="tutor-dashboard-info-card" title="<? _e('All Time', 'tutor'); ?>">
             <p>
-                <span> <?php _e('My Earnings', 'tutor'); ?> </span>
-                <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->user_amount); ?></span>
+                <span> <? _e('My Earnings', 'tutor'); ?> </span>
+                <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->user_amount); ?></span>
             </p>
         </div>
-        <div class="tutor-dashboard-info-card"  title="<?php _e('Based on course price', 'tutor'); ?>">
+        <div class="tutor-dashboard-info-card"  title="<? _e('Based on course price', 'tutor'); ?>">
             <p>
-                <span> <?php _e('All time sales', 'tutor'); ?> </span>
-                <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->product_price_total); ?></span>
+                <span> <? _e('All time sales', 'tutor'); ?> </span>
+                <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->product_price_total); ?></span>
             </p>
         </div>
-        <div class="tutor-dashboard-info-card" title="<?php _e('All of withdraw type excluding rejected.', 'tutor'); ?>">
+        <div class="tutor-dashboard-info-card" title="<? _e('All of withdraw type excluding rejected.', 'tutor'); ?>">
             <p>
-                <span> <?php _e('All time withdrawals', 'tutor'); ?> </span>
-                <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->withdraws_amount); ?></span>
+                <span> <? _e('All time withdrawals', 'tutor'); ?> </span>
+                <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->withdraws_amount); ?></span>
             </p>
         </div>
         <div class="tutor-dashboard-info-card">
             <p>
-                <span> <?php _e('Deducted Commissions', 'tutor'); ?> </span>
-                <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->admin_amount); ?></span>
+                <span> <? _e('Deducted Commissions', 'tutor'); ?> </span>
+                <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->admin_amount); ?></span>
             </p>
         </div>
 
-        <?php if ($earning_sum->deduct_fees_amount > 0){ ?>
+        <? if ($earning_sum->deduct_fees_amount > 0){ ?>
             <div class="tutor-dashboard-info-card">
                 <p>
-                    <span> <?php _e('Deducted Fees.', 'tutor'); ?> </span>
-                    <span class="tutor-dashboard-info-val"><?php echo tutor_utils()->tutor_price($earning_sum->deduct_fees_amount); ?></span>
+                    <span> <? _e('Deducted Fees.', 'tutor'); ?> </span>
+                    <span class="tutor-dashboard-info-val"><? echo tutor_utils()->tutor_price($earning_sum->deduct_fees_amount); ?></span>
                 </p>
             </div>
-        <?php } ?>
+        <? } ?>
     </div>
 
     <div class="tutor-dashboard-item-group">
-        <h4><?php //_e('Earnings Chart for this month', 'tutor') ?> (<?php echo date("F") ?>)</h4>
+        <h4><? //_e('Earnings Chart for this month', 'tutor') ?> (<? echo date("F") ?>)</h4>
         <canvas id="tutorChart" style="width: 100%; height: 400px;"></canvas>
     </div>
 
 </div>
 
-<?php
+<?
 $tutor_primary_color = tutor_utils()->get_option('tutor_primary_color');
 if ( ! $tutor_primary_color){
     $tutor_primary_color = '#3057D5';
@@ -145,12 +145,12 @@ if ( ! $tutor_primary_color){
     var tutorChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: <?php echo json_encode(array_keys($chartData)); ?>,
+            labels: <? echo json_encode(array_keys($chartData)); ?>,
             datasets: [{
                 label: 'Earning',
-                backgroundColor: '<?php echo $tutor_primary_color; ?>',
-                borderColor: '<?php echo $tutor_primary_color; ?>',
-                data: <?php echo json_encode(array_values($chartData)); ?>,
+                backgroundColor: '<? echo $tutor_primary_color; ?>',
+                borderColor: '<? echo $tutor_primary_color; ?>',
+                data: <? echo json_encode(array_values($chartData)); ?>,
                 borderWidth: 2,
                 fill: false,
                 lineTension: 0,

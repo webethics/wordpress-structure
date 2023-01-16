@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * The template for displaying product content in the single-product.php template
  *
@@ -31,11 +31,11 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'wrapper-main', $product ); ?>>
-    <section  class="section-wrap pd-details-wrap <?php if( has_term(20, 'product_cat' ) ) { echo "single-ondemand";}  if( get_post_meta(get_the_ID(),'relationparent',true) != "")  { echo "single-child";}?>">
+<div id="product-<? the_ID(); ?>" <? wc_product_class( 'wrapper-main', $product ); ?>>
+    <section  class="section-wrap pd-details-wrap <? if( has_term(20, 'product_cat' ) ) { echo "single-ondemand";}  if( get_post_meta(get_the_ID(),'relationparent',true) != "")  { echo "single-child";}?>">
             <div class="container-wrap">
                <div class="row-wrap">
-	<?php
+	<?
 	/**
 	 * Hook: woocommerce_before_single_product_summary.
 	 *
@@ -46,7 +46,7 @@ if ( post_password_required() ) {
 	?>
 
 	<div class="summary entry-summary">
-		<?php
+		<?
 		/**
 		 * Hook: woocommerce_single_product_summary.
 		 *
@@ -65,7 +65,7 @@ if ( post_password_required() ) {
 </div>			 	   			   
             </div>
          </section>
-	<?php
+	<?
 	/**
 	 * Hook: woocommerce_after_single_product_summary.
 	 *
@@ -77,4 +77,4 @@ if ( post_password_required() ) {
 	?>
 </div>
 
-<?php do_action( 'woocommerce_after_single_product' ); ?>
+<? do_action( 'woocommerce_after_single_product' ); ?>

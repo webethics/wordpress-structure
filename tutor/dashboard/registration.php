@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -7,10 +7,10 @@
 ?>
 
 <form method="post" enctype="multipart/form-data">
-	<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+	<? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
     <input type="hidden" value="tutor_register_student" name="tutor_action"/>
 
-    <?php
+    <?
     $errors = apply_filters('tutor_student_register_validation_errors', array());
 	$first_name = "";
 	$last_name = "";
@@ -52,10 +52,10 @@
         <div class="tutor-form-col-12">
             <div class="tutor-form-group">
                 <label>
-					<?php _e('First Name', 'tutor'); ?>
+					<? _e('First Name', 'tutor'); ?>
                 </label>
-				<span class="error"><?php echo $first_name; ?></span>
-                <input type="text" name="first_name" value="<?php echo tutor_utils()->input_old('first_name'); ?>" placeholder="<?php _e('First Name', 'tutor'); ?>">
+				<span class="error"><? echo $first_name; ?></span>
+                <input type="text" name="first_name" value="<? echo tutor_utils()->input_old('first_name'); ?>" placeholder="<? _e('First Name', 'tutor'); ?>">
 				
             </div>
         </div>
@@ -64,10 +64,10 @@
 		<div class="tutor-form-col-12">
             <div class="tutor-form-group">
                 <label>
-					<?php _e('Last Name', 'tutor'); ?>
+					<? _e('Last Name', 'tutor'); ?>
                 </label>
-				<span class="error"><?php echo $last_name; ?></span>
-                <input type="text" name="last_name" value="<?php echo tutor_utils()->input_old('last_name'); ?>" placeholder="<?php _e('Last Name', 'tutor'); ?>">
+				<span class="error"><? echo $last_name; ?></span>
+                <input type="text" name="last_name" value="<? echo tutor_utils()->input_old('last_name'); ?>" placeholder="<? _e('Last Name', 'tutor'); ?>">
 				
             </div>
         </div>
@@ -76,10 +76,10 @@
         <div class="tutor-form-col-12">
             <div class="tutor-form-group">
                 <label>
-				    <?php _e('User Name', 'tutor'); ?>
+				    <? _e('User Name', 'tutor'); ?>
                 </label>
-				<span class="error"><?php echo $user_login; ?></span>
-                <input type="text" name="user_login" class="tutor_user_name" value="<?php echo tutor_utils()->input_old('user_login'); ?>" placeholder="<?php _e('User Name', 'tutor'); ?>">
+				<span class="error"><? echo $user_login; ?></span>
+                <input type="text" name="user_login" class="tutor_user_name" value="<? echo tutor_utils()->input_old('user_login'); ?>" placeholder="<? _e('User Name', 'tutor'); ?>">
 				
             </div>
         </div>
@@ -91,10 +91,10 @@
 		<div class="tutor-form-col-12">
             <div class="tutor-form-group">
                 <label>
-					<?php _e('E-Mail', 'tutor'); ?>
+					<? _e('E-Mail', 'tutor'); ?>
                 </label>
-				<span class="error"><?php echo $email; ?></span>
-                <input type="text" name="email" value="<?php echo tutor_utils()->input_old('email'); ?>" placeholder="<?php _e('E-Mail', 'tutor'); ?>">
+				<span class="error"><? echo $email; ?></span>
+                <input type="text" name="email" value="<? echo tutor_utils()->input_old('email'); ?>" placeholder="<? _e('E-Mail', 'tutor'); ?>">
 				
             </div>
         </div>
@@ -104,10 +104,10 @@
         <div class="tutor-form-col-12">
             <div class="tutor-form-group">
                 <label>
-                    <?php _e('Phone Number', 'tutor'); ?>
+                    <? _e('Phone Number', 'tutor'); ?>
                 </label>
-				<span class="error"><?php echo $phone_number; ?></span>
-                <input type="text" name="phone_number" value="<?php echo tutor_utils()->input_old('phone_no'); ?>" placeholder="<?php _e('Phone Number', 'tutor'); ?>">
+				<span class="error"><? echo $phone_number; ?></span>
+                <input type="text" name="phone_number" value="<? echo tutor_utils()->input_old('phone_no'); ?>" placeholder="<? _e('Phone Number', 'tutor'); ?>">
 				
             </div>
         </div>
@@ -117,10 +117,10 @@
         <div class="tutor-form-col-12">
             <div class="tutor-form-group">
                 <label>
-					<?php _e('Password', 'tutor'); ?>
+					<? _e('Password', 'tutor'); ?>
                 </label>
-				<span class="error"><?php echo $password; ?></span>
-                <input type="password" name="password" value="<?php echo tutor_utils()->input_old('password'); ?>" placeholder="<?php _e('Password', 'tutor'); ?>">
+				<span class="error"><? echo $password; ?></span>
+                <input type="password" name="password" value="<? echo tutor_utils()->input_old('password'); ?>" placeholder="<? _e('Password', 'tutor'); ?>">
             </div>
         </div>
 
@@ -129,10 +129,10 @@
         <div class="tutor-form-col-12">
             <div class="tutor-form-group">
                 <label>
-					<?php _e('Password confirmation', 'tutor'); ?>
+					<? _e('Password confirmation', 'tutor'); ?>
                 </label>
-				<span class="error"><?php echo $password_confirmation; ?></span>
-                <input type="password" name="password_confirmation" value="<?php echo tutor_utils()->input_old('password_confirmation'); ?>" placeholder="<?php _e('Password Confirmation', 'tutor'); ?>">
+				<span class="error"><? echo $password_confirmation; ?></span>
+                <input type="password" name="password_confirmation" value="<? echo tutor_utils()->input_old('password_confirmation'); ?>" placeholder="<? _e('Password Confirmation', 'tutor'); ?>">
 				
             </div>
         </div>
@@ -147,7 +147,7 @@
     <div class="tutor-form-row">
         <div class="tutor-form-col-12">
             <div class="tutor-form-group tutor-reg-form-btn-wrap">
-                <button type="submit" name="tutor_register_student_btn" value="register" class="tutor-button"><?php _e('Register', 'tutor'); ?></button>
+                <button type="submit" name="tutor_register_student_btn" value="register" class="tutor-button"><? _e('Register', 'tutor'); ?></button>
             </div>
         </div>
     </div>

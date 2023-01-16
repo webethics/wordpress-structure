@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Template for displaying course requirements
  *
@@ -27,7 +27,7 @@ if (is_array($course_requirements) && count($course_requirements)){
 
 		<div class="tutor-course-requirements-content">
 			<ul class="tutor-course-requirements-items tutor-custom-list-style">
-				<?php
+				<?
 				foreach ($course_requirements as $requirement){
 					echo "<li>{$requirement}</li>";
 				}
@@ -36,6 +36,6 @@ if (is_array($course_requirements) && count($course_requirements)){
 		</div>
 	</div>
 
-<?php } ?>
+<? } ?>
 
-<?php do_action('tutor_course/single/after/requirements'); ?>
+<? do_action('tutor_course/single/after/requirements'); ?>

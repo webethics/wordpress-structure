@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Quiz Attempts, I attempted to courses
  *
@@ -30,17 +30,17 @@ $user_comments = $wpdb->get_results("SELECT * FROM $wpdb->comments WHERE user_id
 				<th>View</th>
 				
 			</tr>
-			<?php foreach($user_comments as $comment){  
+			<? foreach($user_comments as $comment){  
 			$answer = $wpdb->get_var("SELECT comment_content FROM $wpdb->comments WHERE comment_parent =$comment->comment_ID AND comment_type='tutor_q_and_a'");
 			?>
 			<tr>
-				<td><?php echo get_the_title($comment->comment_post_ID); ?></td>
-				<td><?php echo $comment->comment_content; ?></td>
-				<td><?php echo $answer; ?></td>
-				<td><a href="<?php echo get_the_permalink($comment->comment_post_ID); ?>">View</a></td>
+				<td><? echo get_the_title($comment->comment_post_ID); ?></td>
+				<td><? echo $comment->comment_content; ?></td>
+				<td><? echo $answer; ?></td>
+				<td><a href="<? echo get_the_permalink($comment->comment_post_ID); ?>">View</a></td>
 				
 			</tr>
-			<?php } ?>		   
+			<? } ?>		   
 		</tbody>
 	</table>
 </div>

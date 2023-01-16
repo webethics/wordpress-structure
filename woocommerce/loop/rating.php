@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Loop Rating
  *

@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Sales History
  *
@@ -17,7 +17,7 @@
 ?>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
-<?php
+<?
  global $wpdb,$woocommerce; 
 	$user_id = get_current_user_id();
 	
@@ -43,7 +43,7 @@ $orders = $query->get_orders();
 		</tr>
 	</thead>
 	<tbody>
-	<?php
+	<?
 foreach($orders as $order_id){
 	$order = wc_get_order( $order_id );
 	$order_data = $order->get_data(); // The Order data
@@ -68,20 +68,20 @@ foreach ($order->get_items() as $item_key => $item_values):
 			if($user_id == $author_id){
 		?>
 		<tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-completed order">
-			<td class="woocommerce-orders-table__cell"><?php echo $order_id = '#'.$order_data['id']; ?></td>
-			<td class="woocommerce-orders-table__cell" width="250"><?php echo $order->get_billing_first_name().' '.$order->get_billing_last_name().'<br/>'.$order->get_billing_address_1().'<br/>';
+			<td class="woocommerce-orders-table__cell"><? echo $order_id = '#'.$order_data['id']; ?></td>
+			<td class="woocommerce-orders-table__cell" width="250"><? echo $order->get_billing_first_name().' '.$order->get_billing_last_name().'<br/>'.$order->get_billing_address_1().'<br/>';
 			if($order->get_billing_address_2()){
 			echo $order->get_billing_address_2().'<br/>';
 			}
 			echo $order->get_billing_state().'&nbsp;&nbsp;'.$order->get_billing_country().'<br/>'.$order->get_billing_postcode().'<br/>'.'<b>Email: </b>'.$order->get_billing_email().'<br/>'.'<b>Phone: </b>'.$order->get_billing_phone().'<br/>'.'<b>Payment Method: </b>'.$order_data['payment_method_title'].'<br/>'; ?></td>
-			<td class="woocommerce-orders-table__cell"><?php echo $product_name.' x '.$quantity;  ?></td>
-			<td class="woocommerce-orders-table__cell"><?php echo  $order_data['date_created']->date('Y-m-d H:i:s'); ?></td>
-			<td class="woocommerce-orders-table__cell"><?php echo $order_data['status']; ?></td>
-			<td class="woocommerce-orders-table__cell"><?php echo get_woocommerce_currency_symbol().'&nbsp;'.number_format($linetotal,2); ?></td>
+			<td class="woocommerce-orders-table__cell"><? echo $product_name.' x '.$quantity;  ?></td>
+			<td class="woocommerce-orders-table__cell"><? echo  $order_data['date_created']->date('Y-m-d H:i:s'); ?></td>
+			<td class="woocommerce-orders-table__cell"><? echo $order_data['status']; ?></td>
+			<td class="woocommerce-orders-table__cell"><? echo get_woocommerce_currency_symbol().'&nbsp;'.number_format($linetotal,2); ?></td>
 			
 		</tr>
 		
-			<?php }
+			<? }
 		
 		endforeach; }	?>
 	</tbody>

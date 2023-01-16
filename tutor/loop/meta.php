@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -95,11 +95,11 @@ $lateenroll = get_post_meta(get_the_ID(),"lateenroll",true);
 $lateenrollnumber = get_post_meta(get_the_ID(),"lateenrollnumber",true);
 ?>
 
-<p class="category-wrap">Category: <?php echo $category_name; ?> | Type: <?php echo $type_name; ?>&nbsp;</p>
-<p class="category-wrap">Grade: <?php echo $grade_name; ?></p>
-<p class="grade-wrap">Instructor Name: <?php echo $full_name; ?></p>
-<p class="keywords-wrap">Duration: <?php if(!empty($course_duration)) { echo $course_duration;} else{ echo "NA";} ?> || <strong class="<?php echo $class; ?>">Seat Available:</strong> <?php echo $seat_available; ?></p>
-<?php if($coming == "coming"){echo '<div class="elementor-widget-container">
+<p class="category-wrap">Category: <? echo $category_name; ?> | Type: <? echo $type_name; ?>&nbsp;</p>
+<p class="category-wrap">Grade: <? echo $grade_name; ?></p>
+<p class="grade-wrap">Instructor Name: <? echo $full_name; ?></p>
+<p class="keywords-wrap">Duration: <? if(!empty($course_duration)) { echo $course_duration;} else{ echo "NA";} ?> || <strong class="<? echo $class; ?>">Seat Available:</strong> <? echo $seat_available; ?></p>
+<? if($coming == "coming"){echo '<div class="elementor-widget-container">
 									<p class="category-wrap"><strong>Coming Soon!</strong></p>	
 						</div>';} else {$liveclass = get_post_meta(get_the_ID(),'_insert_meeting_zoom_meeting_id',true);
 		
@@ -189,9 +189,9 @@ $lateenrollnumber = get_post_meta(get_the_ID(),"lateenrollnumber",true);
 }
 ?>
 
-<div class="btn-wrap single-coursebtn"><a href="<?php echo get_the_permalink(); ?>" class="r_more_btn">Read more</a></div>
-<?php if($coming == "coming"){ ?>
-<div style="position:relative;" class="single-coursebtn btn-wrap tutor-course-loop-header-meta"><?php
+<div class="btn-wrap single-coursebtn"><a href="<? echo get_the_permalink(); ?>" class="r_more_btn">Read more</a></div>
+<? if($coming == "coming"){ ?>
+<div style="position:relative;" class="single-coursebtn btn-wrap tutor-course-loop-header-meta"><?
         $is_wishlisted = tutor_utils()->is_wishlisted($course_id);
         $has_wish_list = '';
         if ($is_wishlisted){
@@ -210,7 +210,7 @@ $lateenrollnumber = get_post_meta(get_the_ID(),"lateenrollnumber",true);
         }
 		echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line '.$action_class.' '.$has_wish_list.' " data-course-id="'.$course_id.'"><span>'.$text.'</span></a> </span>';
 		?></div>
-<?php } 
+<? } 
 
 $count = ""; 
 
@@ -220,11 +220,11 @@ $count = $counting;
 
 
 ?>
-<?php if($lateenroll == "yes" && $count <= $lateenrollnumber && $count > 0){ 
+<? if($lateenroll == "yes" && $count <= $lateenrollnumber && $count > 0){ 
 
 ?>
-	<div class="btn-wrap single-coursebtn"><a href="<?php echo get_the_permalink(); ?>" class="r_more_btn">Ineterested in late enrollment?</a></div>
-<?php
+	<div class="btn-wrap single-coursebtn"><a href="<? echo get_the_permalink(); ?>" class="r_more_btn">Ineterested in late enrollment?</a></div>
+<?
 }
 }
 ?>

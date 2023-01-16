@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * My Account page
  *
@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_account_navigation' ); ?>
 
 <div class="woocommerce-MyAccount-content tutor-dashboard-content">
-	<?php
+	<?
 		/**
 		 * My Account content.
 		 *

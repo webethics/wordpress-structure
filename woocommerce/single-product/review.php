@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Review Comments Template
  *
@@ -21,11 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+<li <? comment_class(); ?> id="li-comment-<? comment_ID(); ?>">
 
-	<div id="comment-<?php comment_ID(); ?>" class="comment_container">
+	<div id="comment-<? comment_ID(); ?>" class="comment_container">
 
-		<?php
+		<?
 		/**
 		 * The woocommerce_review_before hook
 		 *
@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="comment-text">
 
-			<?php
+			<?
 			/**
 			 * The woocommerce_review_before_comment_meta hook.
 			 *

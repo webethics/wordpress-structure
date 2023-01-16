@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Theme functions and definitions
  *
@@ -72,7 +72,7 @@ fbq('track', 'PageView');
 <!-- End Facebook Pixel Code -->
 
 
-	<?php
+	<?
 }
 
 ##############Added By Shalini to do custom coding ########################
@@ -84,12 +84,12 @@ function bbloomer_add_name_woo_account_registration() {
     ?>
   
     <p class="form-row form-row-wide">
-       <label for="reg_billing_first_name"><?php _e( 'First name', 'woocommerce' ); ?><span class="required">*</span></label>
-       <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" />
+       <label for="reg_billing_first_name"><? _e( 'First name', 'woocommerce' ); ?><span class="required">*</span></label>
+       <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" value="<? if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" />
    </p>
    <p class="form-row form-row-wide">
-	   <label for="reg_billing_last_name"><?php _e( 'Last name', 'woocommerce' ); ?><span class="required">*</span></label>
-	   <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" />
+	   <label for="reg_billing_last_name"><? _e( 'Last name', 'woocommerce' ); ?><span class="required">*</span></label>
+	   <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<? if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" />
 	   <input type="hidden" name="seller_register_check"  value="seller_register_check" />
    
    </p>
@@ -98,7 +98,7 @@ function bbloomer_add_name_woo_account_registration() {
   
     <div class="clear"></div>
   
-    <?php
+    <?
 }
 
 // Go to Settings > Permalinks and just push "Save Changes" button.
@@ -107,42 +107,42 @@ function bbloomer_add_name_woo_account_registration() {
 
 function wooc_extra_register_fields() {?>
 		<p class="form-row form-row-wide">
-		<label for="reg_password2"><?php _e( 'Password confirmation', 'woocommerce' ); ?> <span class="required">*</span></label>
-		<input type="password" class="input-text" name="password2" id="reg_password2" value="<?php if ( ! empty( $_POST['password2'] ) ) echo esc_attr( $_POST['password2'] ); ?>" />
+		<label for="reg_password2"><? _e( 'Password confirmation', 'woocommerce' ); ?> <span class="required">*</span></label>
+		<input type="password" class="input-text" name="password2" id="reg_password2" value="<? if ( ! empty( $_POST['password2'] ) ) echo esc_attr( $_POST['password2'] ); ?>" />
 		</p>
 		
        <p class="form-row form-row-wide">
-       <label for="reg_billing_phone"><?php _e( 'Phone', 'woocommerce' ); ?></label>
-       <input type="text" class="input-text" name="billing_phone" id="reg_billing_phone" value="<?php esc_attr_e( $_POST['billing_phone'] ); ?>" />
+       <label for="reg_billing_phone"><? _e( 'Phone', 'woocommerce' ); ?></label>
+       <input type="text" class="input-text" name="billing_phone" id="reg_billing_phone" value="<? esc_attr_e( $_POST['billing_phone'] ); ?>" />
        </p>
 	<p class="form-row form-row-wide">
-       <label for="reg_billing_address_1"><?php _e( 'Address 1', 'woocommerce' ); ?></label>
-       <input type="text" class="input-text" name="billing_address_1" id="reg_billing_phone" value="<?php esc_attr_e( $_POST['billing_address_1'] ); ?>" />
+       <label for="reg_billing_address_1"><? _e( 'Address 1', 'woocommerce' ); ?></label>
+       <input type="text" class="input-text" name="billing_address_1" id="reg_billing_phone" value="<? esc_attr_e( $_POST['billing_address_1'] ); ?>" />
        </p>
 	    <p class="form-row form-row-wide">
-       <label for="reg_billing_address_2"><?php _e( 'Address 2', 'woocommerce' ); ?></label>
-       <input type="text" class="input-text" name="billing_address_2" id="reg_billing_phone" value="<?php esc_attr_e( $_POST['billing_address_2'] ); ?>" />
+       <label for="reg_billing_address_2"><? _e( 'Address 2', 'woocommerce' ); ?></label>
+       <input type="text" class="input-text" name="billing_address_2" id="reg_billing_phone" value="<? esc_attr_e( $_POST['billing_address_2'] ); ?>" />
        </p>
 	    <p class="form-row form-row-wide">
-       <label for="reg_billing_city"><?php _e( 'City', 'woocommerce' ); ?></label>
-       <input type="text" class="input-text" name="billing_city" id="reg_billing_phone" value="<?php esc_attr_e( $_POST['billing_city'] ); ?>" />
+       <label for="reg_billing_city"><? _e( 'City', 'woocommerce' ); ?></label>
+       <input type="text" class="input-text" name="billing_city" id="reg_billing_phone" value="<? esc_attr_e( $_POST['billing_city'] ); ?>" />
        </p>
 	   <p class="form-row form-row-wide">
-       <label for="reg_billing_state"><?php _e( 'State', 'woocommerce' ); ?></label>
-       <input type="text" class="input-text" name="billing_state" id="reg_billing_phone" value="<?php esc_attr_e( $_POST['billing_state'] ); ?>" />
+       <label for="reg_billing_state"><? _e( 'State', 'woocommerce' ); ?></label>
+       <input type="text" class="input-text" name="billing_state" id="reg_billing_phone" value="<? esc_attr_e( $_POST['billing_state'] ); ?>" />
        </p>
 	   
 	   <p class="form-row form-row-wide">
-       <label for="reg_billing_country"><?php _e( 'Country', 'woocommerce' ); ?></label>
-       <input type="text" class="input-text" name="billing_country" id="reg_billing_phone" value="<?php esc_attr_e( $_POST['billing_country'] ); ?>" />
+       <label for="reg_billing_country"><? _e( 'Country', 'woocommerce' ); ?></label>
+       <input type="text" class="input-text" name="billing_country" id="reg_billing_phone" value="<? esc_attr_e( $_POST['billing_country'] ); ?>" />
        </p>
 	   
 	   <p class="form-row form-row-wide">
-       <label for="reg_billing_postcode"><?php _e( 'Postcode', 'woocommerce' ); ?></label>
-       <input type="text" class="input-text" name="billing_postcode" id="reg_billing_phone" value="<?php esc_attr_e( $_POST['billing_postcode'] ); ?>" />
+       <label for="reg_billing_postcode"><? _e( 'Postcode', 'woocommerce' ); ?></label>
+       <input type="text" class="input-text" name="billing_postcode" id="reg_billing_phone" value="<? esc_attr_e( $_POST['billing_postcode'] ); ?>" />
        </p>
        <div class="clear"></div>
-       <?php
+       <?
  }
  add_action( 'woocommerce_register_form', 'wooc_extra_register_fields' );
 
@@ -1565,9 +1565,9 @@ if (!function_exists('obox_woocommerce_product_title'))
      if ( ! $product->post->get_title ) return;
 	?>
 	<div itemprop="description">
-		<?php echo apply_filters( 'woocommerce_short_description', $product->post->get_title ) ?>
+		<? echo apply_filters( 'woocommerce_short_description', $product->post->get_title ) ?>
 	</div>
-	<?php
+	<?
      } 
 }
 function mycustomthumbsize()
@@ -1590,19 +1590,19 @@ if (!function_exists('obox_woocommerce_product_excerpt'))
 		$condition =  get_post_meta($product->get_id(),'_condition',true); 
 	 ?>
 	 <div class="boxy-inner">
-	 <div class="img-container"><a href = "<?php echo $link; ?>"><?php echo $product ? $product->get_image( $image_size ) : ''; 	?></a><?php if($condition): ?><span class="condition"><?php echo $condition; ?></span><?php endif; ?></div>
+	 <div class="img-container"><a href = "<? echo $link; ?>"><? echo $product ? $product->get_image( $image_size ) : ''; 	?></a><? if($condition): ?><span class="condition"><? echo $condition; ?></span><? endif; ?></div>
 	<div class="prd-content">
 		<div class="elementor-widget-container">
-			<h4 class="elementor-heading-title elementor-size-default"><?php echo $product->post->post_title; ?></h4>		
+			<h4 class="elementor-heading-title elementor-size-default"><? echo $product->post->post_title; ?></h4>		
 		</div>
-    <?php if ( ! $product->post->post_content ) return;
+    <? if ( ! $product->post->post_content ) return;
 	?>
 	<p class="descrition-wrap">
-		<?php 
+		<? 
 	echo	$post_content = substr(strip_tags($product->post->post_content),0,100).'...';
 	//	echo apply_filters( 'woocommerce_short_description', $post_content ) ?>
 	</p>
-		<?php $cat_ids = $product->get_category_ids();
+		<? $cat_ids = $product->get_category_ids();
  
 // if product has categories, concatenate cart item name with them
 if ( $cat_ids ) 
@@ -1630,10 +1630,10 @@ if(!empty($catsarr))
 	//get_the_term_list( $product_id, 'product_tag', $before, $sep, $after );
 
   ?>
-	<div class="btn-wrap"><a href="<?php echo $link ; ?>" class="r_more_btn">Read more</a></div>	
+	<div class="btn-wrap"><a href="<? echo $link ; ?>" class="r_more_btn">Read more</a></div>	
 	</div>
 	
-	<?php
+	<?
      } 
 }
 

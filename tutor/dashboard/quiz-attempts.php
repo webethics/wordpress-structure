@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Students Quiz Attempts Frontend
  *
@@ -15,8 +15,8 @@ $per_page = 20;
 $current_page = max( 1, tutils()->array_get('current_page', $_GET) );
 $offset = ($current_page-1)*$per_page;
 ?>
-    <h3><?php _e('Student Quizzes', 'tutor'); ?></h3>
-<?php
+    <h3><? _e('Student Quizzes', 'tutor'); ?></h3>
+<?
 $course_id = tutor_utils()->get_assigned_courses_ids_by_instructors();
 $quiz_attempts = tutor_utils()->get_quiz_attempts_by_course_ids($offset, $per_page, $course_id);
 $quiz_attempts_count = tutor_utils()->get_total_quiz_attempts_by_course_ids($course_id);
@@ -27,22 +27,22 @@ if ( $quiz_attempts_count ){
         <table id="mytable1">
 			<thead>
 			<tr>
-				<th><?php _e('Title (Quiz & Course)', 'tutor'); ?></th>
-				<th><?php _e('Students', 'tutor'); ?></th>
-				<th><?php _e('Count', 'tutor'); ?></th>
-				<th><?php _e('Earned Mark', 'tutor'); ?></th>
+				<th><? _e('Title (Quiz & Course)', 'tutor'); ?></th>
+				<th><? _e('Students', 'tutor'); ?></th>
+				<th><? _e('Count', 'tutor'); ?></th>
+				<th><? _e('Earned Mark', 'tutor'); ?></th>
 			</tr>
 			</thead>
 			<tbody>
-			<?php
+			<?
 			foreach ( $quiz_attempts as $attempt){
 				$attempt_action = "";
 				$earned_percentage = $attempt->earned_marks > 0 ? ( number_format(($attempt->earned_marks * 100) / $attempt->total_marks)) : 0;
 				$passing_grade = tutor_utils()->get_quiz_option($attempt->quiz_id, 'passing_grade', 0);
 				?>
-                <tr class="<?php echo esc_attr($earned_percentage >= $passing_grade ? 'pass' : 'fail') ?>">
-                    <td title="<?php echo __('Quiz', 'tutor'); ?>">
-						<?php
+                <tr class="<? echo esc_attr($earned_percentage >= $passing_grade ? 'pass' : 'fail') ?>">
+                    <td title="<? echo __('Quiz', 'tutor'); ?>">
+						<?
                         if ($attempt->attempt_status === 'review_required'){
                             echo '<span class="result-review-required">' . __('Under Review', 'tutor') . '</span>';
                         }else{
@@ -55,23 +55,23 @@ if ( $quiz_attempts_count ){
 						}
 						?>
                         <div>
-							<?php echo "#".$attempt->attempt_id; ?>: <?php echo $attempt->post_title; ?>
+							<? echo "#".$attempt->attempt_id; ?>: <? echo $attempt->post_title; ?>
                         </div>
                         <div>
-                            <?php //echo __('Course:', 'tutor'); ?><!-- <a href="--><?php //echo get_the_permalink($attempt->course_id); ?><!--" target="_blank">--><?php //echo get_the_title($attempt->course_id); ?><!--</a>-->
-							<?php echo __('Course:', 'tutor'); ?> <?php echo get_the_title($attempt->course_id); ?>
+                            <? //echo __('Course:', 'tutor'); ?><!-- <a href="--><? //echo get_the_permalink($attempt->course_id); ?><!--" target="_blank">--><? //echo get_the_title($attempt->course_id); ?><!--</a>-->
+							<? echo __('Course:', 'tutor'); ?> <? echo get_the_title($attempt->course_id); ?>
                         </div>
                     </td>
-                    <td class="td-course-title" title="<?php _e('Course Title', 'tutor'); ?>">
-						<?php
+                    <td class="td-course-title" title="<? _e('Course Title', 'tutor'); ?>">
+						<?
 						$quiz_title = "<div><strong>{$attempt->display_name}</strong></div>";
 						$quiz_title .= "<div>{$attempt->user_email}</div>";
 						echo $quiz_title;
 						?>
                     </td>
-                    <td title="<?php echo __('Total Questions', 'tutor'); ?>"><?php echo $attempt->total_questions; ?></td>
-                    <td title="<?php echo __('Earned Mark', 'tutor'); ?>" style="white-space: nowrap">
-						<?php
+                    <td title="<? echo __('Total Questions', 'tutor'); ?>"><? echo $attempt->total_questions; ?></td>
+                    <td title="<? echo __('Earned Mark', 'tutor'); ?>" style="white-space: nowrap">
+						<?
 
 						$pass_marks = 0;
                         if ($passing_grade > 0){
@@ -90,16 +90,16 @@ if ( $quiz_attempts_count ){
 						echo sprintf(__('%1$s out of %2$s <br> Pass Mark: %3$s <br> Earned total: %4$s%%','tutor'), $attempt->earned_marks, $attempt->total_marks, $passing_grade.'%' ,$earned_percentage );
 						?>
                     </td>
-                    <!--td><a href="<?php echo $attempt_action; ?>"><i class="tutor-icon-angle-right"></i></a></td-->
+                    <!--td><a href="<? echo $attempt_action; ?>"><i class="tutor-icon-angle-right"></i></a></td-->
                 </tr>
-				<?php
+				<?
 			}
 			?>
 			</tbody>
         </table>
     </div>
     <div class="tutor-pagination">
-		<?php
+		<?
 		echo paginate_links( array(
 			'format' => '?current_page=%#%',
 			'current' => $current_page,
@@ -107,11 +107,11 @@ if ( $quiz_attempts_count ){
 		) );
 		?>
     </div>
-<?php } else {
+<? } else {
 	_e('You have not attempted for any quiz yet.', 'tutor');
 } ?>
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/datatables.min.js"></script>
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/datatables.min.css">
+<script src="<? echo get_stylesheet_directory_uri(); ?>/js/datatables.min.js"></script>
+<link rel="stylesheet" href="<? echo get_stylesheet_directory_uri(); ?>/css/datatables.min.css">
 <script>
 
 	jQuery('#mytable1').DataTable();

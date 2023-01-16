@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Single Product Price
  *
@@ -22,6 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 
 ?>
-<!--p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); ?></p-->
+<!--p class="<? echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>"><? echo $product->get_price_html(); ?></p-->
 
-<div class="price-wrap">Price: <?php echo $product->get_price_html(); ?></div>
+<div class="price-wrap">Price: <? echo $product->get_price_html(); ?></div>

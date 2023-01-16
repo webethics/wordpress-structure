@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Simple product add to cart
  *
@@ -27,12 +27,12 @@ echo wc_get_stock_html( $product ); // WPCS: XSS ok.
 
 if ( $product->is_in_stock() ) : ?>
 
-	<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
+	<? do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-	<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
-		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+	<form class="cart" action="<? echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
+		<? do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-		<?php
+		<?
 		do_action( 'woocommerce_before_add_to_cart_quantity' );
 
 		woocommerce_quantity_input(
@@ -46,21 +46,21 @@ if ( $product->is_in_stock() ) : ?>
 		do_action( 'woocommerce_after_add_to_cart_quantity' );
 		?>
 <div class="btn-wrap">
-		<?php if( has_term(20, 'product_cat' ) ) { ?>
-			<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_ondemand_add_to_cart_button buy-btn button alt">Buy All</button>
-		<?php } else { ?>
-		<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button buy-btn button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
-		<?php } ?>
-		<?php 
+		<? if( has_term(20, 'product_cat' ) ) { ?>
+			<button type="submit" name="add-to-cart" value="<? echo esc_attr( $product->get_id() ); ?>" class="single_ondemand_add_to_cart_button buy-btn button alt">Buy All</button>
+		<? } else { ?>
+		<button type="submit" name="add-to-cart" value="<? echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button buy-btn button alt"><? echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+		<? } ?>
+		<? 
 		$downloadable = get_post_meta( $product->get_id(), '_downloadable', true);
 		if($downloadable != "yes"){ 
 			echo '<span style="color:red;margin-left:10px;font-style:14px;">This price includes shipping fees.</span>'; 
 		} ?>
 		</div>
 
-		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+		<? do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	</form>
 
-	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
+	<? do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 
-<?php endif; ?></div>
+<? endif; ?></div>

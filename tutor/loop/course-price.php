@@ -1,4 +1,4 @@
-<?php
+<?
 
 /**
  * Course loop price
@@ -13,7 +13,7 @@
 ?>
 
 
-    <?php
+    <?
     $course_id = get_the_ID();
     $enroll_btn = '<div  class="tutor-loop-cart-btn-wrap"><a href="'. get_the_permalink(). '">'.__('Get Enrolled', 'tutor'). '</a></div>';
     $price_html = '<div class="price-wrap"> Price:'.__('Free', 'tutor').$enroll_btn. '</div>';

@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * The template to display the reviewers star rating in reviews
  *

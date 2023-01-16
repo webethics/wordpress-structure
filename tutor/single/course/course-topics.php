@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Template for displaying single course
  *
@@ -21,16 +21,16 @@ $is_enrolled = tutor_utils()->is_enrolled($course_id);
 ?>
 
 
-<?php do_action('tutor_course/single/before/topics'); ?>
+<? do_action('tutor_course/single/before/topics'); ?>
 
-<?php if($topics->have_posts()) { ?>
+<? if($topics->have_posts()) { ?>
     <div class="tutor-single-course-segment  tutor-course-topics-wrap">
         <div class="tutor-course-topics-header">
             <div class="tutor-course-topics-header-left">
-                <h4 class="tutor-segment-title"><?php _e('Topics for this course', 'tutor'); ?></h4>
+                <h4 class="tutor-segment-title"><? _e('Topics for this course', 'tutor'); ?></h4>
             </div>
             <div class="tutor-course-topics-header-right">
-				<?php
+				<?
 				$tutor_lesson_count = tutor_utils()->get_lesson_count_by_course($course_id);
 				$tutor_course_duration = get_tutor_course_duration_context($course_id);
 
@@ -46,7 +46,7 @@ $is_enrolled = tutor_utils()->is_enrolled($course_id);
             </div>
         </div>
         <div class="tutor-course-topics-contents">
-			<?php
+			<?
 
 			$index = 0;
 
@@ -55,15 +55,15 @@ $is_enrolled = tutor_utils()->is_enrolled($course_id);
 					$index++;
 					?>
 
-                    <div class="tutor-course-topic <?php if($index == 1) echo "tutor-active"; ?>">
+                    <div class="tutor-course-topic <? if($index == 1) echo "tutor-active"; ?>">
                         <div class="tutor-course-title">
-                            <h4> <i class="tutor-icon-plus"></i> <?php the_title(); ?></h4>
+                            <h4> <i class="tutor-icon-plus"></i> <? the_title(); ?></h4>
                         </div>
 
 
-                        <div class="tutor-course-lessons" style="<?php echo $index > 1 ? 'display: none' : ''; ?>">
+                        <div class="tutor-course-lessons" style="<? echo $index > 1 ? 'display: none' : ''; ?>">
 
-							<?php
+							<?
 							$lessons = tutor_utils()->get_course_contents_by_topic(get_the_ID(), -1);
 
 							if ($lessons->have_posts()){
@@ -89,7 +89,7 @@ $is_enrolled = tutor_utils()->is_enrolled($course_id);
 
                                     <div class="tutor-course-lesson">
                                         <h5>
-											<?php
+											<?
 											
 											$lesson_title = '';
 											if (has_post_thumbnail()){
@@ -115,21 +115,21 @@ $is_enrolled = tutor_utils()->is_enrolled($course_id);
                                         </h5>
                                     </div>
 
-									<?php
+									<?
 								}
 								$lessons->reset_postdata();
 							}
 							?>
                         </div>
                     </div>
-					<?php
+					<?
 				}
 				$topics->reset_postdata();
 			}
 			?>
         </div>
     </div>
-<?php } ?>
+<? } ?>
 
 
-<?php do_action('tutor_course/single/after/topics'); ?>
+<? do_action('tutor_course/single/after/topics'); ?>

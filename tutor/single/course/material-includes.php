@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * Template for displaying course Material Includes assets
  *
@@ -26,7 +26,7 @@ if (is_array($materials) && count($materials)){
 	<div class="tutor-single-course-segment  tutor-course-material-includes-wrap">
 		<div class="tutor-course-target-audience-content">
 			<ul class="tutor-course-target-audience-items tutor-custom-list-style">
-				<?php
+				<?
 				foreach ($materials as $material){
 					echo "<li>{$material}</li>";
 				}
@@ -35,7 +35,7 @@ if (is_array($materials) && count($materials)){
 		</div>
 	</div>
 
-<?php } ?>
+<? } ?>
 
-<?php do_action('tutor_course/single/after/material_includes'); ?>
+<? do_action('tutor_course/single/after/material_includes'); ?>
 

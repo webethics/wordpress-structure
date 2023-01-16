@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * Template Name: Store Page
 *
@@ -38,7 +38,7 @@ $user_posts = get_posts($args);
                   <div class="col-wrap-full">
 		
 		
-		<?php
+		<?
         if ( $user_posts ) {
            foreach($user_posts as $post):
 			global $product;
@@ -53,14 +53,14 @@ $user_posts = get_posts($args);
 			?>
 			        
 					<div class="boxy-inner">
-						<div class="img-container"> <a href="<?php echo esc_url( get_permalink($post->ID) ); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'shop_catalog');?></a></div>
+						<div class="img-container"> <a href="<? echo esc_url( get_permalink($post->ID) ); ?>"><? echo get_the_post_thumbnail( $post->ID, 'shop_catalog');?></a></div>
 						<div class="prd-content">
 						<div class="elementor-widget-container">
-									<h4 class="elementor-heading-title elementor-size-default"><?php echo $post->post_title; ?></h4>		
+									<h4 class="elementor-heading-title elementor-size-default"><? echo $post->post_title; ?></h4>		
 						</div>
 						<p class="descrition-wrap">
-							<?php echo  substr(strip_tags($post->post_content), 0, 200		); ?></p>
-							<?php 
+							<? echo  substr(strip_tags($post->post_content), 0, 200		); ?></p>
+							<? 
 							if($post->post_type == "product"){
 							  	$term_obj_list2 = get_the_terms(  $post->ID, 'product_cat' );
 								$terms_string2 = join(', ', wp_list_pluck($term_obj_list2, 'name'));
@@ -85,11 +85,11 @@ $user_posts = get_posts($args);
 							
 							?>
 				
-						<div class="btn-wrap"><a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="r_more_btn">Read more</a></div>
+						<div class="btn-wrap"><a href="<? echo esc_url( get_permalink($post->ID) ); ?>" class="r_more_btn">Read more</a></div>
 						</div>
 						<div class="prd-right">
 							<div class="prd-right-inner">	
-							<div class="price-wrap">Price: $<?php echo $reg_price; ?></div>
+							<div class="price-wrap">Price: $<? echo $reg_price; ?></div>
 							<div class="rating-wrap">Rating:<br>★★★★★ 4.9 | 47&nbsp; Reviews</div>
 							</div>
 						</div>
@@ -99,7 +99,7 @@ $user_posts = get_posts($args);
 
 
                  
-			<?php
+			<?
                // wc_get_template_part( 'content', 'product' );
            endforeach;
         } else {
@@ -108,7 +108,7 @@ $user_posts = get_posts($args);
         wp_reset_postdata();
     ?>
 <nav class="pagination">
-     <?php
+     <?
      $big = 999999999;
      echo paginate_links( array(
           'base' => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
@@ -127,4 +127,4 @@ $user_posts = get_posts($args);
 			
 
 
-<?php get_footer(); ?>
+<? get_footer(); ?>

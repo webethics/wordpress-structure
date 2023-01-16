@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
@@ -106,9 +106,9 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 ?>
 
 
-<?php do_action('tutor/dashboard_course_builder_before'); ?>
-    <form class="<?php if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){ echo "ondemand"; } ?>" action="/my-account/create-course/" id="tutor-frontend-course-builder" method="post" enctype="multipart/form-data">
-		<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+<? do_action('tutor/dashboard_course_builder_before'); ?>
+    <form class="<? if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){ echo "ondemand"; } ?>" action="/my-account/create-course/" id="tutor-frontend-course-builder" method="post" enctype="multipart/form-data">
+		<? wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
 		
         <header class="tutor-dashboard-builder-header">
             <div class="tutor-container tutor-fluid">
@@ -116,7 +116,7 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
                     <div class="tutor-col-auto">
                         <div class="tutor-dashboard-builder-header-left">
                             <div class="tutor-dashboard-builder-logo">
-								<?php $tutor_course_builder_logo_src = apply_filters('tutor_course_builder_logo_src', tutor()->url . 'assets/images/tutor-logo.png'); ?>
+								<? $tutor_course_builder_logo_src = apply_filters('tutor_course_builder_logo_src', tutor()->url . 'assets/images/tutor-logo.png'); ?>
                                 <img style="max-width:60%;" src="/wp-content/uploads/2020/05/Logo-MyHomeSchoolFamily.png" alt="">
                             </div>
                             
@@ -125,40 +125,40 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
                     <div class="tutor-col-auto">
                         <div class="tutor-dashboard-builder-header-right tutor-form-field tutor-course-builder-btn-group">
                             
-							<?php
+							<?
 							if ($can_publish_course){
 								if($status == "approved"){
 								?>
-                                <button class="tutor-button tutor-success" type="submit" name="course_submit_btn" value="publish_course"><?php if($_GET['relationclass'] == "child"){_e('Upload Video', 'tutor');} elseif( $relationtext == "child"){_e('Save', 'tutor');}else{_e('Publish Course', 'tutor');} ?></button>
-								<?php
+                                <button class="tutor-button tutor-success" type="submit" name="course_submit_btn" value="publish_course"><? if($_GET['relationclass'] == "child"){_e('Upload Video', 'tutor');} elseif( $relationtext == "child"){_e('Save', 'tutor');}else{_e('Publish Course', 'tutor');} ?></button>
+								<?
 								}
 							}else{
 								?>
-                                <button class="tutor-button tutor-success" type="submit" name="course_submit_btn" value="submit_for_review"><?php _e('Submit for Review', 'tutor'); ?></button>
-								<?php
+                                <button class="tutor-button tutor-success" type="submit" name="course_submit_btn" value="submit_for_review"><? _e('Submit for Review', 'tutor'); ?></button>
+								<?
 							}
 							
                             if(isset($_GET['duplicate_id'])){ ?>
-								<a class="tutor-button" href="<?php echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <?php _e('Discard Class', "tutor") ?></a>
-							<?php } else { ?>
-							<?php if(isset($_GET['course_ID'])){ ?>
-							<?php if($relationtext == "child"){ ?>
-								<a class="tutor-button" href="/my-account/create-course/?type=on-demand-classes&relationclass=child"> <?php _e('Add Another Teaching Video', "tutor") ?></a>
-							<?php } elseif($relationtext == "parent"){?>
-								<a class="tutor-button" href="/my-account/create-course/?type=on-demand-classes&relationclass=parent"> <?php _e('Add New OnDemand Class', "tutor") ?></a>
-							<?php }else{?>
-								 <a class="tutor-button" href="/my-account/create-course/<?php if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){echo "?type=on-demand-classes";}?>"> <?php _e('Add New Class', "tutor") ?></a>
-								 <a class="tutor-button tutor-success" href="/my-account/create-course?duplicate_id=<?php echo $course_id; ?><?php if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){echo "&type=on-demand-classes";}?>">Duplicate Class</a>
-							<?php } ?>
+								<a class="tutor-button" href="<? echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <? _e('Discard Class', "tutor") ?></a>
+							<? } else { ?>
+							<? if(isset($_GET['course_ID'])){ ?>
+							<? if($relationtext == "child"){ ?>
+								<a class="tutor-button" href="/my-account/create-course/?type=on-demand-classes&relationclass=child"> <? _e('Add Another Teaching Video', "tutor") ?></a>
+							<? } elseif($relationtext == "parent"){?>
+								<a class="tutor-button" href="/my-account/create-course/?type=on-demand-classes&relationclass=parent"> <? _e('Add New OnDemand Class', "tutor") ?></a>
+							<? }else{?>
+								 <a class="tutor-button" href="/my-account/create-course/<? if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){echo "?type=on-demand-classes";}?>"> <? _e('Add New Class', "tutor") ?></a>
+								 <a class="tutor-button tutor-success" href="/my-account/create-course?duplicate_id=<? echo $course_id; ?><? if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){echo "&type=on-demand-classes";}?>">Duplicate Class</a>
+							<? } ?>
 							 
-							<?php } ?>
-							<?php if($_GET['relationclass'] == "child" || $relationtext == "child"){}else{ ?>
-							 <button type="submit" class="tutor-button" name="course_submit_btn" value="save_course_as_draft"><?php _e('Save as draft', 'tutor'); ?></button>
-							<?php } ?>
-							 <a class="tutor-button" href="<?php echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <?php _e('Cancel', "tutor") ?></a>
+							<? } ?>
+							<? if($_GET['relationclass'] == "child" || $relationtext == "child"){}else{ ?>
+							 <button type="submit" class="tutor-button" name="course_submit_btn" value="save_course_as_draft"><? _e('Save as draft', 'tutor'); ?></button>
+							<? } ?>
+							 <a class="tutor-button" href="<? echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <? _e('Cancel', "tutor") ?></a>
 							
-							 <a class="tutor-button" href="<?php echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <?php _e('Back', "tutor") ?></a>
-							 <?php } ?>
+							 <a class="tutor-button" href="<? echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <? _e('Back', "tutor") ?></a>
+							 <? } ?>
                         </div>
                     </div>
                 </div>
@@ -169,29 +169,29 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
                 <div class="tutor-row">
                     <div class="tutor-col-8">
                         <input type="hidden" value="tutor_add_course_builder" name="tutor_action"/>
-                        <input type="hidden" name="course_ID" id="course_ID" value="<?php echo get_the_ID(); ?>">
-                        <input type="hidden" name="post_ID" id="post_ID" value="<?php echo get_the_ID(); ?>">
+                        <input type="hidden" name="course_ID" id="course_ID" value="<? echo get_the_ID(); ?>">
+                        <input type="hidden" name="post_ID" id="post_ID" value="<? echo get_the_ID(); ?>">
                         <div class="tutor-dashboard-course-builder-wrap">
-							<?php do_action('tutor/dashboard_course_builder_form_field_before'); ?>
+							<? do_action('tutor/dashboard_course_builder_form_field_before'); ?>
 							
 							
                             <div class="tutor-course-builder-section tutor-course-builder-info">
                                 <div class="tutor-course-builder-section-title">
-                                    <h3><i class="tutor-icon-down"></i><span><?php esc_html_e('Class Info', 'tutor'); ?></span></h3>
+                                    <h3><i class="tutor-icon-down"></i><span><? esc_html_e('Class Info', 'tutor'); ?></span></h3>
                                 </div> <!--.tutor-course-builder-section-title-->
 								<div class="tutor-frontend-builder-item-scope tutor-form-field-course-type">
                                         <div class="tutor-form-group">
                                             <label class="tutor-builder-item-heading">
-												<?php _e('Choose Class Type', 'tutor'); ?>
+												<? _e('Choose Class Type', 'tutor'); ?>
 												<span class="required">*</span>
                                             </label>
                                             <div class="tutor-form-field-course-categories">
 											<ul>
-												<?php foreach( $type as $term ) { ?>
-												<li class="<?php echo $term->slug; ?>"> 
-												<input required  <?php if($_GET['type'] == $term->slug){echo "checked";} foreach($type_list as $val){ if($val->term_id == $term->term_id ){ echo "checked class=''";}} ?> type='radio' name='courseetype' value="<?php echo $term->slug; ?>" /> <?php echo $term->name; ?>
+												<? foreach( $type as $term ) { ?>
+												<li class="<? echo $term->slug; ?>"> 
+												<input required  <? if($_GET['type'] == $term->slug){echo "checked";} foreach($type_list as $val){ if($val->term_id == $term->term_id ){ echo "checked class=''";}} ?> type='radio' name='courseetype' value="<? echo $term->slug; ?>" /> <? echo $term->name; ?>
 												</li>
-												<?php } ?>
+												<? } ?>
 
 											</ul>
 											<span class="requiredblue">Class: Allows multiple learners in a “classroom” setting.<br>Private Tutor Session: One on one session to help a learner in a specific area. </span>
@@ -202,7 +202,7 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
                                     <div class="tutor-frontend-builder-item-scope">
                                         <div class="tutor-form-group">
                                             <label class="tutor-builder-item-heading">
-												<?php if($_GET['relationclass'] == "child" || $relationtext == "child"){ 
+												<? if($_GET['relationclass'] == "child" || $relationtext == "child"){ 
 												_e('Lesson Title', 'tutor');  
 												}else{
 													_e('Class Title', 'tutor'); 
@@ -210,23 +210,23 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 												?>
 												<span class="required">*</span>
                                             </label>
-                                            <input id="title" required type="text" name="title" value="<?php if($_title != ""){echo $_title;} else{if(get_the_title() != ""){echo get_the_title();}} ?>" placeholder="<?php if($_GET['relationclass'] == "child" || $relationtext == "child"){echo 'Lesson Title';}else{echo "Class Title";}?>">
-											<span class="requiredblue"><?php if($_GET['relationclass'] == "child" || $relationtext == "child"){ echo "This is the title for a specific teaching video which will be stored in your library. Be specific when naming these to avoid confusion.";}else{echo "Create a catchy title! The title is the main thing that parents and students will read when choosing classes!";}?></span>
+                                            <input id="title" required type="text" name="title" value="<? if($_title != ""){echo $_title;} else{if(get_the_title() != ""){echo get_the_title();}} ?>" placeholder="<? if($_GET['relationclass'] == "child" || $relationtext == "child"){echo 'Lesson Title';}else{echo "Class Title";}?>">
+											<span class="requiredblue"><? if($_GET['relationclass'] == "child" || $relationtext == "child"){ echo "This is the title for a specific teaching video which will be stored in your library. Be specific when naming these to avoid confusion.";}else{echo "Create a catchy title! The title is the main thing that parents and students will read when choosing classes!";}?></span>
                                         </div>
                                     </div> <!--.tutor-frontend-builder-item-scope-->
-									<?php if($_GET['relationclass'] == "child" || get_post_meta(get_the_ID(),'relationclass',true) == "child"){ }else{?>
+									<? if($_GET['relationclass'] == "child" || get_post_meta(get_the_ID(),'relationclass',true) == "child"){ }else{?>
 									<div class="tutor-frontend-builder-item-scope">
                                         <div class="tutor-form-group">
                                             
-                                            <input type="checkbox" value="bibical" name="bibical" <?php if(get_post_meta(get_the_ID(),'_bibical_data',true) != ""){echo "checked"; } ?>> This Class is specifically taught with a biblical worldview.
+                                            <input type="checkbox" value="bibical" name="bibical" <? if(get_post_meta(get_the_ID(),'_bibical_data',true) != ""){echo "checked"; } ?>> This Class is specifically taught with a biblical worldview.
                                         </div>
                                     </div>
                                     <div class="tutor-frontend-builder-item-scope">
                                         <div class="tutor-form-group">
-                                            <label> <?php _e('Description', 'tutor'); ?>
+                                            <label> <? _e('Description', 'tutor'); ?>
 											<span class="required">*</span>
 											</label>
-											<?php
+											<?
 											$editor_settings = array(
 												'media_buttons' => false,
 												'quicktags'     => false,
@@ -244,16 +244,16 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
                                         </div>
                                     </div>  <!--.tutor-frontend-builder-item-scope-->
 
-                                    <?php do_action('tutor/frontend_course_edit/after/description', $post) ?>
+                                    <? do_action('tutor/frontend_course_edit/after/description', $post) ?>
 
                                     <div class="tutor-frontend-builder-item-scope">
                                         <div class="tutor-form-group">
                                             <label>
-												<?php _e('Choose a category', 'tutor'); ?>
+												<? _e('Choose a category', 'tutor'); ?>
 												<span class="required">*</span>
                                             </label>
                                             <div class="tutor-form-field-course-categories">
-												<?php //echo tutor_course_categories_checkbox($course_id);
+												<? //echo tutor_course_categories_checkbox($course_id);
 												echo tutor_course_categories_dropdown($course_id, array('classes' => 'tutor_select2'));
 												?>
                                             </div>
@@ -263,25 +263,25 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 									<div class="tutor-frontend-builder-item-scope">
                                         <div class="tutor-form-group">
                                             <label>
-												<?php _e('Choose a Grade Level', 'tutor'); ?>
+												<? _e('Choose a Grade Level', 'tutor'); ?>
 												<span class="required">*</span>
                                             </label>
                                             <div class="tutor-form-field-course-categories">
 											<ul>
-												<?php foreach( $tags as $term ) { ?>
+												<? foreach( $tags as $term ) { ?>
 												<li>
-												<input <?php foreach($term_list as $val){ if($val->slug == $term->slug ){ echo "checked";}} ?> type='checkbox' name='course-tag[]' value="<?php echo $term->slug; ?>" /> <?php echo $term->name; ?>
+												<input <? foreach($term_list as $val){ if($val->slug == $term->slug ){ echo "checked";}} ?> type='checkbox' name='course-tag[]' value="<? echo $term->slug; ?>" /> <? echo $term->name; ?>
 												</li>
-												<?php } ?>
+												<? } ?>
 											</ul>
                                             </div>
-											<?php if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){ } else{?>
+											<? if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){ } else{?>
 											<span class="requiredblue">You may select multiple grades, however; please be mindful of the grade levels allowed for students who will be enrolled in your class. My Home School Family does not recommend having more than 3 grade levels in one class for the experience of the learners involved.</span>
-											<?php } ?>
+											<? } ?>
                                         </div>
                                     </div>
-									<?php } ?>
-									<?php
+									<? } ?>
+									<?
 									$monetize_by = tutils()->get_option('monetize_by');
 									if ($monetize_by === 'wc' || $monetize_by === 'edd'){
 										$course_price = tutor_utils()->get_raw_course_price(get_the_ID());
@@ -289,19 +289,19 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 
 										$_tutor_course_price_type = tutils()->price_type();
 										?>
-                                        <div  <?php if($_GET['relationclass'] == "parent" || get_post_meta(get_the_ID(),'relationclass',true) == "parent"){ echo "style='display:none;'"; }?> class="tutor-frontend-builder-item-scope tutor-frontend-builder-course-price">
+                                        <div  <? if($_GET['relationclass'] == "parent" || get_post_meta(get_the_ID(),'relationclass',true) == "parent"){ echo "style='display:none;'"; }?> class="tutor-frontend-builder-item-scope tutor-frontend-builder-course-price">
                                             <label class="tutor-builder-item-heading">
-												<?php if($_GET['relationclass'] == "child" || $relationtext == "child"){ _e('Individual Video Price', 'tutor'); }else{_e('Class Price', 'tutor');} ?>
+												<? if($_GET['relationclass'] == "child" || $relationtext == "child"){ _e('Individual Video Price', 'tutor'); }else{_e('Class Price', 'tutor');} ?>
 												<span class="required">*(Class fee can not be less than $5.00)</span>
                                             </label>
                                             <div class="tutor-row tutor-align-items-center">
                                                 <div class="tutor-col-auto">
                                                     <label for="tutor_course_price_type_pro" class="tutor-styled-radio">
-                                                        <input id="tutor_course_price_type_pro" type="radio" name="tutor_course_price_type" value="paid" <?php $_tutor_course_price_type ? checked($_tutor_course_price_type, 'paid') : checked('true', 'true'); ?> > 
+                                                        <input id="tutor_course_price_type_pro" type="radio" name="tutor_course_price_type" value="paid" <? $_tutor_course_price_type ? checked($_tutor_course_price_type, 'paid') : checked('true', 'true'); ?> > 
                                                         <span></span>
                                                         <div class="tutor-form-group">
-                                                            <span class="tutor-input-prepand"><?php echo $currency_symbol; ?></span>
-															<?php 
+                                                            <span class="tutor-input-prepand"><? echo $currency_symbol; ?></span>
+															<? 
 															if($_GET['relationclass'] == "parent" || get_post_meta(get_the_ID(),'relationclass',true) == "parent"){
 																$price  = 1;
 																$minprice = 1;
@@ -311,35 +311,35 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 																$minprice = 5;
 															}
 															?>
-                                                            <input min=<?php echo $minprice; ?> type="number" name="course_price" value="<?php echo $price; ?>" placeholder="<?php _e('Set course price', 'tutor'); ?>">
+                                                            <input min=<? echo $minprice; ?> type="number" name="course_price" value="<? echo $price; ?>" placeholder="<? _e('Set course price', 'tutor'); ?>">
                                                         </div>
                                                     </label>
                                                 </div>
                                                 <!--div class="tutor-col-auto">
                                                     <label class="tutor-styled-radio">
-                                                        <input type="radio" name="tutor_course_price_type" value="free"  <?php checked($_tutor_course_price_type, 'free'); ?> >
-                                                        <span><?php _e('Free', "tutor") ?></span>
+                                                        <input type="radio" name="tutor_course_price_type" value="free"  <? checked($_tutor_course_price_type, 'free'); ?> >
+                                                        <span><? _e('Free', "tutor") ?></span>
                                                     </label>
                                                 </div-->
 											</div>
-											<?php if($_GET['relationclass'] == "parent" || get_post_meta(get_the_ID(),'relationclass',true) == "parent"){ ?>
+											<? if($_GET['relationclass'] == "parent" || get_post_meta(get_the_ID(),'relationclass',true) == "parent"){ ?>
 												<span class="requiredblue">You will attach the pricing for your class to each class video that you create. For example, if you wish to charge $100 dollars for your total course, and there are 10 class videos, you will add the $10 charge when you create each class video.</span>
-											<?php }elseif($_GET['relationclass'] == "child" || get_post_meta(get_the_ID(),'relationclass',true) == "child"){ ?>
+											<? }elseif($_GET['relationclass'] == "child" || get_post_meta(get_the_ID(),'relationclass',true) == "child"){ ?>
 												<span class="requiredblue">Each video added to a class will calculate a total sum for the course. </span>
-											<?php }else{ ?>
+											<? }else{ ?>
 											<span class="requiredblue">All classes must have a fee charged for the learner. While we do allow a minimum fee of $3.00, we recommend charging anywhere from $5-$15 per hour depending on whether the class is a core class or an elective.</span>
-											<?php } ?>
+											<? } ?>
 												
                                             
                                         </div> <!--.tutor-frontend-builder-item-scope-->
-									<?php } ?>
-									<?php if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){ 
+									<? } ?>
+									<? if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){ 
 										
 									?>
-										<div style="display:none;"><input type="radio" <?php if($_GET['relationclass'] == "parent" || $relationtext == "parent"){echo "checked";} ?> name="relationclass" value="parent">Parent
-										<input type="radio" name="relationclass" <?php if($_GET['relationclass'] == "child" || $relationtext == "child"){echo "checked";} ?> value="child">Child</div>
-									<?php }else{?>
-									<?php if($host_id == "" ){
+										<div style="display:none;"><input type="radio" <? if($_GET['relationclass'] == "parent" || $relationtext == "parent"){echo "checked";} ?> name="relationclass" value="parent">Parent
+										<input type="radio" name="relationclass" <? if($_GET['relationclass'] == "child" || $relationtext == "child"){echo "checked";} ?> value="child">Child</div>
+									<? }else{?>
+									<? if($host_id == "" ){
 										echo "<h5 class='error'>To add Live classes Zoom Account is not Activated! Please <a target='_blank' href='/my-account/zoom_classes/'>click here</a> to activate your account!</h5>";
 									}
 									elseif( $host_status == "pending"){
@@ -348,13 +348,13 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 									else{ ?>
 											<div class="tutor-option-field-row">
 												<div class="tutor-option-field-label">
-													<label for=""><?php _e('Live Class duration', 'tutor'); ?>
+													<label for=""><? _e('Live Class duration', 'tutor'); ?>
 													<span class="required">*</span>
 													</label>
 													
 												</div>
 												<div style="margin-bottom:15px;" class="tutor-form-field-course-categories">
-													<div class="tutor-form-group"><input <?php if(get_post_meta(get_the_ID(),"comingsoon",true)== "coming") {echo "checked";} ?> name="comingsoon" type="checkbox" value="coming"> <strong>Coming Soon Class</strong> </div>
+													<div class="tutor-form-group"><input <? if(get_post_meta(get_the_ID(),"comingsoon",true)== "coming") {echo "checked";} ?> name="comingsoon" type="checkbox" value="coming"> <strong>Coming Soon Class</strong> </div>
 													</div>
 												<div class="tutor-option-field">
 													<div class="tutor-option-gorup-fields-wrap">
@@ -369,9 +369,9 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 											
 											<div class="tutor-frontend-builder-item-scope">
 												<div class="tutor-form-group">
-													<input type="hidden" name="userId" value="<?php echo $host_id; ?>">
+													<input type="hidden" name="userId" value="<? echo $host_id; ?>">
 													<label>
-														<?php _e('Live Class date (Add multiple dates for specific class!)', 'tutor'); ?>
+														<? _e('Live Class date (Add multiple dates for specific class!)', 'tutor'); ?>
 														<span class="required">*</span>
 														<!--div style="margin:10px 0px;" class="required">*IMPORTANT* Only select ONE calendar date if you plan to save as a draft or if you know you will need to make alternations to your course. Once you are finished and ready to FULLY publish, you can select all of your calendar dates.</div-->
 													</label>
@@ -381,13 +381,13 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 															Each dates is linked with zoom meeting. Zoom allows for 100 meetings to be scheduled per instrcutor per 24 hours. (for example, a 32 week class uses 32 meetings. If you edit that class, that is now 64 meetings and so on.)<br><br>
 
 															Choose only 1 calendar date until you are ready to publish so that you do not exceed you 100. If you do, the dates will not save when hit publish. If this happens, simply wait 24 hours and you can then add the dates and publish. You do not need to re-create the class.</span>
-														<?php //if ( get_post_status (get_the_ID()) != 'publish' ) { ?>
+														<? //if ( get_post_status (get_the_ID()) != 'publish' ) { ?>
 														<div id="mdp-demo"></div>
-														<?php //} ?>
-														<input  required type="text" name="start_datee" id="altField" value="<?php if($start_date !=""){echo $start_date; }?>">
-														<input type="hidden" name="meetingid" value="<?php if($meeting_id != ""){
+														<? //} ?>
+														<input  required type="text" name="start_datee" id="altField" value="<? if($start_date !=""){echo $start_date; }?>">
+														<input type="hidden" name="meetingid" value="<? if($meeting_id != ""){
 															echo $meeting_id;}?>">
-														<input id="datetimepicker" class="datetime"  value="<?php if($start_date !=""){echo $start_date; }?>" type="hidden" name="start_date">
+														<input id="datetimepicker" class="datetime"  value="<? if($start_date !=""){echo $start_date; }?>" type="hidden" name="start_date">
 													
 													</div>
 													<span class="requiredblue">Click on all dates in the calendar that you wish your class to occur, or select Coming Soon if you wish to publish your class, but not allow learners to enroll yet.  If choosing “coming soon”, simply check the box next to Coming Soon and select todays date in the calendar as well. (This date is just to activate the calendar and will not actually schedule for today.)</span>
@@ -396,17 +396,17 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 											<div class="tutor-frontend-builder-item-scope">
 												<div class="tutor-form-group">
 													<label>
-														<?php _e('Live Class time', 'tutor'); ?>
+														<? _e('Live Class time', 'tutor'); ?>
 														<span class="required">*</span>
 													</label>
 													
 													<div class="tutor-form-field-course-categories">
-														<input required <?php if($time !=""){echo "";} ?> type="text" value="<?php if($time !=""){echo $time;} ?>" id="timepicker" name="liveclasstime"> 
+														<input required <? if($time !=""){echo "";} ?> type="text" value="<? if($time !=""){echo $time;} ?>" id="timepicker" name="liveclasstime"> 
 													</div>
 													<span Class="requiredblue">Choose the time of day that you would like your class to occur.</span>
 												</div>
 											</div>
-									<?php } ?>
+									<? } ?>
 									<div class="tutor-frontend-builder-item-scope">
 										<div class="tutor-course-builder-section-title">
 											<h3><i class="tutor-icon-down"></i> <span>Refund Policy</span></h3>
@@ -418,9 +418,9 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 											</label>
 											<div class="tutor-form-field-course-categories">
 											
-													<input required="" <?php if(get_post_meta($course_id,'refund',true) == "class pack 14"){echo "checked"; } ?> type="radio" name="refund" value="class pack 14"> Class Pack (14 and fewer classes) – 7 days prior to the start of a live class.<br>											
+													<input required="" <? if(get_post_meta($course_id,'refund',true) == "class pack 14"){echo "checked"; } ?> type="radio" name="refund" value="class pack 14"> Class Pack (14 and fewer classes) – 7 days prior to the start of a live class.<br>											
 												
-													<input required="" <?php if(get_post_meta($course_id,'refund',true) == "class pack 15"){echo "checked"; } ?> type="radio" name="refund" value="class pack 15"> Semester/Year (15 or more classes) – 30 days prior to the start of a live class.
+													<input required="" <? if(get_post_meta($course_id,'refund',true) == "class pack 15"){echo "checked"; } ?> type="radio" name="refund" value="class pack 15"> Semester/Year (15 or more classes) – 30 days prior to the start of a live class.
 												
 											
 											</div>
@@ -436,8 +436,8 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 												<span class="required">*</span>
 											</label>
 											<div class="tutor-form-field-course-categories">
-												<input required <?php if(get_post_meta($course_id,'lateenroll',true) == "yes"){echo "checked";} ?> type="radio" name="lateenroll" value="yes"> Yes
-												<input <?php if(get_post_meta($course_id,'lateenroll',true) == "no") {echo "checked";} ?> type="radio" name="lateenroll" value="no"> No
+												<input required <? if(get_post_meta($course_id,'lateenroll',true) == "yes"){echo "checked";} ?> type="radio" name="lateenroll" value="yes"> Yes
+												<input <? if(get_post_meta($course_id,'lateenroll',true) == "no") {echo "checked";} ?> type="radio" name="lateenroll" value="no"> No
 											</div>
 										</div>
 										<div class="tutor-course-builder-section-title">
@@ -449,19 +449,19 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 												
 											</label>
 											<div class="tutor-form-field-course-categories">
-												<input  <?php if(get_post_meta($course_id,'lateenrollnumber',true) == "1"){echo "checked";} ?> type="radio" name="lateenrollnumber" value="1"> One
-												<input <?php if(get_post_meta($course_id,'lateenrollnumber',true) == "2") {echo "checked";} ?> type="radio" name="lateenrollnumber" value="2"> Two
-												<input <?php if(get_post_meta($course_id,'lateenrollnumber',true) == "3") {echo "checked";} ?> type="radio" name="lateenrollnumber" value="3"> Three
-												<input <?php if(get_post_meta($course_id,'lateenrollnumber',true) == "4") {echo "checked";} ?> type="radio" name="lateenrollnumber" value="4"> Four
-												<input <?php if(get_post_meta($course_id,'lateenrollnumber',true) == "5") {echo "checked";} ?> type="radio" name="lateenrollnumber" value="5"> Five
+												<input  <? if(get_post_meta($course_id,'lateenrollnumber',true) == "1"){echo "checked";} ?> type="radio" name="lateenrollnumber" value="1"> One
+												<input <? if(get_post_meta($course_id,'lateenrollnumber',true) == "2") {echo "checked";} ?> type="radio" name="lateenrollnumber" value="2"> Two
+												<input <? if(get_post_meta($course_id,'lateenrollnumber',true) == "3") {echo "checked";} ?> type="radio" name="lateenrollnumber" value="3"> Three
+												<input <? if(get_post_meta($course_id,'lateenrollnumber',true) == "4") {echo "checked";} ?> type="radio" name="lateenrollnumber" value="4"> Four
+												<input <? if(get_post_meta($course_id,'lateenrollnumber',true) == "5") {echo "checked";} ?> type="radio" name="lateenrollnumber" value="5"> Five
 											</div>
 										</div>
 									</div>
-									<?php }  if($_GET['relationclass'] == "child" || get_post_meta(get_the_ID(),'relationclass',true) == "child"){ }else{ ?>
+									<? }  if($_GET['relationclass'] == "child" || get_post_meta(get_the_ID(),'relationclass',true) == "child"){ }else{ ?>
                                     <div class="tutor-frontend-builder-item-scope">
                                         <div class="tutor-form-group">
                                             <label>
-												<?php _e('Class Thumbnail', 'tutor'); ?> (Click upload image button to change image)
+												<? _e('Class Thumbnail', 'tutor'); ?> (Click upload image button to change image)
 												<span class="required">*</span>
 												<p style="color:red;padding-top:10px;">Please be sure to add a class image, otherwise, a default image will appear</p>
                                             </label>
@@ -469,7 +469,7 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
                                                 <div class="tutor-row tutor-align-items-center">
                                                     <div class="tutor-col-5">
                                                         <div class="builder-course-thumbnail-img-src">
-															<?php
+															<?
 															$builder_course_img_src = tutor()->url . 'assets/images/placeholder-course.jpg';
 															$_thumbnail_url = get_the_post_thumbnail_url($course_id);
 															$post_thumbnail_id = get_post_thumbnail_id( $course_id );
@@ -478,17 +478,17 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 																$_thumbnail_url = $builder_course_img_src;
 															}
 															?>
-                                                            <img src="<?php echo $_thumbnail_url; ?>" class="thumbnail-img" data-placeholder-src="<?php echo $builder_course_img_src; ?>">
-                                                            <a href="javascript:;" class="tutor-course-thumbnail-delete-btn" style="display: <?php echo
+                                                            <img src="<? echo $_thumbnail_url; ?>" class="thumbnail-img" data-placeholder-src="<? echo $builder_course_img_src; ?>">
+                                                            <a href="javascript:;" class="tutor-course-thumbnail-delete-btn" style="display: <? echo
 															$post_thumbnail_id ? 'block':'none'; ?>;"><i class="tutor-icon-line-cross"></i></a>
                                                         </div>
                                                     </div>
 
                                                     <div class="tutor-col-7">
                                                         <div class="builder-course-thumbnail-upload-wrap">
-                                                            <div><?php echo sprintf(__("Important Guideline: %1\$s 700x430 pixels %2\$s %3\$s File Support: %1\$s jpg, .jpeg,. gif, or .png %2\$s no text on the image.", "tutor"), "<strong>", "</strong>", "<br>") ?></div>
-                                                            <input required type="hidden" id="tutor_course_thumbnail_id" name="tutor_course_thumbnail_id" value="<?php echo $post_thumbnail_id; ?>">
-                                                            <a href="javascript:;" class="tutor-course-thumbnail-upload-btn tutor-button bordered-button"><?php _e('Upload Image', 'tutor'); ?></a>
+                                                            <div><? echo sprintf(__("Important Guideline: %1\$s 700x430 pixels %2\$s %3\$s File Support: %1\$s jpg, .jpeg,. gif, or .png %2\$s no text on the image.", "tutor"), "<strong>", "</strong>", "<br>") ?></div>
+                                                            <input required type="hidden" id="tutor_course_thumbnail_id" name="tutor_course_thumbnail_id" value="<? echo $post_thumbnail_id; ?>">
+                                                            <a href="javascript:;" class="tutor-course-thumbnail-upload-btn tutor-button bordered-button"><? _e('Upload Image', 'tutor'); ?></a>
                                                         </div>
 														
                                                     </div>
@@ -500,8 +500,8 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
                                     </div>
                                 </div>
                             </div>
-							<?php } ?>
-							<?php if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){ 
+							<? } ?>
+							<? if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){ 
 								if($_GET['relationclass'] == "child" || get_post_meta(get_the_ID(),'relationclass',true) == "child"){ }else{
 								echo '<div class="tutor-course-builder-section">';
 									echo '<div class="tutor-course-builder-section-title">
@@ -531,12 +531,12 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 									if($video_check != ""){
 										?>
 											<video width="50%" height="250" controls>
-												<source src="<?php echo $vide; ?>" type="video/mp4">
+												<source src="<? echo $vide; ?>" type="video/mp4">
 											</video>
-										<?php
+										<?
 									} ?>
 									<span class="requiredblue">Please be patient as uploading large files can take several minutes. Do not close out of this window until you see your video appear.</span>
-								<?php
+								<?
 								echo '</div>';
 								}
 								if($_GET['relationclass'] == "child" || get_post_meta(get_the_ID(),'relationclass',true) == "child"){ }else{	
@@ -583,18 +583,18 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 										 ?>
 										 
 										<select required class="js-example-basic-multiple" name="relatedclasses[]" multiple="">
-											<?php if ( $posts_array->have_posts() ) : while ( $posts_array->have_posts() ) : $posts_array->the_post(); 
+											<? if ( $posts_array->have_posts() ) : while ( $posts_array->have_posts() ) : $posts_array->the_post(); 
 											$idval = get_post_meta(get_the_ID(),"_tutor_course_product_id",true);
 											
 ;
 											if(get_post_field( 'post_author', get_the_ID()) == $user_id ){
 											if($idval != ""){
 											?>
-											<option <?php if(!empty($get_product_woo_id_array) && $idval != ""){foreach($get_product_woo_id_array as $reslt){$res_id = explode("/",$reslt);if($idval == $res_id[0]){ echo "selected"; }}}?> value="<?php echo $idval; ?>"><?php echo get_the_title(); ?></option>
-											<?php } } endwhile; endif; ?>
+											<option <? if(!empty($get_product_woo_id_array) && $idval != ""){foreach($get_product_woo_id_array as $reslt){$res_id = explode("/",$reslt);if($idval == $res_id[0]){ echo "selected"; }}}?> value="<? echo $idval; ?>"><? echo get_the_title(); ?></option>
+											<? } } endwhile; endif; ?>
 											
 										</select>
-										<?php  
+										<?  
 									echo '<span class="requiredblue">Select each instructional video that you wish to add to this course. The instructional videos must be created before you will see them available in the list to attach.</span>
 									</div>';
 								}
@@ -608,30 +608,30 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
                                 <div class="tutor-form-col-12">
                                     <div class="tutor-form-group">
                                         <div class="tutor-form-field tutor-course-builder-btn-group" style="justify-content: unset;">
-											<?php if ($can_publish_course){ 
+											<? if ($can_publish_course){ 
 											if($status == "approved"){
 											?>
-                                                <button class="tutor-button tutor-success" type="submit" name="course_submit_btn" value="publish_course"><?php if($_GET['relationclass'] == "child"){_e('Upload Video', 'tutor');} elseif( $relationtext == "child"){_e('Save', 'tutor');}else{_e('Publish Course', 'tutor');} ?></button>
-											<?php } }else{ ?>
-                                                <button class="tutor-button tutor-success" type="submit" name="course_submit_btn" value="submit_for_review"><?php _e('Submit for Review', 'tutor'); ?></button>
-											<?php } ?>
-											<?php if(isset($_GET['course_ID'])){ ?>
-											<?php if($relationtext == "child"){ ?>
-												<a class="tutor-button" href="/my-account/create-course/?type=on-demand-classes&relationclass=child"> <?php _e('Add Another Teaching Video', "tutor") ?></a>
-											<?php } elseif( $relationtext == "parent"){?>
-												<a class="tutor-button" href="/my-account/create-course/?type=on-demand-classes&relationclass=parent"> <?php _e('Add New OnDemand Class', "tutor") ?></a>
-											<?php }else{?>
-												 <a class="tutor-button" href="/my-account/create-course/<?php if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){echo "?type=on-demand-classes";}?>"> <?php _e('Add New Class', "tutor") ?></a>
-												 <a class="tutor-button tutor-success" href="/my-account/create-course?duplicate_id=<?php echo $course_id; ?><?php if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){echo "&type=on-demand-classes";}?>">Duplicate Class</a>
-											<?php } ?>
+                                                <button class="tutor-button tutor-success" type="submit" name="course_submit_btn" value="publish_course"><? if($_GET['relationclass'] == "child"){_e('Upload Video', 'tutor');} elseif( $relationtext == "child"){_e('Save', 'tutor');}else{_e('Publish Course', 'tutor');} ?></button>
+											<? } }else{ ?>
+                                                <button class="tutor-button tutor-success" type="submit" name="course_submit_btn" value="submit_for_review"><? _e('Submit for Review', 'tutor'); ?></button>
+											<? } ?>
+											<? if(isset($_GET['course_ID'])){ ?>
+											<? if($relationtext == "child"){ ?>
+												<a class="tutor-button" href="/my-account/create-course/?type=on-demand-classes&relationclass=child"> <? _e('Add Another Teaching Video', "tutor") ?></a>
+											<? } elseif( $relationtext == "parent"){?>
+												<a class="tutor-button" href="/my-account/create-course/?type=on-demand-classes&relationclass=parent"> <? _e('Add New OnDemand Class', "tutor") ?></a>
+											<? }else{?>
+												 <a class="tutor-button" href="/my-account/create-course/<? if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){echo "?type=on-demand-classes";}?>"> <? _e('Add New Class', "tutor") ?></a>
+												 <a class="tutor-button tutor-success" href="/my-account/create-course?duplicate_id=<? echo $course_id; ?><? if($_GET['type'] == "on-demand-classes" || $type_list[0]->slug == "on-demand-classes"){echo "&type=on-demand-classes";}?>">Duplicate Class</a>
+											<? } ?>
 							 
-											<?php } ?>
-											<?php if($_GET['relationclass'] == "child" || $relationtext == "child"){}else{ ?>
-											 <button type="submit" class="tutor-button" name="course_submit_btn" value="save_course_as_draft"><?php _e('Save as draft', 'tutor'); ?></button>
-											<?php } ?>
-											 <a class="tutor-button" href="<?php echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <?php _e('Cancel', "tutor") ?></a>
+											<? } ?>
+											<? if($_GET['relationclass'] == "child" || $relationtext == "child"){}else{ ?>
+											 <button type="submit" class="tutor-button" name="course_submit_btn" value="save_course_as_draft"><? _e('Save as draft', 'tutor'); ?></button>
+											<? } ?>
+											 <a class="tutor-button" href="<? echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <? _e('Cancel', "tutor") ?></a>
 											 
-											 <a class="tutor-button" href="<?php echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <?php _e('Back', "tutor") ?></a>
+											 <a class="tutor-button" href="<? echo tutor_utils()->tutor_dashboard_url('my-courses/'); ?>"> <? _e('Back', "tutor") ?></a>
 											
                                         </div>
                                     </div>
@@ -712,9 +712,9 @@ $relationtext = get_post_meta(get_the_ID(),'relationclass',true);
 	
 </style>
 
-<?php do_action('tutor/dashboard_course_builder_after'); ?>
+<? do_action('tutor/dashboard_course_builder_after'); ?>
 
 
-<?php
+<?
 do_action('tutor_load_template_after', 'dashboard.create-course', null);
 get_tutor_footer(true); ?>

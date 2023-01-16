@@ -1,11 +1,11 @@
-<?php
+<?
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
  */
 
 ?>
-<?php
+<?
 global $wpdb;
 $taxonomies = get_terms( array(
 				'taxonomy' => 'course-category',
@@ -62,53 +62,53 @@ $insturctorID = $_GET['tutor_instructor_filter'];
 					<form method="GET" action="/virtual-classroom">
 						<div class="form-wrap">
 							<div class="field-wrap">
-								<input class="form-control" type="text" class="form-control" maxlength="255" placeholder="Search term" name="s" value="<?php echo $_GET["s"] ; ?>">
+								<input class="form-control" type="text" class="form-control" maxlength="255" placeholder="Search term" name="s" value="<? echo $_GET["s"] ; ?>">
 							</div>
 							<div class="field-wrap">
 							<select class="form-control" name="tutor_category_filter">
 								<option value="">All Categories</option>
-								<?php $other_id = "";
+								<? $other_id = "";
 								$other_name = "";
 								foreach( $taxonomies as $subcategory ) { 
 									if($subcategory->name != "Other"){?>
-									<option value="<?php echo $subcategory->term_id; ?>" <?php if (isset($_GET["tutor_category_filter"]) ? selected($subcategory->term_id,$_GET["tutor_category_filter"]) : "" ); ?>><?php echo $subcategory->name; ?></option>
-									<?php } 
+									<option value="<? echo $subcategory->term_id; ?>" <? if (isset($_GET["tutor_category_filter"]) ? selected($subcategory->term_id,$_GET["tutor_category_filter"]) : "" ); ?>><? echo $subcategory->name; ?></option>
+									<? } 
 									elseif($subcategory->name == "Other"){ 
 										$other_id = $subcategory->term_id;
 										$other_name = $subcategory->name;
 									 	}
 									}
 									?>
-									<option value="<?php echo $other_id; ?>" <?php if (isset($_GET["tutor_category_filter"]) ? selected($other_id,$_GET["tutor_category_filter"]) : "" ); ?>><?php echo $other_name; ?></option>									
+									<option value="<? echo $other_id; ?>" <? if (isset($_GET["tutor_category_filter"]) ? selected($other_id,$_GET["tutor_category_filter"]) : "" ); ?>><? echo $other_name; ?></option>									
 							</select>
 							</div>
 							<div class="field-wrap">
 								<select class="form-control" name="tutor_tag_filter">
 									<option value="">All Grades</option>
-									<?php foreach( $group as $subcategory ) { ?>
-										<option value="<?php echo $subcategory->term_id; ?>" <?php if (isset($_GET["tutor_tag_filter"]) ? selected($subcategory->term_id,$_GET["tutor_tag_filter"]) : "" ); ?>><?php echo $subcategory->name; ?></option>
-									<?php }	?> 
+									<? foreach( $group as $subcategory ) { ?>
+										<option value="<? echo $subcategory->term_id; ?>" <? if (isset($_GET["tutor_tag_filter"]) ? selected($subcategory->term_id,$_GET["tutor_tag_filter"]) : "" ); ?>><? echo $subcategory->name; ?></option>
+									<? }	?> 
 								</select>
 							</div>
 							<div class="field-wrap">	
 								<select class="form-control" style="width:215px;" name="tutor_type_filter">
 									<option value="">Select Class/Private Tutor</option>
-									<?php foreach( $type as $subcategory ) { 
+									<? foreach( $type as $subcategory ) { 
 										
 									?>
-										<option value="<?php echo $subcategory->term_id; ?>" <?php if (isset($_GET["tutor_type_filter"]) ? selected($subcategory->term_id,$_GET["tutor_type_filter"]) : "" ); ?>><?php echo $subcategory->name; ?></option>
-									<?php }	?> 
+										<option value="<? echo $subcategory->term_id; ?>" <? if (isset($_GET["tutor_type_filter"]) ? selected($subcategory->term_id,$_GET["tutor_type_filter"]) : "" ); ?>><? echo $subcategory->name; ?></option>
+									<? }	?> 
 								</select>
 								
 								<!--input type="radio" name="tutor_type_filter" value=""> All
-								<?php foreach( $type as $subcategory ) { ?>
-									<input type="radio" name="tutor_type_filter" value="<?php echo $subcategory->term_id; ?>" <?php if (isset($_GET["tutor_type_filter"]) ? checked($subcategory->term_id,$_GET["tutor_type_filter"]) : "" ); ?>> <?php echo $subcategory->name; ?> 
-								<?php }	?> -->
+								<? foreach( $type as $subcategory ) { ?>
+									<input type="radio" name="tutor_type_filter" value="<? echo $subcategory->term_id; ?>" <? if (isset($_GET["tutor_type_filter"]) ? checked($subcategory->term_id,$_GET["tutor_type_filter"]) : "" ); ?>> <? echo $subcategory->name; ?> 
+								<? }	?> -->
 							</div>
 							<div class="field-wrap">
 							<select class="form-control" name="tutor_instructor_filter">
 								<option value="">All Instructors</option>
-								<?php foreach ( $users as $user ) {
+								<? foreach ( $users as $user ) {
 									$fname = get_user_meta($user->ID,'first_name',true);
 									$lname = get_user_meta($user->ID,'last_name',true);
 										echo '<option ';
@@ -126,9 +126,9 @@ $insturctorID = $_GET['tutor_instructor_filter'];
 							<div class="btn-wrap">
 						
 								<input type="button" id="inputfile" value="Search" class="btn-submit">
-								<?php if (strpos($_SERVER['REQUEST_URI'], "tutor_category_filter") !== false){ ?>
-								<input type="button" value="Clear Search" onclick="window.location.href='<?php echo site_url(); ?>/virtual-classroom/';"/>
-								<?php } ?>
+								<? if (strpos($_SERVER['REQUEST_URI'], "tutor_category_filter") !== false){ ?>
+								<input type="button" value="Clear Search" onclick="window.location.href='<? echo site_url(); ?>/virtual-classroom/';"/>
+								<? } ?>
 							</div>
 						</div>
 					</form>

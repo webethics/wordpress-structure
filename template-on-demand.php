@@ -1,4 +1,4 @@
-<?php
+<?
 /*
 Template Name: On Demand Class
 */
@@ -197,14 +197,14 @@ $args  = array(
 $query = new WP_Query( $args );
 
 ?>
-<?php
+<?
 /**
  * @package TutorLMS/Templates
  * @version 1.4.3
  */
 
 ?>
-<?php
+<?
 
 global $wpdb;
 $taxonomies = get_terms( array(
@@ -254,38 +254,38 @@ $insturctorID = $_GET['tutor_instructor_filter'];
 					<form method="GET" action="/on-demand-classes">
 						<div class="form-wrap">
 							<div class="field-wrap">
-								<input class="form-control" type="text" class="form-control" maxlength="255" placeholder="Search term" name="search" value="<?php echo $_GET["search"] ; ?>">
+								<input class="form-control" type="text" class="form-control" maxlength="255" placeholder="Search term" name="search" value="<? echo $_GET["search"] ; ?>">
 							</div>
 							<div class="field-wrap">
 							<select class="form-control" name="tutor_category_filter">
 								<option value="">All Categories</option>
-								<?php $other_id = "";
+								<? $other_id = "";
 								$other_name = "";
 								foreach( $taxonomies as $subcategory ) { 
 									if($subcategory->name != "Other"){?>
-									<option value="<?php echo $subcategory->term_id; ?>" <?php if (isset($_GET["tutor_category_filter"]) ? selected($subcategory->term_id,$_GET["tutor_category_filter"]) : "" ); ?>><?php echo $subcategory->name; ?></option>
-									<?php } 
+									<option value="<? echo $subcategory->term_id; ?>" <? if (isset($_GET["tutor_category_filter"]) ? selected($subcategory->term_id,$_GET["tutor_category_filter"]) : "" ); ?>><? echo $subcategory->name; ?></option>
+									<? } 
 									elseif($subcategory->name == "Other"){ 
 										$other_id = $subcategory->term_id;
 										$other_name = $subcategory->name;
 									 	}
 									}
 									?>
-									<option value="<?php echo $other_id; ?>" <?php if (isset($_GET["tutor_category_filter"]) ? selected($other_id,$_GET["tutor_category_filter"]) : "" ); ?>><?php echo $other_name; ?></option>									
+									<option value="<? echo $other_id; ?>" <? if (isset($_GET["tutor_category_filter"]) ? selected($other_id,$_GET["tutor_category_filter"]) : "" ); ?>><? echo $other_name; ?></option>									
 							</select>
 							</div>
 							<div class="field-wrap">
 								<select class="form-control" name="tutor_tag_filter">
 									<option value="">All Grades</option>
-									<?php foreach( $group as $subcategory ) { ?>
-										<option value="<?php echo $subcategory->term_id; ?>" <?php if (isset($_GET["tutor_tag_filter"]) ? selected($subcategory->term_id,$_GET["tutor_tag_filter"]) : "" ); ?>><?php echo $subcategory->name; ?></option>
-									<?php }	?> 
+									<? foreach( $group as $subcategory ) { ?>
+										<option value="<? echo $subcategory->term_id; ?>" <? if (isset($_GET["tutor_tag_filter"]) ? selected($subcategory->term_id,$_GET["tutor_tag_filter"]) : "" ); ?>><? echo $subcategory->name; ?></option>
+									<? }	?> 
 								</select>
 							</div>
 							<div class="field-wrap">
 							<select class="form-control" name="tutor_instructor_filter">
 								<option value="">All Instructors</option>
-								<?php foreach ( $users as $user ) {
+								<? foreach ( $users as $user ) {
 									$fname = get_user_meta($user->ID,'first_name',true);
 									$lname = get_user_meta($user->ID,'last_name',true);
 										echo '<option ';
@@ -323,7 +323,7 @@ jQuery(document).ready(function($) {
 		<div class="container-wrap">
 			<div class="row-wrap">
 				<h3 style="width:100%;" class="form-title">On Demand Classes</h3>
-					<?php if ( $query->have_posts() ) :
+					<? if ( $query->have_posts() ) :
 						/* Start the Loop */
 						
 						while ( $query->have_posts() ) : $query->the_post(); 
@@ -409,39 +409,39 @@ jQuery(document).ready(function($) {
 						?>
 						<div class="boxy-inner">
 							<div class="img-container">	
-								<a href="<?php echo get_the_permalink(); ?>"> <?php tutor_course_loop_thumbnail();?> </a>	
+								<a href="<? echo get_the_permalink(); ?>"> <? tutor_course_loop_thumbnail();?> </a>	
 							</div>
 
 							<div class="tutor-loop-course-container prd-content"><div class="elementor-widget-container">
-										<h4 class="elementor-heading-title elementor-size-default"><?php echo get_the_title(); ?></h4>		
+										<h4 class="elementor-heading-title elementor-size-default"><? echo get_the_title(); ?></h4>		
 							</div>
-							<p class="descrition-wrap"><?php echo get_the_content(); ?></p>
-							<p class="category-wrap">Category: <?php echo $category_name; ?> | Type:  <?php echo $type_name; ?>&nbsp;</p>
-							<p class="category-wrap">Grade:  <?php echo $grade_name; ?></p>
-							<p class="grade-wrap">Instructor Name: <?php echo $full_name; ?></p>
-							<?php if ( is_user_logged_in() ) {
-							if ( tutor_utils()->is_enrolled() ) {?><div class="btn-wrap single-coursebtn"><a href="<?php echo get_the_permalink(); ?>" class="r_more_btn">Read more</a></div><?php }
+							<p class="descrition-wrap"><? echo get_the_content(); ?></p>
+							<p class="category-wrap">Category: <? echo $category_name; ?> | Type:  <? echo $type_name; ?>&nbsp;</p>
+							<p class="category-wrap">Grade:  <? echo $grade_name; ?></p>
+							<p class="grade-wrap">Instructor Name: <? echo $full_name; ?></p>
+							<? if ( is_user_logged_in() ) {
+							if ( tutor_utils()->is_enrolled() ) {?><div class="btn-wrap single-coursebtn"><a href="<? echo get_the_permalink(); ?>" class="r_more_btn">Read more</a></div><? }
 							else{
 								?>
-							<div class="btn-wrap single-coursebtn"><a href="<?php echo get_the_permalink(get_post_meta(get_the_ID(),"_tutor_course_product_id",true)); ?>" class="r_more_btn">Read more</a></div>
-								<?php
+							<div class="btn-wrap single-coursebtn"><a href="<? echo get_the_permalink(get_post_meta(get_the_ID(),"_tutor_course_product_id",true)); ?>" class="r_more_btn">Read more</a></div>
+								<?
 							}
 							}
 							
-							else{ ?><div class="btn-wrap single-coursebtn"><a href="<?php echo get_the_permalink(get_post_meta(get_the_ID(),"_tutor_course_product_id",true)); ?>" class="r_more_btn">Read more</a></div><?php } ?>
+							else{ ?><div class="btn-wrap single-coursebtn"><a href="<? echo get_the_permalink(get_post_meta(get_the_ID(),"_tutor_course_product_id",true)); ?>" class="r_more_btn">Read more</a></div><? } ?>
 
 							</div>
 							<div class="tutor-loop-course-footer1 prd-right">
 								<div class="prd-right-inner">
-									<div class="price-wrap"><?php echo "Price: $".$final_price ; ?></div>
+									<div class="price-wrap"><? echo "Price: $".$final_price ; ?></div>
 									<div class="rating-wrap">
 										Rating:<br>
-										<?php
+										<?
 										$course_rating = tutor_utils()->get_course_rating();
 										tutor_utils()->star_rating_generator($course_rating->rating_avg);
 										?>
 										<span class="tutor-rating-count">
-											<?php
+											<?
 											if ($course_rating->rating_avg > 0) {
 												echo apply_filters('tutor_course_rating_average', $course_rating->rating_avg);
 												echo '<i>(' . apply_filters('tutor_course_rating_count', $course_rating->rating_count) . ')</i> Reviews';
@@ -453,10 +453,10 @@ jQuery(document).ready(function($) {
 						</div>
 					</div>
 					</div>
-					<?php endwhile;
+					<? endwhile;
 						?>
 						<nav class="pagination">
-     <?php
+     <?
      $big = 999999999;
      echo paginate_links( array(
           'base' => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
@@ -468,11 +468,11 @@ jQuery(document).ready(function($) {
      ) );
 ?>
 </nav>
-<?php wp_reset_postdata(); ?> 
-						<?php
+<? wp_reset_postdata(); ?> 
+						<?
 						else: ?>
 						<h5 style="width:100%;text-align:center;" class="error">No Class found!</h5>
-					<?php
+					<?
 						endif;
 						
 					?>
@@ -481,4 +481,4 @@ jQuery(document).ready(function($) {
 		</div>
 	</div>
 </div>
-<?php get_footer(); ?>
+<? get_footer(); ?>

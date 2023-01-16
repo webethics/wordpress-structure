@@ -1,6 +1,6 @@
 === Hello Elementor Child ===
 
-Contributors: yoyovisio
+Contributors: Webethics
 Requires at least: WordPress 4.7
 Tested up to: WordPress 5.2
 Stable tag: 1.0.0

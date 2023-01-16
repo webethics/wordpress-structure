@@ -43,6 +43,6 @@ Multiple User Roles created in this theme and dashboard managed based on the cus
 
 Custom profile pics custom code added so that user will able to select the pics according to the requirement.
 
-# Custom Queries Page in account
+# Custom Queries Page in account dashboard
 
 Created functionality to create custom query from where student can send the queries to instructor and get reply.
